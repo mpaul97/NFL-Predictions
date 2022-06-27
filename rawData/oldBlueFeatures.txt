@@ -1,0 +1,12 @@
+Features
+-----------
+- elos
+- isHome
+- last 10
+- last 20
+- year elos
+- time last 5
+- opp last 5
+- last 2
+- rankings
+- player data*

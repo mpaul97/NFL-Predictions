@@ -1,0 +1,13 @@
+Features
+------------
+- PPG
+- Total Yards per Game
+- Passing Yards per Game
+- Rushing Yards per Game
+- PPG Against
+- Total Yards Against
+- Passing Yards Against
+- Rushing Yards Against
+
+- Offense Rank
+- Defensive Rank

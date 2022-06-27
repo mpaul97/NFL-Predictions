@@ -1,0 +1,15 @@
+num,featureName
+1,elos
+2,elosYearly
+3,elosSmooth-0.65
+4,elosYearlySmooth-0.65
+5,seasonInfo
+6,last5
+7,last1
+8,seasonRankings
+9,time5
+10,playoffsByeInfo
+11,elosSmooth-0.25
+12,opp5
+13,points10
+14,pointsAllowed10

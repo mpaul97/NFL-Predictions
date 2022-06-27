@@ -1,0 +1,11 @@
+Features
+-----------------
+
+- isPlayoffs
+- isWeekBeforePlayoffs
+- isWeekAfterBye
+
+Possible Features*
+-----------------
+- clinchedPlayoffs
+- clinchedFirstRoundBye

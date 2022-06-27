@@ -1,0 +1,7 @@
+Features
+-------------
+
+- isNewStarter
+- isNewTeam
+- outLastSeason
+- notFullGame

@@ -1,0 +1,14 @@
+Features
+---------------
+
+- isHome
+- careerStarts
+- careerGamesPlayedIn
+- isRookie
+- age
+- pastSeasonStarts
+- pastSeasonGamesPlayedIn
+- pastSeasonPasserRating
+- pastSeason4thComebacks
+- pastSeasonGameWinningDrives
+- pastSeasonAwards (LabelEncoder)

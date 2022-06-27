@@ -1,0 +1,14 @@
+num,featureName
+1,last5
+2,last1
+3,seasonAvg
+4,passingYards10
+5,passingTouchdowns10
+6,playerStarterInfo
+7,attemptedPasses10
+8,careerAvg
+9,allowedPassingYards10
+10,completedPasses10
+11,allowedPassingTouchdowns10
+12,playerInfo
+13,allowedAttemptedPasses10

@@ -1,0 +1,15 @@
+Features
+-----------
+* attributes for each game of source.csv
+
+- opp_abbr
+- time (0: morning, 1: afternoon, 2: night)
+- surface (0: grass, 1: turf)
+- roof (from LabelEncoder)
+- stadium id (from LabelEncoder)
+- weather (temperature, humidity, wind)
+- vegas line hit
+- simple vegas line (simpleVl), ex: Tampa Bay Buccaneers -2.0 -> (TAM, -2.0), (NYG, 2.0)
+- month
+- overUnder hit
+- simple over under (simpleOu), ex: 49.0 (over) -> 49.0|o
