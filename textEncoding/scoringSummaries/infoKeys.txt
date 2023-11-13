@@ -1,0 +1,6 @@
+6 = td|nex
+7 = td|ex
+8 = td|two
+3 = fg
+2 (no 'extra' in detail) = sf
+2 ('extra' in detail) = exrt

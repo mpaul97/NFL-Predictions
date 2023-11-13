@@ -1,0 +1,1 @@
+yards_from_scrimmage,longest_reception,receptions,times_pass_target,receiving_touchdowns,receiving_yards_per_reception,catch_percentage

@@ -1,0 +1,11 @@
+- predict all players at once
+- player ratings
+- BOTH as source, rather than each team
+- buildJoinAll: EVERYTHING
+- more model predictions for GAME PREDICTIONS
+
+- account for blowouts/close games
+
+- add new week data to source/train data
+
+- CONCAT new test before new week

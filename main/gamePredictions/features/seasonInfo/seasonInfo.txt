@@ -1,0 +1,8 @@
+Features
+-----------------
+- Week
+- Season
+- Season Wins
+- Season Loses
+- Season Win Percentage
+- isHome

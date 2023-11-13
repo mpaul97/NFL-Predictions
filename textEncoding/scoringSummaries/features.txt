@@ -1,0 +1,7 @@
+1. isPass
+4. isDefensiveTouchdown
+2. isRun
+4. isFieldGoal
+5. is2ptAttempt
+6. isFailed2ptAttempt
+7. isMissedExtraPoint

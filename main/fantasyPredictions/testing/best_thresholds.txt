@@ -1,0 +1,2 @@
+week_rank -> Best threshold: 0.2 : 0.5569683717949707
+points -> Best threshold: 0.2 : 0.4685017243709806

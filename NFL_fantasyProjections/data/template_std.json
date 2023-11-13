@@ -1,0 +1,4742 @@
+[
+  {
+    "overallRanking": 1,
+    "name": "Jonathan Taylor",
+    "team": "IND",
+    "position": "RB",
+    "projections": 380.1,
+    "lastSeasonPoints": 333.1,
+    "positionRanking": 1,
+    "flexRanking": 1
+  },
+  {
+    "overallRanking": 2,
+    "name": "Derrick Henry",
+    "team": "TEN",
+    "position": "RB",
+    "projections": 155.3,
+    "lastSeasonPoints": 173.3,
+    "positionRanking": 2,
+    "flexRanking": 2
+  },
+  {
+    "overallRanking": 3,
+    "name": "Austin Ekeler",
+    "team": "LAC",
+    "position": "RB",
+    "projections": 252.8,
+    "lastSeasonPoints": 269.8,
+    "positionRanking": 3,
+    "flexRanking": 3
+  },
+  {
+    "overallRanking": 4,
+    "name": "Christian McCaffrey",
+    "team": "CAR",
+    "position": "RB",
+    "projections": 84.5,
+    "lastSeasonPoints": 90.5,
+    "positionRanking": 4,
+    "flexRanking": 4
+  },
+  {
+    "overallRanking": 5,
+    "name": "Dalvin Cook",
+    "team": "MIN",
+    "position": "RB",
+    "projections": 168.3,
+    "lastSeasonPoints": 170.3,
+    "positionRanking": 5,
+    "flexRanking": 5
+  },
+  {
+    "overallRanking": 6,
+    "name": "Joe Mixon",
+    "team": "CIN",
+    "position": "RB",
+    "projections": 248.9,
+    "lastSeasonPoints": 245.9,
+    "positionRanking": 6,
+    "flexRanking": 6
+  },
+  {
+    "overallRanking": 7,
+    "name": "Najee Harris",
+    "team": "PIT",
+    "position": "RB",
+    "projections": 214.7,
+    "lastSeasonPoints": 226.7,
+    "positionRanking": 7,
+    "flexRanking": 7
+  },
+  {
+    "overallRanking": 8,
+    "name": "Nick Chubb",
+    "team": "CLE",
+    "position": "RB",
+    "projections": 196.3,
+    "lastSeasonPoints": 195.3,
+    "positionRanking": 8,
+    "flexRanking": 8
+  },
+  {
+    "overallRanking": 9,
+    "name": "Cooper Kupp",
+    "team": "LAR",
+    "position": "WR",
+    "projections": 269.5,
+    "lastSeasonPoints": 292.5,
+    "positionRanking": 1,
+    "flexRanking": 9
+  },
+  {
+    "overallRanking": 10,
+    "name": "Ja'Marr Chase",
+    "team": "CIN",
+    "position": "WR",
+    "projections": 209.6,
+    "lastSeasonPoints": 223.6,
+    "positionRanking": 2,
+    "flexRanking": 10
+  },
+  {
+    "overallRanking": 11,
+    "name": "Justin Jefferson",
+    "team": "MIN",
+    "position": "WR",
+    "projections": 236.4,
+    "lastSeasonPoints": 222.4,
+    "positionRanking": 3,
+    "flexRanking": 11
+  },
+  {
+    "overallRanking": 12,
+    "name": "Alvin Kamara",
+    "team": "NO",
+    "position": "RB",
+    "projections": 165.7,
+    "lastSeasonPoints": 187.7,
+    "positionRanking": 9,
+    "flexRanking": 12
+  },
+  {
+    "overallRanking": 13,
+    "name": "Deebo Samuel",
+    "team": "SF",
+    "position": "WR",
+    "projections": 266,
+    "lastSeasonPoints": 262,
+    "positionRanking": 4,
+    "flexRanking": 13
+  },
+  {
+    "overallRanking": 14,
+    "name": "Travis Kelce",
+    "team": "KC",
+    "position": "TE",
+    "projections": 161.8,
+    "lastSeasonPoints": 170.8,
+    "positionRanking": 1,
+    "flexRanking": 14
+  },
+  {
+    "overallRanking": 15,
+    "name": "Mark Andrews",
+    "team": "BAL",
+    "position": "TE",
+    "projections": 170.1,
+    "lastSeasonPoints": 190.1,
+    "positionRanking": 2,
+    "flexRanking": 15
+  },
+  {
+    "overallRanking": 16,
+    "name": "Davante Adams",
+    "team": "LV",
+    "position": "WR",
+    "projections": 228.3,
+    "lastSeasonPoints": 221.3,
+    "positionRanking": 5,
+    "flexRanking": 16
+  },
+  {
+    "overallRanking": 17,
+    "name": "Javonte Williams",
+    "team": "DEN",
+    "position": "RB",
+    "projections": 156.9,
+    "lastSeasonPoints": 161.9,
+    "positionRanking": 10,
+    "flexRanking": 17
+  },
+  {
+    "overallRanking": 18,
+    "name": "Stefon Diggs",
+    "team": "BUF",
+    "position": "WR",
+    "projections": 189.5,
+    "lastSeasonPoints": 182.5,
+    "positionRanking": 6,
+    "flexRanking": 18
+  },
+  {
+    "overallRanking": 19,
+    "name": "D'Andre Swift",
+    "team": "DET",
+    "position": "RB",
+    "projections": 123.9,
+    "lastSeasonPoints": 146.9,
+    "positionRanking": 11,
+    "flexRanking": 19
+  },
+  {
+    "overallRanking": 20,
+    "name": "Leonard Fournette",
+    "team": "TB",
+    "position": "RB",
+    "projections": 192.6,
+    "lastSeasonPoints": 186.6,
+    "positionRanking": 12,
+    "flexRanking": 20
+  },
+  {
+    "overallRanking": 21,
+    "name": "Josh Allen",
+    "team": "BUF",
+    "position": "QB",
+    "projections": 357.6,
+    "lastSeasonPoints": 396.6,
+    "positionRanking": 1,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 22,
+    "name": "CeeDee Lamb",
+    "team": "DAL",
+    "position": "WR",
+    "projections": 151.8,
+    "lastSeasonPoints": 153.8,
+    "positionRanking": 7,
+    "flexRanking": 21
+  },
+  {
+    "overallRanking": 23,
+    "name": "Mike Evans",
+    "team": "TB",
+    "position": "WR",
+    "projections": 183.5,
+    "lastSeasonPoints": 188.5,
+    "positionRanking": 8,
+    "flexRanking": 22
+  },
+  {
+    "overallRanking": 24,
+    "name": "James Conner",
+    "team": "ARI",
+    "position": "RB",
+    "projections": 196.7,
+    "lastSeasonPoints": 220.7,
+    "positionRanking": 13,
+    "flexRanking": 23
+  },
+  {
+    "overallRanking": 25,
+    "name": "Tyreek Hill",
+    "team": "MIA",
+    "position": "WR",
+    "projections": 207.5,
+    "lastSeasonPoints": 185.5,
+    "positionRanking": 9,
+    "flexRanking": 24
+  },
+  {
+    "overallRanking": 26,
+    "name": "A.J. Brown",
+    "team": "PHI",
+    "position": "WR",
+    "projections": 126.9,
+    "lastSeasonPoints": 117.9,
+    "positionRanking": 10,
+    "flexRanking": 25
+  },
+  {
+    "overallRanking": 27,
+    "name": "Aaron Jones",
+    "team": "GB",
+    "position": "RB",
+    "projections": 171,
+    "lastSeasonPoints": 177,
+    "positionRanking": 14,
+    "flexRanking": 26
+  },
+  {
+    "overallRanking": 28,
+    "name": "Tee Higgins",
+    "team": "CIN",
+    "position": "WR",
+    "projections": 121.1,
+    "lastSeasonPoints": 143.1,
+    "positionRanking": 11,
+    "flexRanking": 27
+  },
+  {
+    "overallRanking": 29,
+    "name": "Antonio Gibson",
+    "team": "WAS",
+    "position": "RB",
+    "projections": 165.1,
+    "lastSeasonPoints": 185.1,
+    "positionRanking": 15,
+    "flexRanking": 28
+  },
+  {
+    "overallRanking": 30,
+    "name": "Cam Akers",
+    "team": "LAR",
+    "position": "RB",
+    "projections": -1.7,
+    "lastSeasonPoints": 1.3,
+    "positionRanking": 16,
+    "flexRanking": 29
+  },
+  {
+    "overallRanking": 31,
+    "name": "Kyle Pitts",
+    "team": "ATL",
+    "position": "TE",
+    "projections": 103.6,
+    "lastSeasonPoints": 108.6,
+    "positionRanking": 3,
+    "flexRanking": 30
+  },
+  {
+    "overallRanking": 32,
+    "name": "David Montgomery",
+    "team": "CHI",
+    "position": "RB",
+    "projections": 166,
+    "lastSeasonPoints": 153,
+    "positionRanking": 17,
+    "flexRanking": 31
+  },
+  {
+    "overallRanking": 33,
+    "name": "Keenan Allen",
+    "team": "LAC",
+    "position": "WR",
+    "projections": 138.8,
+    "lastSeasonPoints": 149.8,
+    "positionRanking": 12,
+    "flexRanking": 32
+  },
+  {
+    "overallRanking": 34,
+    "name": "DK Metcalf",
+    "team": "SEA",
+    "position": "WR",
+    "projections": 76,
+    "lastSeasonPoints": 0,
+    "positionRanking": 13,
+    "flexRanking": 33
+  },
+  {
+    "overallRanking": 35,
+    "name": "Saquon Barkley",
+    "team": "NYG",
+    "position": "RB",
+    "projections": 98.6,
+    "lastSeasonPoints": 107.6,
+    "positionRanking": 18,
+    "flexRanking": 34
+  },
+  {
+    "overallRanking": 36,
+    "name": "George Kittle",
+    "team": "SF",
+    "position": "TE",
+    "projections": 131,
+    "lastSeasonPoints": 127,
+    "positionRanking": 4,
+    "flexRanking": 35
+  },
+  {
+    "overallRanking": 37,
+    "name": "Ezekiel Elliott",
+    "team": "DAL",
+    "position": "RB",
+    "projections": 200.1,
+    "lastSeasonPoints": 199.1,
+    "positionRanking": 19,
+    "flexRanking": 36
+  },
+  {
+    "overallRanking": 38,
+    "name": "Michael Pittman Jr.",
+    "team": "IND",
+    "position": "WR",
+    "projections": 170.6,
+    "lastSeasonPoints": 148.6,
+    "positionRanking": 14,
+    "flexRanking": 37
+  },
+  {
+    "overallRanking": 39,
+    "name": "Breece Hall",
+    "team": "NYJ",
+    "position": "RB",
+    "projections": 78.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 20,
+    "flexRanking": 38
+  },
+  {
+    "overallRanking": 40,
+    "name": "DJ Moore",
+    "team": "CAR",
+    "position": "WR",
+    "projections": 66.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 15,
+    "flexRanking": 39
+  },
+  {
+    "overallRanking": 41,
+    "name": "Diontae Johnson",
+    "team": "PIT",
+    "position": "WR",
+    "projections": 154.4,
+    "lastSeasonPoints": 165.4,
+    "positionRanking": 16,
+    "flexRanking": 40
+  },
+  {
+    "overallRanking": 42,
+    "name": "Terry McLaurin",
+    "team": "WAS",
+    "position": "WR",
+    "projections": 113.5,
+    "lastSeasonPoints": 136.5,
+    "positionRanking": 17,
+    "flexRanking": 41
+  },
+  {
+    "overallRanking": 43,
+    "name": "Jaylen Waddle",
+    "team": "MIA",
+    "position": "WR",
+    "projections": 163.8,
+    "lastSeasonPoints": 141.8,
+    "positionRanking": 18,
+    "flexRanking": 42
+  },
+  {
+    "overallRanking": 44,
+    "name": "Josh Jacobs",
+    "team": "LV",
+    "position": "RB",
+    "projections": 194,
+    "lastSeasonPoints": 172,
+    "positionRanking": 21,
+    "flexRanking": 43
+  },
+  {
+    "overallRanking": 45,
+    "name": "Amari Cooper",
+    "team": "CLE",
+    "position": "WR",
+    "projections": 152.5,
+    "lastSeasonPoints": 134.5,
+    "positionRanking": 19,
+    "flexRanking": 44
+  },
+  {
+    "overallRanking": 46,
+    "name": "Elijah Mitchell",
+    "team": "SF",
+    "position": "RB",
+    "projections": 121,
+    "lastSeasonPoints": 146,
+    "positionRanking": 22,
+    "flexRanking": 45
+  },
+  {
+    "overallRanking": 47,
+    "name": "J.K. Dobbins",
+    "team": "BAL",
+    "position": "RB",
+    "projections": 82.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 23,
+    "flexRanking": 46
+  },
+  {
+    "overallRanking": 48,
+    "name": "Justin Herbert",
+    "team": "LAC",
+    "position": "QB",
+    "projections": 372.8,
+    "lastSeasonPoints": 368.8,
+    "positionRanking": 2,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 49,
+    "name": "Patrick Mahomes II",
+    "team": "KC",
+    "position": "QB",
+    "projections": 340.7,
+    "lastSeasonPoints": 357.7,
+    "positionRanking": 3,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 50,
+    "name": "Courtland Sutton",
+    "team": "DEN",
+    "position": "WR",
+    "projections": 93.2,
+    "lastSeasonPoints": 90.2,
+    "positionRanking": 20,
+    "flexRanking": 47
+  },
+  {
+    "overallRanking": 51,
+    "name": "Darren Waller",
+    "team": "LV",
+    "position": "TE",
+    "projections": 72.5,
+    "lastSeasonPoints": 78.5,
+    "positionRanking": 5,
+    "flexRanking": 48
+  },
+  {
+    "overallRanking": 52,
+    "name": "Mike Williams",
+    "team": "LAC",
+    "position": "WR",
+    "projections": 160.6,
+    "lastSeasonPoints": 168.6,
+    "positionRanking": 21,
+    "flexRanking": 49
+  },
+  {
+    "overallRanking": 53,
+    "name": "Lamar Jackson",
+    "team": "BAL",
+    "position": "QB",
+    "projections": 231,
+    "lastSeasonPoints": 236,
+    "positionRanking": 4,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 54,
+    "name": "Jerry Jeudy",
+    "team": "DEN",
+    "position": "WR",
+    "projections": 39,
+    "lastSeasonPoints": 47,
+    "positionRanking": 22,
+    "flexRanking": 50
+  },
+  {
+    "overallRanking": 55,
+    "name": "Chris Godwin",
+    "team": "TB",
+    "position": "WR",
+    "projections": 122.4,
+    "lastSeasonPoints": 144.4,
+    "positionRanking": 23,
+    "flexRanking": 51
+  },
+  {
+    "overallRanking": 56,
+    "name": "Brandin Cooks",
+    "team": "HOU",
+    "position": "WR",
+    "projections": 129.8,
+    "lastSeasonPoints": 141.8,
+    "positionRanking": 24,
+    "flexRanking": 52
+  },
+  {
+    "overallRanking": 57,
+    "name": "Damien Harris",
+    "team": "NE",
+    "position": "RB",
+    "projections": 189.1,
+    "lastSeasonPoints": 192.1,
+    "positionRanking": 24,
+    "flexRanking": 53
+  },
+  {
+    "overallRanking": 58,
+    "name": "Michael Thomas",
+    "team": "NO",
+    "position": "WR",
+    "projections": 69,
+    "lastSeasonPoints": 0,
+    "positionRanking": 25,
+    "flexRanking": 54
+  },
+  {
+    "overallRanking": 59,
+    "name": "Elijah Moore",
+    "team": "NYJ",
+    "position": "WR",
+    "projections": 103.2,
+    "lastSeasonPoints": 95.2,
+    "positionRanking": 26,
+    "flexRanking": 55
+  },
+  {
+    "overallRanking": 60,
+    "name": "Darnell Mooney",
+    "team": "CHI",
+    "position": "WR",
+    "projections": 143.7,
+    "lastSeasonPoints": 138.7,
+    "positionRanking": 27,
+    "flexRanking": 56
+  },
+  {
+    "overallRanking": 61,
+    "name": "Travis Etienne Jr.",
+    "team": "JAC",
+    "position": "RB",
+    "projections": 89.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 25,
+    "flexRanking": 57
+  },
+  {
+    "overallRanking": 62,
+    "name": "AJ Dillon",
+    "team": "GB",
+    "position": "RB",
+    "projections": 161.6,
+    "lastSeasonPoints": 151.6,
+    "positionRanking": 26,
+    "flexRanking": 58
+  },
+  {
+    "overallRanking": 63,
+    "name": "Marquise Brown",
+    "team": "ARI",
+    "position": "WR",
+    "projections": 129.3,
+    "lastSeasonPoints": 135.3,
+    "positionRanking": 28,
+    "flexRanking": 59
+  },
+  {
+    "overallRanking": 64,
+    "name": "Kyler Murray",
+    "team": "ARI",
+    "position": "QB",
+    "projections": 280.5,
+    "lastSeasonPoints": 300.5,
+    "positionRanking": 5,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 65,
+    "name": "Allen Robinson II",
+    "team": "LAR",
+    "position": "WR",
+    "projections": 56,
+    "lastSeasonPoints": 47,
+    "positionRanking": 29,
+    "flexRanking": 60
+  },
+  {
+    "overallRanking": 66,
+    "name": "Joe Burrow",
+    "team": "CIN",
+    "position": "QB",
+    "projections": 334.2,
+    "lastSeasonPoints": 312.2,
+    "positionRanking": 6,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 67,
+    "name": "Dallas Goedert",
+    "team": "PHI",
+    "position": "TE",
+    "projections": 100,
+    "lastSeasonPoints": 107,
+    "positionRanking": 6,
+    "flexRanking": 61
+  },
+  {
+    "overallRanking": 68,
+    "name": "Miles Sanders",
+    "team": "PHI",
+    "position": "RB",
+    "projections": 81.2,
+    "lastSeasonPoints": 89.2,
+    "positionRanking": 27,
+    "flexRanking": 62
+  },
+  {
+    "overallRanking": 69,
+    "name": "DeAndre Hopkins",
+    "team": "ARI",
+    "position": "WR",
+    "projections": 93.2,
+    "lastSeasonPoints": 105.2,
+    "positionRanking": 30,
+    "flexRanking": 63
+  },
+  {
+    "overallRanking": 70,
+    "name": "T.J. Hockenson",
+    "team": "DET",
+    "position": "TE",
+    "projections": 77.3,
+    "lastSeasonPoints": 82.3,
+    "positionRanking": 7,
+    "flexRanking": 64
+  },
+  {
+    "overallRanking": 71,
+    "name": "Jalen Hurts",
+    "team": "PHI",
+    "position": "QB",
+    "projections": 328.2,
+    "lastSeasonPoints": 306.2,
+    "positionRanking": 7,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 72,
+    "name": "DeVonta Smith",
+    "team": "PHI",
+    "position": "WR",
+    "projections": 127.6,
+    "lastSeasonPoints": 119.6,
+    "positionRanking": 31,
+    "flexRanking": 65
+  },
+  {
+    "overallRanking": 73,
+    "name": "Gabriel Davis",
+    "team": "BUF",
+    "position": "WR",
+    "projections": 83.9,
+    "lastSeasonPoints": 90.9,
+    "positionRanking": 32,
+    "flexRanking": 66
+  },
+  {
+    "overallRanking": 74,
+    "name": "Amon-Ra St. Brown",
+    "team": "DET",
+    "position": "WR",
+    "projections": 147.3,
+    "lastSeasonPoints": 133.3,
+    "positionRanking": 33,
+    "flexRanking": 67
+  },
+  {
+    "overallRanking": 75,
+    "name": "Rashod Bateman",
+    "team": "BAL",
+    "position": "WR",
+    "projections": 49.5,
+    "lastSeasonPoints": 57.5,
+    "positionRanking": 34,
+    "flexRanking": 68
+  },
+  {
+    "overallRanking": 76,
+    "name": "JuJu Smith-Schuster",
+    "team": "KC",
+    "position": "WR",
+    "projections": 17.8,
+    "lastSeasonPoints": 19.8,
+    "positionRanking": 35,
+    "flexRanking": 69
+  },
+  {
+    "overallRanking": 77,
+    "name": "Ken Walker III",
+    "team": "SEA",
+    "position": "RB",
+    "projections": 101.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 28,
+    "flexRanking": 70
+  },
+  {
+    "overallRanking": 78,
+    "name": "Tyler Lockett",
+    "team": "SEA",
+    "position": "WR",
+    "projections": 167.4,
+    "lastSeasonPoints": 166.4,
+    "positionRanking": 36,
+    "flexRanking": 71
+  },
+  {
+    "overallRanking": 79,
+    "name": "Clyde Edwards-Helaire",
+    "team": "KC",
+    "position": "RB",
+    "projections": 101.6,
+    "lastSeasonPoints": 96.6,
+    "positionRanking": 29,
+    "flexRanking": 72
+  },
+  {
+    "overallRanking": 80,
+    "name": "Treylon Burks",
+    "team": "TEN",
+    "position": "WR",
+    "projections": 70.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 37,
+    "flexRanking": 73
+  },
+  {
+    "overallRanking": 81,
+    "name": "Adam Thielen",
+    "team": "MIN",
+    "position": "WR",
+    "projections": 129.8,
+    "lastSeasonPoints": 132.8,
+    "positionRanking": 38,
+    "flexRanking": 74
+  },
+  {
+    "overallRanking": 82,
+    "name": "Dalton Schultz",
+    "team": "DAL",
+    "position": "TE",
+    "projections": 137.8,
+    "lastSeasonPoints": 128.8,
+    "positionRanking": 8,
+    "flexRanking": 75
+  },
+  {
+    "overallRanking": 83,
+    "name": "Tom Brady",
+    "team": "TB",
+    "position": "QB",
+    "projections": 423.7,
+    "lastSeasonPoints": 374.7,
+    "positionRanking": 8,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 84,
+    "name": "Kareem Hunt",
+    "team": "CLE",
+    "position": "RB",
+    "projections": 83,
+    "lastSeasonPoints": 86,
+    "positionRanking": 30,
+    "flexRanking": 76
+  },
+  {
+    "overallRanking": 85,
+    "name": "Dak Prescott",
+    "team": "DAL",
+    "position": "QB",
+    "projections": 345.6,
+    "lastSeasonPoints": 314.6,
+    "positionRanking": 9,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 86,
+    "name": "Devin Singletary",
+    "team": "BUF",
+    "position": "RB",
+    "projections": 181.8,
+    "lastSeasonPoints": 157.8,
+    "positionRanking": 31,
+    "flexRanking": 77
+  },
+  {
+    "overallRanking": 87,
+    "name": "Russell Wilson",
+    "team": "DEN",
+    "position": "QB",
+    "projections": 251.8,
+    "lastSeasonPoints": 240.8,
+    "positionRanking": 10,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 88,
+    "name": "Melvin Gordon III",
+    "team": "DEN",
+    "position": "RB",
+    "projections": 176.1,
+    "lastSeasonPoints": 167.1,
+    "positionRanking": 32,
+    "flexRanking": 78
+  },
+  {
+    "overallRanking": 89,
+    "name": "Rashaad Penny",
+    "team": "SEA",
+    "position": "RB",
+    "projections": 137.7,
+    "lastSeasonPoints": 115.7,
+    "positionRanking": 33,
+    "flexRanking": 79
+  },
+  {
+    "overallRanking": 90,
+    "name": "Brandon Aiyuk",
+    "team": "SF",
+    "position": "WR",
+    "projections": 104.3,
+    "lastSeasonPoints": 112.3,
+    "positionRanking": 39,
+    "flexRanking": 80
+  },
+  {
+    "overallRanking": 91,
+    "name": "Matthew Stafford",
+    "team": "LAR",
+    "position": "QB",
+    "projections": 369.7,
+    "lastSeasonPoints": 325.7,
+    "positionRanking": 11,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 92,
+    "name": "Hunter Renfrow",
+    "team": "LV",
+    "position": "WR",
+    "projections": 159.1,
+    "lastSeasonPoints": 156.1,
+    "positionRanking": 40,
+    "flexRanking": 81
+  },
+  {
+    "overallRanking": 93,
+    "name": "Drake London",
+    "team": "ATL",
+    "position": "WR",
+    "projections": 19.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 41,
+    "flexRanking": 82
+  },
+  {
+    "overallRanking": 94,
+    "name": "Dawson Knox",
+    "team": "BUF",
+    "position": "TE",
+    "projections": 107.1,
+    "lastSeasonPoints": 113.1,
+    "positionRanking": 9,
+    "flexRanking": 83
+  },
+  {
+    "overallRanking": 95,
+    "name": "Chase Edmonds",
+    "team": "MIA",
+    "position": "RB",
+    "projections": 122.3,
+    "lastSeasonPoints": 100.3,
+    "positionRanking": 34,
+    "flexRanking": 84
+  },
+  {
+    "overallRanking": 96,
+    "name": "Tony Pollard",
+    "team": "DAL",
+    "position": "RB",
+    "projections": 135.6,
+    "lastSeasonPoints": 117.6,
+    "positionRanking": 35,
+    "flexRanking": 85
+  },
+  {
+    "overallRanking": 97,
+    "name": "Garrett Wilson",
+    "team": "NYJ",
+    "position": "WR",
+    "projections": 32.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 42,
+    "flexRanking": 86
+  },
+  {
+    "overallRanking": 98,
+    "name": "Chase Claypool",
+    "team": "PIT",
+    "position": "WR",
+    "projections": 83.6,
+    "lastSeasonPoints": 107.6,
+    "positionRanking": 43,
+    "flexRanking": 87
+  },
+  {
+    "overallRanking": 99,
+    "name": "Aaron Rodgers",
+    "team": "GB",
+    "position": "QB",
+    "projections": 343.3,
+    "lastSeasonPoints": 332.3,
+    "positionRanking": 12,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 100,
+    "name": "Allen Lazard",
+    "team": "GB",
+    "position": "WR",
+    "projections": 107.5,
+    "lastSeasonPoints": 102.5,
+    "positionRanking": 44,
+    "flexRanking": 88
+  },
+  {
+    "overallRanking": 101,
+    "name": "Rhamondre Stevenson",
+    "team": "NE",
+    "position": "RB",
+    "projections": 105.9,
+    "lastSeasonPoints": 100.9,
+    "positionRanking": 36,
+    "flexRanking": 89
+  },
+  {
+    "overallRanking": 102,
+    "name": "Robert Woods",
+    "team": "TEN",
+    "position": "WR",
+    "projections": 99.2,
+    "lastSeasonPoints": 90.2,
+    "positionRanking": 45,
+    "flexRanking": 90
+  },
+  {
+    "overallRanking": 103,
+    "name": "Zach Ertz",
+    "team": "ARI",
+    "position": "TE",
+    "projections": 122.7,
+    "lastSeasonPoints": 106.7,
+    "positionRanking": 10,
+    "flexRanking": 91
+  },
+  {
+    "overallRanking": 104,
+    "name": "Cordarrelle Patterson",
+    "team": "ATL",
+    "position": "RB",
+    "projections": 159.6,
+    "lastSeasonPoints": 182.6,
+    "positionRanking": 37,
+    "flexRanking": 92
+  },
+  {
+    "overallRanking": 105,
+    "name": "Michael Carter",
+    "team": "NYJ",
+    "position": "RB",
+    "projections": 135.4,
+    "lastSeasonPoints": 118.4,
+    "positionRanking": 38,
+    "flexRanking": 93
+  },
+  {
+    "overallRanking": 106,
+    "name": "Deshaun Watson",
+    "team": "CLE",
+    "position": "QB",
+    "projections": 115.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 13,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 107,
+    "name": "Christian Kirk",
+    "team": "JAC",
+    "position": "WR",
+    "projections": 131.6,
+    "lastSeasonPoints": 130.6,
+    "positionRanking": 46,
+    "flexRanking": 94
+  },
+  {
+    "overallRanking": 108,
+    "name": "Ronald Jones II",
+    "team": "KC",
+    "position": "RB",
+    "projections": 61.2,
+    "lastSeasonPoints": 69.2,
+    "positionRanking": 39,
+    "flexRanking": 95
+  },
+  {
+    "overallRanking": 109,
+    "name": "Michael Gallup",
+    "team": "DAL",
+    "position": "WR",
+    "projections": 49.5,
+    "lastSeasonPoints": 56.5,
+    "positionRanking": 47,
+    "flexRanking": 96
+  },
+  {
+    "overallRanking": 110,
+    "name": "Pat Freiermuth",
+    "team": "PIT",
+    "position": "TE",
+    "projections": 92.7,
+    "lastSeasonPoints": 89.7,
+    "positionRanking": 11,
+    "flexRanking": 97
+  },
+  {
+    "overallRanking": 111,
+    "name": "Trey Lance",
+    "team": "SF",
+    "position": "QB",
+    "projections": 56.9,
+    "lastSeasonPoints": 62.9,
+    "positionRanking": 14,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 112,
+    "name": "Derek Carr",
+    "team": "LV",
+    "position": "QB",
+    "projections": 233,
+    "lastSeasonPoints": 257,
+    "positionRanking": 15,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 113,
+    "name": "Chris Olave",
+    "team": "NO",
+    "position": "WR",
+    "projections": 19.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 48,
+    "flexRanking": 98
+  },
+  {
+    "overallRanking": 114,
+    "name": "Kirk Cousins",
+    "team": "MIN",
+    "position": "QB",
+    "projections": 329.3,
+    "lastSeasonPoints": 300.3,
+    "positionRanking": 16,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 115,
+    "name": "James Robinson",
+    "team": "JAC",
+    "position": "RB",
+    "projections": 158.9,
+    "lastSeasonPoints": 142.9,
+    "positionRanking": 40,
+    "flexRanking": 99
+  },
+  {
+    "overallRanking": 116,
+    "name": "Hunter Henry",
+    "team": "NE",
+    "position": "TE",
+    "projections": 124.3,
+    "lastSeasonPoints": 114.3,
+    "positionRanking": 12,
+    "flexRanking": 100
+  },
+  {
+    "overallRanking": 117,
+    "name": "Alexander Mattison",
+    "team": "MIN",
+    "position": "RB",
+    "projections": 89.9,
+    "lastSeasonPoints": 93.9,
+    "positionRanking": 41,
+    "flexRanking": 101
+  },
+  {
+    "overallRanking": 118,
+    "name": "Raheem Mostert",
+    "team": "MIA",
+    "position": "RB",
+    "projections": 5,
+    "lastSeasonPoints": 2,
+    "positionRanking": 42,
+    "flexRanking": 102
+  },
+  {
+    "overallRanking": 119,
+    "name": "Tua Tagovailoa",
+    "team": "MIA",
+    "position": "QB",
+    "projections": 180.9,
+    "lastSeasonPoints": 178.9,
+    "positionRanking": 17,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 120,
+    "name": "Mike Gesicki",
+    "team": "MIA",
+    "position": "TE",
+    "projections": 98,
+    "lastSeasonPoints": 90,
+    "positionRanking": 13,
+    "flexRanking": 103
+  },
+  {
+    "overallRanking": 121,
+    "name": "Justin Fields",
+    "team": "CHI",
+    "position": "QB",
+    "projections": 107.8,
+    "lastSeasonPoints": 126.8,
+    "positionRanking": 18,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 122,
+    "name": "Marquez Valdes-Scantling",
+    "team": "KC",
+    "position": "WR",
+    "projections": 51,
+    "lastSeasonPoints": 61,
+    "positionRanking": 49,
+    "flexRanking": 104
+  },
+  {
+    "overallRanking": 123,
+    "name": "Darrell Henderson Jr.",
+    "team": "LAR",
+    "position": "RB",
+    "projections": 110.4,
+    "lastSeasonPoints": 134.4,
+    "positionRanking": 43,
+    "flexRanking": 105
+  },
+  {
+    "overallRanking": 124,
+    "name": "James Cook",
+    "team": "BUF",
+    "position": "RB",
+    "projections": 39,
+    "lastSeasonPoints": 0,
+    "positionRanking": 44,
+    "flexRanking": 106
+  },
+  {
+    "overallRanking": 125,
+    "name": "Kadarius Toney",
+    "team": "NYG",
+    "position": "WR",
+    "projections": 48.4,
+    "lastSeasonPoints": 43.4,
+    "positionRanking": 50,
+    "flexRanking": 107
+  },
+  {
+    "overallRanking": 126,
+    "name": "Russell Gage",
+    "team": "TB",
+    "position": "WR",
+    "projections": 100,
+    "lastSeasonPoints": 97,
+    "positionRanking": 51,
+    "flexRanking": 108
+  },
+  {
+    "overallRanking": 127,
+    "name": "DJ Chark Jr.",
+    "team": "DET",
+    "position": "WR",
+    "projections": 29.4,
+    "lastSeasonPoints": 27.4,
+    "positionRanking": 52,
+    "flexRanking": 109
+  },
+  {
+    "overallRanking": 128,
+    "name": "DeVante Parker",
+    "team": "NE",
+    "position": "WR",
+    "projections": 62.5,
+    "lastSeasonPoints": 63.5,
+    "positionRanking": 53,
+    "flexRanking": 110
+  },
+  {
+    "overallRanking": 129,
+    "name": "Skyy Moore",
+    "team": "KC",
+    "position": "WR",
+    "projections": 36.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 54,
+    "flexRanking": 111
+  },
+  {
+    "overallRanking": 130,
+    "name": "Cole Kmet",
+    "team": "CHI",
+    "position": "TE",
+    "projections": 52.2,
+    "lastSeasonPoints": 61.2,
+    "positionRanking": 14,
+    "flexRanking": 112
+  },
+  {
+    "overallRanking": 131,
+    "name": "Trevor Lawrence",
+    "team": "JAC",
+    "position": "QB",
+    "projections": 170,
+    "lastSeasonPoints": 195,
+    "positionRanking": 19,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 132,
+    "name": "Noah Fant",
+    "team": "SEA",
+    "position": "TE",
+    "projections": 94,
+    "lastSeasonPoints": 91,
+    "positionRanking": 15,
+    "flexRanking": 113
+  },
+  {
+    "overallRanking": 133,
+    "name": "Logan Thomas",
+    "team": "WAS",
+    "position": "TE",
+    "projections": 38.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 16,
+    "flexRanking": 114
+  },
+  {
+    "overallRanking": 134,
+    "name": "Rob Gronkowski",
+    "team": "FA",
+    "position": "TE",
+    "projections": 94.2,
+    "lastSeasonPoints": 116.2,
+    "positionRanking": 17,
+    "flexRanking": 115
+  },
+  {
+    "overallRanking": 135,
+    "name": "Robert Tonyan",
+    "team": "GB",
+    "position": "TE",
+    "projections": 27.4,
+    "lastSeasonPoints": 32.4,
+    "positionRanking": 18,
+    "flexRanking": 116
+  },
+  {
+    "overallRanking": 136,
+    "name": "Tyler Boyd",
+    "team": "CIN",
+    "position": "WR",
+    "projections": 132.8,
+    "lastSeasonPoints": 116.8,
+    "positionRanking": 55,
+    "flexRanking": 117
+  },
+  {
+    "overallRanking": 137,
+    "name": "Kenny Golladay",
+    "team": "NYG",
+    "position": "WR",
+    "projections": 54.1,
+    "lastSeasonPoints": 52.1,
+    "positionRanking": 56,
+    "flexRanking": 118
+  },
+  {
+    "overallRanking": 138,
+    "name": "Jamaal Williams",
+    "team": "DET",
+    "position": "RB",
+    "projections": 99.8,
+    "lastSeasonPoints": 93.8,
+    "positionRanking": 45,
+    "flexRanking": 119
+  },
+  {
+    "overallRanking": 139,
+    "name": "Sony Michel",
+    "team": "MIA",
+    "position": "RB",
+    "projections": 103.3,
+    "lastSeasonPoints": 125.3,
+    "positionRanking": 46,
+    "flexRanking": 120
+  },
+  {
+    "overallRanking": 140,
+    "name": "Irv Smith Jr.",
+    "team": "MIN",
+    "position": "TE",
+    "projections": 29.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 19,
+    "flexRanking": 121
+  },
+  {
+    "overallRanking": 141,
+    "name": "Gus Edwards",
+    "team": "BAL",
+    "position": "RB",
+    "projections": 30.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 47,
+    "flexRanking": 122
+  },
+  {
+    "overallRanking": 142,
+    "name": "Jakobi Meyers",
+    "team": "NE",
+    "position": "WR",
+    "projections": 102.3,
+    "lastSeasonPoints": 99.3,
+    "positionRanking": 57,
+    "flexRanking": 123
+  },
+  {
+    "overallRanking": 143,
+    "name": "Isaiah Spiller",
+    "team": "LAC",
+    "position": "RB",
+    "projections": 29.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 48,
+    "flexRanking": 124
+  },
+  {
+    "overallRanking": 144,
+    "name": "Albert Okwuegbunam",
+    "team": "DEN",
+    "position": "TE",
+    "projections": 42,
+    "lastSeasonPoints": 43,
+    "positionRanking": 20,
+    "flexRanking": 125
+  },
+  {
+    "overallRanking": 145,
+    "name": "Christian Watson",
+    "team": "GB",
+    "position": "WR",
+    "projections": 87.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 58,
+    "flexRanking": 126
+  },
+  {
+    "overallRanking": 146,
+    "name": "Corey Davis",
+    "team": "NYJ",
+    "position": "WR",
+    "projections": 66.2,
+    "lastSeasonPoints": 71.2,
+    "positionRanking": 59,
+    "flexRanking": 127
+  },
+  {
+    "overallRanking": 147,
+    "name": "Tyler Higbee",
+    "team": "LAR",
+    "position": "TE",
+    "projections": 87,
+    "lastSeasonPoints": 86,
+    "positionRanking": 21,
+    "flexRanking": 128
+  },
+  {
+    "overallRanking": 148,
+    "name": "Matt Ryan",
+    "team": "IND",
+    "position": "QB",
+    "projections": 198.9,
+    "lastSeasonPoints": 220.9,
+    "positionRanking": 20,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 149,
+    "name": "Ryan Tannehill",
+    "team": "TEN",
+    "position": "QB",
+    "projections": 271.4,
+    "lastSeasonPoints": 266.4,
+    "positionRanking": 21,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 150,
+    "name": "Jameson Williams",
+    "team": "DET",
+    "position": "WR",
+    "projections": 70.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 60,
+    "flexRanking": 129
+  },
+  {
+    "overallRanking": 151,
+    "name": "Jameis Winston",
+    "team": "NO",
+    "position": "QB",
+    "projections": 96.4,
+    "lastSeasonPoints": 117.4,
+    "positionRanking": 22,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 152,
+    "name": "Jarvis Landry",
+    "team": "NO",
+    "position": "WR",
+    "projections": 73,
+    "lastSeasonPoints": 81,
+    "positionRanking": 61,
+    "flexRanking": 130
+  },
+  {
+    "overallRanking": 153,
+    "name": "Zach Wilson",
+    "team": "NYJ",
+    "position": "QB",
+    "projections": 159.9,
+    "lastSeasonPoints": 147.9,
+    "positionRanking": 23,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 154,
+    "name": "J.D. McKissic",
+    "team": "WAS",
+    "position": "RB",
+    "projections": 11.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 49,
+    "flexRanking": 131
+  },
+  {
+    "overallRanking": 155,
+    "name": "David Njoku",
+    "team": "CLE",
+    "position": "TE",
+    "projections": 72.6,
+    "lastSeasonPoints": 71.6,
+    "positionRanking": 22,
+    "flexRanking": 132
+  },
+  {
+    "overallRanking": 156,
+    "name": "Dameon Pierce",
+    "team": "HOU",
+    "position": "RB",
+    "projections": 19.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 50,
+    "flexRanking": 133
+  },
+  {
+    "overallRanking": 157,
+    "name": "Van Jefferson",
+    "team": "LAR",
+    "position": "WR",
+    "projections": 140.2,
+    "lastSeasonPoints": 118.2,
+    "positionRanking": 62,
+    "flexRanking": 134
+  },
+  {
+    "overallRanking": 158,
+    "name": "Tim Patrick",
+    "team": "DEN",
+    "position": "WR",
+    "projections": 103.4,
+    "lastSeasonPoints": 103.4,
+    "positionRanking": 63,
+    "flexRanking": 135
+  },
+  {
+    "overallRanking": 159,
+    "name": "Mac Jones",
+    "team": "NE",
+    "position": "QB",
+    "projections": 220.9,
+    "lastSeasonPoints": 220.9,
+    "positionRanking": 24,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 160,
+    "name": "Kenneth Gainwell",
+    "team": "PHI",
+    "position": "RB",
+    "projections": 88.4,
+    "lastSeasonPoints": 88.4,
+    "positionRanking": 51,
+    "flexRanking": 136
+  },
+  {
+    "overallRanking": 161,
+    "name": "Buffalo Bills",
+    "team": "BUF",
+    "position": "DST",
+    "projections": 196.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 1,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 162,
+    "name": "D'Onta Foreman",
+    "team": "CAR",
+    "position": "RB",
+    "projections": 82.9,
+    "lastSeasonPoints": 84.9,
+    "positionRanking": 52,
+    "flexRanking": 137
+  },
+  {
+    "overallRanking": 163,
+    "name": "Tampa Bay Buccaneers",
+    "team": "TB",
+    "position": "DST",
+    "projections": 174.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 2,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 164,
+    "name": "Rondale Moore",
+    "team": "ARI",
+    "position": "WR",
+    "projections": 51.1,
+    "lastSeasonPoints": 55.1,
+    "positionRanking": 64,
+    "flexRanking": 138
+  },
+  {
+    "overallRanking": 165,
+    "name": "Nyheim Hines",
+    "team": "IND",
+    "position": "RB",
+    "projections": 69.6,
+    "lastSeasonPoints": 72.6,
+    "positionRanking": 53,
+    "flexRanking": 139
+  },
+  {
+    "overallRanking": 166,
+    "name": "Evan Engram",
+    "team": "JAC",
+    "position": "TE",
+    "projections": 51.5,
+    "lastSeasonPoints": 56.5,
+    "positionRanking": 23,
+    "flexRanking": 140
+  },
+  {
+    "overallRanking": 167,
+    "name": "Gerald Everett",
+    "team": "LAC",
+    "position": "TE",
+    "projections": 67.8,
+    "lastSeasonPoints": 69.8,
+    "positionRanking": 24,
+    "flexRanking": 141
+  },
+  {
+    "overallRanking": 168,
+    "name": "Daniel Jones",
+    "team": "NYG",
+    "position": "QB",
+    "projections": 142.5,
+    "lastSeasonPoints": 160.5,
+    "positionRanking": 25,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 169,
+    "name": "Jahan Dotson",
+    "team": "WAS",
+    "position": "WR",
+    "projections": 74,
+    "lastSeasonPoints": 0,
+    "positionRanking": 65,
+    "flexRanking": 142
+  },
+  {
+    "overallRanking": 170,
+    "name": "San Francisco 49ers",
+    "team": "SF",
+    "position": "DST",
+    "projections": 150.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 3,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 171,
+    "name": "Marlon Mack",
+    "team": "HOU",
+    "position": "RB",
+    "projections": 3.9,
+    "lastSeasonPoints": 10.9,
+    "positionRanking": 54,
+    "flexRanking": 143
+  },
+  {
+    "overallRanking": 172,
+    "name": "Khalil Herbert",
+    "team": "CHI",
+    "position": "RB",
+    "projections": 61.9,
+    "lastSeasonPoints": 64.9,
+    "positionRanking": 55,
+    "flexRanking": 144
+  },
+  {
+    "overallRanking": 173,
+    "name": "Carson Wentz",
+    "team": "WAS",
+    "position": "QB",
+    "projections": 243,
+    "lastSeasonPoints": 254,
+    "positionRanking": 26,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 174,
+    "name": "Mecole Hardman",
+    "team": "KC",
+    "position": "WR",
+    "projections": 78.9,
+    "lastSeasonPoints": 81.9,
+    "positionRanking": 66,
+    "flexRanking": 145
+  },
+  {
+    "overallRanking": 175,
+    "name": "Odell Beckham Jr.",
+    "team": "FA",
+    "position": "WR",
+    "projections": 85.1,
+    "lastSeasonPoints": 85.1,
+    "positionRanking": 67,
+    "flexRanking": 146
+  },
+  {
+    "overallRanking": 176,
+    "name": "Chris Carson",
+    "team": "SEA",
+    "position": "RB",
+    "projections": 47.1,
+    "lastSeasonPoints": 42.1,
+    "positionRanking": 56,
+    "flexRanking": 147
+  },
+  {
+    "overallRanking": 177,
+    "name": "Indianapolis Colts",
+    "team": "IND",
+    "position": "DST",
+    "projections": 153.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 4,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 178,
+    "name": "William Fuller V",
+    "team": "FA",
+    "position": "WR",
+    "projections": 67.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 68,
+    "flexRanking": 148
+  },
+  {
+    "overallRanking": 179,
+    "name": "Justin Tucker",
+    "team": "BAL",
+    "position": "K",
+    "projections": 168,
+    "lastSeasonPoints": 172,
+    "positionRanking": 1,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 180,
+    "name": "Myles Gaskin",
+    "team": "MIA",
+    "position": "RB",
+    "projections": 102.6,
+    "lastSeasonPoints": 124.6,
+    "positionRanking": 57,
+    "flexRanking": 149
+  },
+  {
+    "overallRanking": 181,
+    "name": "James White",
+    "team": "NE",
+    "position": "RB",
+    "projections": 15.2,
+    "lastSeasonPoints": 19.2,
+    "positionRanking": 58,
+    "flexRanking": 150
+  },
+  {
+    "overallRanking": 182,
+    "name": "Denver Broncos",
+    "team": "DEN",
+    "position": "DST",
+    "projections": 147.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 5,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 183,
+    "name": "New Orleans Saints",
+    "team": "NO",
+    "position": "DST",
+    "projections": 171.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 6,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 184,
+    "name": "New England Patriots",
+    "team": "NE",
+    "position": "DST",
+    "projections": 186.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 7,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 185,
+    "name": "Tyler Bass",
+    "team": "BUF",
+    "position": "K",
+    "projections": 167,
+    "lastSeasonPoints": 163,
+    "positionRanking": 2,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 186,
+    "name": "Trey Sermon",
+    "team": "SF",
+    "position": "RB",
+    "projections": 18.3,
+    "lastSeasonPoints": 25.3,
+    "positionRanking": 59,
+    "flexRanking": 151
+  },
+  {
+    "overallRanking": 187,
+    "name": "Jared Goff",
+    "team": "DET",
+    "position": "QB",
+    "projections": 198.5,
+    "lastSeasonPoints": 186.5,
+    "positionRanking": 27,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 188,
+    "name": "Matt Gay",
+    "team": "LAR",
+    "position": "K",
+    "projections": 169,
+    "lastSeasonPoints": 176,
+    "positionRanking": 3,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 189,
+    "name": "Sterling Shepard",
+    "team": "NYG",
+    "position": "WR",
+    "projections": 47.7,
+    "lastSeasonPoints": 41.7,
+    "positionRanking": 69,
+    "flexRanking": 152
+  },
+  {
+    "overallRanking": 190,
+    "name": "Austin Hooper",
+    "team": "TEN",
+    "position": "TE",
+    "projections": 57.5,
+    "lastSeasonPoints": 52.5,
+    "positionRanking": 25,
+    "flexRanking": 153
+  },
+  {
+    "overallRanking": 191,
+    "name": "Rachaad White",
+    "team": "TB",
+    "position": "RB",
+    "projections": 60.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 60,
+    "flexRanking": 154
+  },
+  {
+    "overallRanking": 192,
+    "name": "Robbie Anderson",
+    "team": "CAR",
+    "position": "WR",
+    "projections": 81.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 70,
+    "flexRanking": 155
+  },
+  {
+    "overallRanking": 193,
+    "name": "Chuba Hubbard",
+    "team": "CAR",
+    "position": "RB",
+    "projections": 117.6,
+    "lastSeasonPoints": 112.6,
+    "positionRanking": 61,
+    "flexRanking": 156
+  },
+  {
+    "overallRanking": 194,
+    "name": "Davis Mills",
+    "team": "HOU",
+    "position": "QB",
+    "projections": 152,
+    "lastSeasonPoints": 153,
+    "positionRanking": 28,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 195,
+    "name": "Kansas City Chiefs",
+    "team": "KC",
+    "position": "DST",
+    "projections": 183.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 8,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 196,
+    "name": "Boston Scott",
+    "team": "PHI",
+    "position": "RB",
+    "projections": 86.6,
+    "lastSeasonPoints": 85.6,
+    "positionRanking": 62,
+    "flexRanking": 157
+  },
+  {
+    "overallRanking": 197,
+    "name": "Marvin Jones Jr.",
+    "team": "JAC",
+    "position": "WR",
+    "projections": 129.2,
+    "lastSeasonPoints": 107.2,
+    "positionRanking": 71,
+    "flexRanking": 158
+  },
+  {
+    "overallRanking": 198,
+    "name": "Los Angeles Rams",
+    "team": "LAR",
+    "position": "DST",
+    "projections": 159,
+    "lastSeasonPoints": 0,
+    "positionRanking": 9,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 199,
+    "name": "George Pickens",
+    "team": "PIT",
+    "position": "WR",
+    "projections": 90.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 72,
+    "flexRanking": 159
+  },
+  {
+    "overallRanking": 200,
+    "name": "Donovan Peoples-Jones",
+    "team": "CLE",
+    "position": "WR",
+    "projections": 82.7,
+    "lastSeasonPoints": 75.7,
+    "positionRanking": 73,
+    "flexRanking": 160
+  },
+  {
+    "overallRanking": 201,
+    "name": "Miami Dolphins",
+    "team": "MIA",
+    "position": "DST",
+    "projections": 172.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 10,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 202,
+    "name": "Daniel Carlson",
+    "team": "LV",
+    "position": "K",
+    "projections": 177,
+    "lastSeasonPoints": 190,
+    "positionRanking": 4,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 203,
+    "name": "Brian Robinson Jr.",
+    "team": "WAS",
+    "position": "RB",
+    "projections": 75.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 63,
+    "flexRanking": 161
+  },
+  {
+    "overallRanking": 204,
+    "name": "Darrel Williams",
+    "team": "FA",
+    "position": "RB",
+    "projections": 126,
+    "lastSeasonPoints": 149,
+    "positionRanking": 64,
+    "flexRanking": 162
+  },
+  {
+    "overallRanking": 205,
+    "name": "Los Angeles Chargers",
+    "team": "LAC",
+    "position": "DST",
+    "projections": 172.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 11,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 206,
+    "name": "Jamison Crowder",
+    "team": "BUF",
+    "position": "WR",
+    "projections": 57.7,
+    "lastSeasonPoints": 54.7,
+    "positionRanking": 74,
+    "flexRanking": 163
+  },
+  {
+    "overallRanking": 207,
+    "name": "Dallas Cowboys",
+    "team": "DAL",
+    "position": "DST",
+    "projections": 156.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 12,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 208,
+    "name": "Tyler Allgeier",
+    "team": "ATL",
+    "position": "RB",
+    "projections": 82.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 65,
+    "flexRanking": 164
+  },
+  {
+    "overallRanking": 209,
+    "name": "Kendrick Bourne",
+    "team": "NE",
+    "position": "WR",
+    "projections": 115.5,
+    "lastSeasonPoints": 125.5,
+    "positionRanking": 75,
+    "flexRanking": 165
+  },
+  {
+    "overallRanking": 210,
+    "name": "David Bell",
+    "team": "CLE",
+    "position": "WR",
+    "projections": 78.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 76,
+    "flexRanking": 166
+  },
+  {
+    "overallRanking": 211,
+    "name": "Joshua Palmer",
+    "team": "LAC",
+    "position": "WR",
+    "projections": 63.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 77,
+    "flexRanking": 167
+  },
+  {
+    "overallRanking": 212,
+    "name": "Laviska Shenault Jr.",
+    "team": "JAC",
+    "position": "WR",
+    "projections": 66,
+    "lastSeasonPoints": 64,
+    "positionRanking": 78,
+    "flexRanking": 168
+  },
+  {
+    "overallRanking": 213,
+    "name": "Green Bay Packers",
+    "team": "GB",
+    "position": "DST",
+    "projections": 194.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 13,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 214,
+    "name": "Ryan Succop",
+    "team": "TB",
+    "position": "K",
+    "projections": 171,
+    "lastSeasonPoints": 156,
+    "positionRanking": 5,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 215,
+    "name": "Curtis Samuel",
+    "team": "WAS",
+    "position": "WR",
+    "projections": 5.8,
+    "lastSeasonPoints": 3.8,
+    "positionRanking": 79,
+    "flexRanking": 169
+  },
+  {
+    "overallRanking": 216,
+    "name": "Nico Collins",
+    "team": "HOU",
+    "position": "WR",
+    "projections": 53.6,
+    "lastSeasonPoints": 50.6,
+    "positionRanking": 80,
+    "flexRanking": 170
+  },
+  {
+    "overallRanking": 217,
+    "name": "Evan McPherson",
+    "team": "CIN",
+    "position": "K",
+    "projections": 165,
+    "lastSeasonPoints": 158,
+    "positionRanking": 6,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 218,
+    "name": "Younghoe Koo",
+    "team": "ATL",
+    "position": "K",
+    "projections": 117,
+    "lastSeasonPoints": 138,
+    "positionRanking": 7,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 219,
+    "name": "Cleveland Browns",
+    "team": "CLE",
+    "position": "DST",
+    "projections": 160.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 14,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 220,
+    "name": "A.J. Green",
+    "team": "ARI",
+    "position": "WR",
+    "projections": 83.8,
+    "lastSeasonPoints": 102.8,
+    "positionRanking": 81,
+    "flexRanking": 171
+  },
+  {
+    "overallRanking": 221,
+    "name": "Marquez Callaway",
+    "team": "NO",
+    "position": "WR",
+    "projections": 104.8,
+    "lastSeasonPoints": 105.8,
+    "positionRanking": 82,
+    "flexRanking": 172
+  },
+  {
+    "overallRanking": 222,
+    "name": "Jason Sanders",
+    "team": "MIA",
+    "position": "K",
+    "projections": 131,
+    "lastSeasonPoints": 126,
+    "positionRanking": 8,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 223,
+    "name": "Samaje Perine",
+    "team": "CIN",
+    "position": "RB",
+    "projections": 59.2,
+    "lastSeasonPoints": 56.2,
+    "positionRanking": 66,
+    "flexRanking": 173
+  },
+  {
+    "overallRanking": 224,
+    "name": "Matt Prater",
+    "team": "ARI",
+    "position": "K",
+    "projections": 152,
+    "lastSeasonPoints": 167,
+    "positionRanking": 9,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 225,
+    "name": "Hayden Hurst",
+    "team": "CIN",
+    "position": "TE",
+    "projections": 39.1,
+    "lastSeasonPoints": 38.1,
+    "positionRanking": 26,
+    "flexRanking": 174
+  },
+  {
+    "overallRanking": 226,
+    "name": "Julio Jones",
+    "team": "FA",
+    "position": "WR",
+    "projections": 44.4,
+    "lastSeasonPoints": 49.4,
+    "positionRanking": 83,
+    "flexRanking": 175
+  },
+  {
+    "overallRanking": 227,
+    "name": "Kenyan Drake",
+    "team": "LV",
+    "position": "RB",
+    "projections": 74.5,
+    "lastSeasonPoints": 72.5,
+    "positionRanking": 67,
+    "flexRanking": 176
+  },
+  {
+    "overallRanking": 228,
+    "name": "Jonnu Smith",
+    "team": "NE",
+    "position": "TE",
+    "projections": 43.4,
+    "lastSeasonPoints": 39.4,
+    "positionRanking": 27,
+    "flexRanking": 177
+  },
+  {
+    "overallRanking": 229,
+    "name": "Adam Trautman",
+    "team": "NO",
+    "position": "TE",
+    "projections": 28.3,
+    "lastSeasonPoints": 36.3,
+    "positionRanking": 28,
+    "flexRanking": 178
+  },
+  {
+    "overallRanking": 230,
+    "name": "Marcus Mariota",
+    "team": "ATL",
+    "position": "QB",
+    "projections": 20.9,
+    "lastSeasonPoints": 14.9,
+    "positionRanking": 29,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 231,
+    "name": "Zamir White",
+    "team": "LV",
+    "position": "RB",
+    "projections": 91.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 68,
+    "flexRanking": 179
+  },
+  {
+    "overallRanking": 232,
+    "name": "Mark Ingram II",
+    "team": "NO",
+    "position": "RB",
+    "projections": 77.6,
+    "lastSeasonPoints": 81.6,
+    "positionRanking": 69,
+    "flexRanking": 180
+  },
+  {
+    "overallRanking": 233,
+    "name": "Rodrigo Blankenship",
+    "team": "IND",
+    "position": "K",
+    "projections": 60,
+    "lastSeasonPoints": 51,
+    "positionRanking": 10,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 234,
+    "name": "Greg Zuerlein",
+    "team": "NYJ",
+    "position": "K",
+    "projections": 165,
+    "lastSeasonPoints": 158,
+    "positionRanking": 11,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 235,
+    "name": "K.J. Osborn",
+    "team": "MIN",
+    "position": "WR",
+    "projections": 106.5,
+    "lastSeasonPoints": 108.5,
+    "positionRanking": 84,
+    "flexRanking": 181
+  },
+  {
+    "overallRanking": 236,
+    "name": "Terrace Marshall Jr.",
+    "team": "CAR",
+    "position": "WR",
+    "projections": 16.8,
+    "lastSeasonPoints": 13.8,
+    "positionRanking": 85,
+    "flexRanking": 182
+  },
+  {
+    "overallRanking": 237,
+    "name": "Braxton Berrios",
+    "team": "NYJ",
+    "position": "WR",
+    "projections": 78.1,
+    "lastSeasonPoints": 69.1,
+    "positionRanking": 86,
+    "flexRanking": 183
+  },
+  {
+    "overallRanking": 238,
+    "name": "Arizona Cardinals",
+    "team": "ARI",
+    "position": "DST",
+    "projections": 192.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 15,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 239,
+    "name": "Justin Jackson",
+    "team": "FA",
+    "position": "RB",
+    "projections": 58.2,
+    "lastSeasonPoints": 64.2,
+    "positionRanking": 70,
+    "flexRanking": 184
+  },
+  {
+    "overallRanking": 240,
+    "name": "Philadelphia Eagles",
+    "team": "PHI",
+    "position": "DST",
+    "projections": 150.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 16,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 241,
+    "name": "Zack Moss",
+    "team": "BUF",
+    "position": "RB",
+    "projections": 86.2,
+    "lastSeasonPoints": 82.2,
+    "positionRanking": 71,
+    "flexRanking": 185
+  },
+  {
+    "overallRanking": 242,
+    "name": "D'Ernest Johnson",
+    "team": "CLE",
+    "position": "RB",
+    "projections": 81.1,
+    "lastSeasonPoints": 85.1,
+    "positionRanking": 72,
+    "flexRanking": 186
+  },
+  {
+    "overallRanking": 243,
+    "name": "John Metchie III",
+    "team": "HOU",
+    "position": "WR",
+    "projections": 6.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 87,
+    "flexRanking": 187
+  },
+  {
+    "overallRanking": 244,
+    "name": "Carolina Panthers",
+    "team": "CAR",
+    "position": "DST",
+    "projections": 147.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 17,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 245,
+    "name": "Harrison Butker",
+    "team": "KC",
+    "position": "K",
+    "projections": 140,
+    "lastSeasonPoints": 147,
+    "positionRanking": 12,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 246,
+    "name": "Dan Arnold",
+    "team": "JAC",
+    "position": "TE",
+    "projections": 48.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 29,
+    "flexRanking": 188
+  },
+  {
+    "overallRanking": 247,
+    "name": "Robbie Gould",
+    "team": "SF",
+    "position": "K",
+    "projections": 117,
+    "lastSeasonPoints": 119,
+    "positionRanking": 13,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 248,
+    "name": "Mike Davis",
+    "team": "BAL",
+    "position": "RB",
+    "projections": 100.2,
+    "lastSeasonPoints": 94.2,
+    "positionRanking": 73,
+    "flexRanking": 189
+  },
+  {
+    "overallRanking": 249,
+    "name": "Brevin Jordan",
+    "team": "HOU",
+    "position": "TE",
+    "projections": 33.8,
+    "lastSeasonPoints": 35.8,
+    "positionRanking": 30,
+    "flexRanking": 190
+  },
+  {
+    "overallRanking": 250,
+    "name": "Pittsburgh Steelers",
+    "team": "PIT",
+    "position": "DST",
+    "projections": 164.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 18,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 251,
+    "name": "Brandon McManus",
+    "team": "DEN",
+    "position": "K",
+    "projections": 114,
+    "lastSeasonPoints": 137,
+    "positionRanking": 14,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 252,
+    "name": "Tennessee Titans",
+    "team": "TEN",
+    "position": "DST",
+    "projections": 146.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 19,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 253,
+    "name": "Baltimore Ravens",
+    "team": "BAL",
+    "position": "DST",
+    "projections": 156.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 20,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 254,
+    "name": "Jake Elliott",
+    "team": "PHI",
+    "position": "K",
+    "projections": 183,
+    "lastSeasonPoints": 164,
+    "positionRanking": 15,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 255,
+    "name": "Parris Campbell",
+    "team": "IND",
+    "position": "WR",
+    "projections": 26.2,
+    "lastSeasonPoints": 22.2,
+    "positionRanking": 88,
+    "flexRanking": 191
+  },
+  {
+    "overallRanking": 256,
+    "name": "Damien Williams",
+    "team": "ATL",
+    "position": "RB",
+    "projections": 42.7,
+    "lastSeasonPoints": 44.7,
+    "positionRanking": 74,
+    "flexRanking": 192
+  },
+  {
+    "overallRanking": 257,
+    "name": "Byron Pringle",
+    "team": "CHI",
+    "position": "WR",
+    "projections": 81.8,
+    "lastSeasonPoints": 84.8,
+    "positionRanking": 89,
+    "flexRanking": 193
+  },
+  {
+    "overallRanking": 258,
+    "name": "Bryan Edwards",
+    "team": "ATL",
+    "position": "WR",
+    "projections": 70.1,
+    "lastSeasonPoints": 75.1,
+    "positionRanking": 90,
+    "flexRanking": 194
+  },
+  {
+    "overallRanking": 259,
+    "name": "Tre'Quan Smith",
+    "team": "NO",
+    "position": "WR",
+    "projections": 56.7,
+    "lastSeasonPoints": 55.7,
+    "positionRanking": 91,
+    "flexRanking": 195
+  },
+  {
+    "overallRanking": 260,
+    "name": "Wan'Dale Robinson",
+    "team": "NYG",
+    "position": "WR",
+    "projections": 28.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 92,
+    "flexRanking": 196
+  },
+  {
+    "overallRanking": 261,
+    "name": "Dustin Hopkins",
+    "team": "LAC",
+    "position": "K",
+    "projections": 143,
+    "lastSeasonPoints": 160,
+    "positionRanking": 16,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 262,
+    "name": "Nick Folk",
+    "team": "NE",
+    "position": "K",
+    "projections": 187,
+    "lastSeasonPoints": 186,
+    "positionRanking": 17,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 263,
+    "name": "Jared Cook",
+    "team": "FA",
+    "position": "TE",
+    "projections": 87.4,
+    "lastSeasonPoints": 80.4,
+    "positionRanking": 31,
+    "flexRanking": 197
+  },
+  {
+    "overallRanking": 264,
+    "name": "Cincinnati Bengals",
+    "team": "CIN",
+    "position": "DST",
+    "projections": 163.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 21,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 265,
+    "name": "Mitchell Trubisky",
+    "team": "PIT",
+    "position": "QB",
+    "projections": 17.1,
+    "lastSeasonPoints": 8.1,
+    "positionRanking": 30,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 266,
+    "name": "Ke'Shawn Vaughn",
+    "team": "TB",
+    "position": "RB",
+    "projections": 39.6,
+    "lastSeasonPoints": 32.6,
+    "positionRanking": 75,
+    "flexRanking": 198
+  },
+  {
+    "overallRanking": 267,
+    "name": "Alec Pierce",
+    "team": "IND",
+    "position": "WR",
+    "projections": 43.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 93,
+    "flexRanking": 199
+  },
+  {
+    "overallRanking": 268,
+    "name": "Emmanuel Sanders",
+    "team": "BUF",
+    "position": "WR",
+    "projections": 95.7,
+    "lastSeasonPoints": 89.7,
+    "positionRanking": 94,
+    "flexRanking": 200
+  },
+  {
+    "overallRanking": 269,
+    "name": "O.J. Howard",
+    "team": "BUF",
+    "position": "TE",
+    "projections": 23.5,
+    "lastSeasonPoints": 19.5,
+    "positionRanking": 32,
+    "flexRanking": 201
+  },
+  {
+    "overallRanking": 270,
+    "name": "Chris Boswell",
+    "team": "PIT",
+    "position": "K",
+    "projections": 154,
+    "lastSeasonPoints": 171,
+    "positionRanking": 18,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 271,
+    "name": "Minnesota Vikings",
+    "team": "MIN",
+    "position": "DST",
+    "projections": 180.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 22,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 272,
+    "name": "Chicago Bears",
+    "team": "CHI",
+    "position": "DST",
+    "projections": 204.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 23,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 273,
+    "name": "Trey McBride",
+    "team": "ARI",
+    "position": "TE",
+    "projections": 28.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 33,
+    "flexRanking": 202
+  },
+  {
+    "overallRanking": 274,
+    "name": "C.J. Uzomah",
+    "team": "NYJ",
+    "position": "TE",
+    "projections": 74.3,
+    "lastSeasonPoints": 79.3,
+    "positionRanking": 34,
+    "flexRanking": 203
+  },
+  {
+    "overallRanking": 275,
+    "name": "KJ Hamler",
+    "team": "DEN",
+    "position": "WR",
+    "projections": 7.4,
+    "lastSeasonPoints": 7.4,
+    "positionRanking": 95,
+    "flexRanking": 204
+  },
+  {
+    "overallRanking": 276,
+    "name": "Jason Myers",
+    "team": "SEA",
+    "position": "K",
+    "projections": 101,
+    "lastSeasonPoints": 112,
+    "positionRanking": 19,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 277,
+    "name": "Ty Johnson",
+    "team": "NYJ",
+    "position": "RB",
+    "projections": 74,
+    "lastSeasonPoints": 83,
+    "positionRanking": 76,
+    "flexRanking": 205
+  },
+  {
+    "overallRanking": 278,
+    "name": "Jeff Wilson Jr.",
+    "team": "SF",
+    "position": "RB",
+    "projections": 37.5,
+    "lastSeasonPoints": 44.5,
+    "positionRanking": 77,
+    "flexRanking": 206
+  },
+  {
+    "overallRanking": 279,
+    "name": "Cedrick Wilson Jr.",
+    "team": "MIA",
+    "position": "WR",
+    "projections": 113.8,
+    "lastSeasonPoints": 100.8,
+    "positionRanking": 96,
+    "flexRanking": 207
+  },
+  {
+    "overallRanking": 280,
+    "name": "Nelson Agholor",
+    "team": "NE",
+    "position": "WR",
+    "projections": 60.4,
+    "lastSeasonPoints": 66.4,
+    "positionRanking": 97,
+    "flexRanking": 208
+  },
+  {
+    "overallRanking": 281,
+    "name": "Kenny Pickett",
+    "team": "PIT",
+    "position": "QB",
+    "projections": 88,
+    "lastSeasonPoints": 0,
+    "positionRanking": 31,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 282,
+    "name": "Wil Lutz",
+    "team": "NO",
+    "position": "K",
+    "projections": 129,
+    "lastSeasonPoints": 0,
+    "positionRanking": 20,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 283,
+    "name": "Mason Crosby",
+    "team": "GB",
+    "position": "K",
+    "projections": 167,
+    "lastSeasonPoints": 149,
+    "positionRanking": 21,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 284,
+    "name": "David Johnson",
+    "team": "FA",
+    "position": "RB",
+    "projections": 39.3,
+    "lastSeasonPoints": 49.3,
+    "positionRanking": 78,
+    "flexRanking": 209
+  },
+  {
+    "overallRanking": 285,
+    "name": "Cole Beasley",
+    "team": "FA",
+    "position": "WR",
+    "projections": 71.3,
+    "lastSeasonPoints": 75.3,
+    "positionRanking": 98,
+    "flexRanking": 210
+  },
+  {
+    "overallRanking": 286,
+    "name": "Jimmy Garoppolo",
+    "team": "SF",
+    "position": "QB",
+    "projections": 237.5,
+    "lastSeasonPoints": 225.5,
+    "positionRanking": 32,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 287,
+    "name": "Graham Gano",
+    "team": "NYG",
+    "position": "K",
+    "projections": 124,
+    "lastSeasonPoints": 133,
+    "positionRanking": 22,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 288,
+    "name": "Mo Alie-Cox",
+    "team": "IND",
+    "position": "TE",
+    "projections": 62.6,
+    "lastSeasonPoints": 55.6,
+    "positionRanking": 35,
+    "flexRanking": 211
+  },
+  {
+    "overallRanking": 289,
+    "name": "Tyrion Davis-Price",
+    "team": "SF",
+    "position": "RB",
+    "projections": 84.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 79,
+    "flexRanking": 212
+  },
+  {
+    "overallRanking": 290,
+    "name": "New York Giants",
+    "team": "NYG",
+    "position": "DST",
+    "projections": 185.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 24,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 291,
+    "name": "Phillip Lindsay",
+    "team": "IND",
+    "position": "RB",
+    "projections": 33.4,
+    "lastSeasonPoints": 41.4,
+    "positionRanking": 80,
+    "flexRanking": 213
+  },
+  {
+    "overallRanking": 292,
+    "name": "Zay Jones",
+    "team": "JAC",
+    "position": "WR",
+    "projections": 48.9,
+    "lastSeasonPoints": 58.9,
+    "positionRanking": 99,
+    "flexRanking": 214
+  },
+  {
+    "overallRanking": 293,
+    "name": "Cairo Santos",
+    "team": "CHI",
+    "position": "K",
+    "projections": 106,
+    "lastSeasonPoints": 131,
+    "positionRanking": 23,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 294,
+    "name": "Josh Reynolds",
+    "team": "DET",
+    "position": "WR",
+    "projections": 58.6,
+    "lastSeasonPoints": 51.6,
+    "positionRanking": 100,
+    "flexRanking": 215
+  },
+  {
+    "overallRanking": 295,
+    "name": "Rex Burkhead",
+    "team": "HOU",
+    "position": "RB",
+    "projections": 87.3,
+    "lastSeasonPoints": 79.3,
+    "positionRanking": 81,
+    "flexRanking": 216
+  },
+  {
+    "overallRanking": 296,
+    "name": "Washington Commanders",
+    "team": "WAS",
+    "position": "DST",
+    "projections": 182,
+    "lastSeasonPoints": 0,
+    "positionRanking": 25,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 297,
+    "name": "Randall Cobb",
+    "team": "GB",
+    "position": "WR",
+    "projections": 72.6,
+    "lastSeasonPoints": 65.6,
+    "positionRanking": 101,
+    "flexRanking": 217
+  },
+  {
+    "overallRanking": 298,
+    "name": "Jerick McKinnon",
+    "team": "FA",
+    "position": "RB",
+    "projections": 22.9,
+    "lastSeasonPoints": 22.9,
+    "positionRanking": 82,
+    "flexRanking": 218
+  },
+  {
+    "overallRanking": 299,
+    "name": "Seattle Seahawks",
+    "team": "SEA",
+    "position": "DST",
+    "projections": 169.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 26,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 300,
+    "name": "Jalen Tolbert",
+    "team": "DAL",
+    "position": "WR",
+    "projections": 84.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 102,
+    "flexRanking": 219
+  },
+  {
+    "overallRanking": 301,
+    "name": "Darius Slayton",
+    "team": "NYG",
+    "position": "WR",
+    "projections": 32.6,
+    "lastSeasonPoints": 42.6,
+    "positionRanking": 103,
+    "flexRanking": 220
+  },
+  {
+    "overallRanking": 302,
+    "name": "Jalen Reagor",
+    "team": "PHI",
+    "position": "WR",
+    "projections": 41.1,
+    "lastSeasonPoints": 45.1,
+    "positionRanking": 104,
+    "flexRanking": 221
+  },
+  {
+    "overallRanking": 303,
+    "name": "Baker Mayfield",
+    "team": "CLE",
+    "position": "QB",
+    "projections": 198.9,
+    "lastSeasonPoints": 176.9,
+    "positionRanking": 33,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 304,
+    "name": "Ka'imi Fairbairn",
+    "team": "HOU",
+    "position": "K",
+    "projections": 78,
+    "lastSeasonPoints": 73,
+    "positionRanking": 24,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 305,
+    "name": "Drew Lock",
+    "team": "SEA",
+    "position": "QB",
+    "projections": 44.9,
+    "lastSeasonPoints": 50.9,
+    "positionRanking": 34,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 306,
+    "name": "New York Jets",
+    "team": "NYJ",
+    "position": "DST",
+    "projections": 145.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 27,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 307,
+    "name": "Quintez Cephus",
+    "team": "DET",
+    "position": "WR",
+    "projections": 40.4,
+    "lastSeasonPoints": 32.4,
+    "positionRanking": 105,
+    "flexRanking": 222
+  },
+  {
+    "overallRanking": 308,
+    "name": "Dyami Brown",
+    "team": "WAS",
+    "position": "WR",
+    "projections": 13.1,
+    "lastSeasonPoints": 16.1,
+    "positionRanking": 106,
+    "flexRanking": 223
+  },
+  {
+    "overallRanking": 309,
+    "name": "Jacksonville Jaguars",
+    "team": "JAC",
+    "position": "DST",
+    "projections": 144.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 28,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 310,
+    "name": "Sam Darnold",
+    "team": "CAR",
+    "position": "QB",
+    "projections": 177.3,
+    "lastSeasonPoints": 155.3,
+    "positionRanking": 35,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 311,
+    "name": "Matt Breida",
+    "team": "NYG",
+    "position": "RB",
+    "projections": 42.7,
+    "lastSeasonPoints": 35.7,
+    "positionRanking": 83,
+    "flexRanking": 224
+  },
+  {
+    "overallRanking": 312,
+    "name": "Salvon Ahmed",
+    "team": "MIA",
+    "position": "RB",
+    "projections": 18.6,
+    "lastSeasonPoints": 26.6,
+    "positionRanking": 84,
+    "flexRanking": 225
+  },
+  {
+    "overallRanking": 313,
+    "name": "Latavius Murray",
+    "team": "FA",
+    "position": "RB",
+    "projections": 101.6,
+    "lastSeasonPoints": 93.6,
+    "positionRanking": 85,
+    "flexRanking": 226
+  },
+  {
+    "overallRanking": 314,
+    "name": "Randy Bullock",
+    "team": "TEN",
+    "position": "K",
+    "projections": 124,
+    "lastSeasonPoints": 146,
+    "positionRanking": 25,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 315,
+    "name": "Duke Johnson Jr.",
+    "team": "BUF",
+    "position": "RB",
+    "projections": 55.1,
+    "lastSeasonPoints": 55.1,
+    "positionRanking": 86,
+    "flexRanking": 227
+  },
+  {
+    "overallRanking": 316,
+    "name": "Joshua Kelley",
+    "team": "LAC",
+    "position": "RB",
+    "projections": 17,
+    "lastSeasonPoints": 12,
+    "positionRanking": 87,
+    "flexRanking": 228
+  },
+  {
+    "overallRanking": 317,
+    "name": "Sammy Watkins",
+    "team": "GB",
+    "position": "WR",
+    "projections": 45.4,
+    "lastSeasonPoints": 43.4,
+    "positionRanking": 107,
+    "flexRanking": 229
+  },
+  {
+    "overallRanking": 318,
+    "name": "Chase McLaughlin",
+    "team": "FA",
+    "position": "K",
+    "projections": 95,
+    "lastSeasonPoints": 96,
+    "positionRanking": 26,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 319,
+    "name": "Kyren Williams",
+    "team": "LAR",
+    "position": "RB",
+    "projections": 50.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 88,
+    "flexRanking": 230
+  },
+  {
+    "overallRanking": 320,
+    "name": "Pierre Strong Jr.",
+    "team": "FA",
+    "position": "RB",
+    "projections": 35.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 89,
+    "flexRanking": 231
+  },
+  {
+    "overallRanking": 321,
+    "name": "T.Y. Hilton",
+    "team": "FA",
+    "position": "WR",
+    "projections": 48.1,
+    "lastSeasonPoints": 51.1,
+    "positionRanking": 108,
+    "flexRanking": 232
+  },
+  {
+    "overallRanking": 322,
+    "name": "Darrynton Evans",
+    "team": "CHI",
+    "position": "RB",
+    "projections": 2.8,
+    "lastSeasonPoints": 1.8,
+    "positionRanking": 90,
+    "flexRanking": 233
+  },
+  {
+    "overallRanking": 323,
+    "name": "Hassan Haskins",
+    "team": "TEN",
+    "position": "RB",
+    "projections": 31.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 91,
+    "flexRanking": 234
+  },
+  {
+    "overallRanking": 324,
+    "name": "Isaiah McKenzie",
+    "team": "BUF",
+    "position": "WR",
+    "projections": 29.5,
+    "lastSeasonPoints": 34.5,
+    "positionRanking": 109,
+    "flexRanking": 235
+  },
+  {
+    "overallRanking": 325,
+    "name": "Quez Watkins",
+    "team": "PHI",
+    "position": "WR",
+    "projections": 70,
+    "lastSeasonPoints": 71,
+    "positionRanking": 110,
+    "flexRanking": 236
+  },
+  {
+    "overallRanking": 326,
+    "name": "Josh Lambo",
+    "team": "FA",
+    "position": "K",
+    "projections": 12,
+    "lastSeasonPoints": 5,
+    "positionRanking": 27,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 327,
+    "name": "Devonta Freeman",
+    "team": "FA",
+    "position": "RB",
+    "projections": 110.6,
+    "lastSeasonPoints": 112.6,
+    "positionRanking": 92,
+    "flexRanking": 237
+  },
+  {
+    "overallRanking": 328,
+    "name": "Eno Benjamin",
+    "team": "ARI",
+    "position": "RB",
+    "projections": 16,
+    "lastSeasonPoints": 22,
+    "positionRanking": 93,
+    "flexRanking": 238
+  },
+  {
+    "overallRanking": 329,
+    "name": "Devontae Booker",
+    "team": "FA",
+    "position": "RB",
+    "projections": 111.1,
+    "lastSeasonPoints": 104.1,
+    "positionRanking": 94,
+    "flexRanking": 239
+  },
+  {
+    "overallRanking": 330,
+    "name": "Malcolm Brown",
+    "team": "FA",
+    "position": "RB",
+    "projections": 12.5,
+    "lastSeasonPoints": 19.5,
+    "positionRanking": 95,
+    "flexRanking": 240
+  },
+  {
+    "overallRanking": 331,
+    "name": "Greg Joseph",
+    "team": "MIN",
+    "position": "K",
+    "projections": 153,
+    "lastSeasonPoints": 168,
+    "positionRanking": 28,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 332,
+    "name": "Jerome Ford",
+    "team": "CLE",
+    "position": "RB",
+    "projections": 12.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 96,
+    "flexRanking": 241
+  },
+  {
+    "overallRanking": 333,
+    "name": "Antonio Brown",
+    "team": "FA",
+    "position": "WR",
+    "projections": 87.1,
+    "lastSeasonPoints": 79.1,
+    "positionRanking": 111,
+    "flexRanking": 242
+  },
+  {
+    "overallRanking": 334,
+    "name": "Desmond Ridder",
+    "team": "ATL",
+    "position": "QB",
+    "projections": 46,
+    "lastSeasonPoints": 0,
+    "positionRanking": 36,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 335,
+    "name": "Anthony Firkser",
+    "team": "ATL",
+    "position": "TE",
+    "projections": 43.1,
+    "lastSeasonPoints": 39.1,
+    "positionRanking": 36,
+    "flexRanking": 243
+  },
+  {
+    "overallRanking": 336,
+    "name": "Jaret Patterson",
+    "team": "WAS",
+    "position": "RB",
+    "projections": 47.9,
+    "lastSeasonPoints": 45.9,
+    "positionRanking": 97,
+    "flexRanking": 244
+  },
+  {
+    "overallRanking": 337,
+    "name": "Harrison Bryant",
+    "team": "CLE",
+    "position": "TE",
+    "projections": 32.3,
+    "lastSeasonPoints": 41.3,
+    "positionRanking": 37,
+    "flexRanking": 245
+  },
+  {
+    "overallRanking": 338,
+    "name": "Wayne Gallman Jr.",
+    "team": "FA",
+    "position": "RB",
+    "projections": 3.5,
+    "lastSeasonPoints": 12.5,
+    "positionRanking": 98,
+    "flexRanking": 246
+  },
+  {
+    "overallRanking": 339,
+    "name": "Tevin Coleman",
+    "team": "NYJ",
+    "position": "RB",
+    "projections": 40.5,
+    "lastSeasonPoints": 40.5,
+    "positionRanking": 99,
+    "flexRanking": 247
+  },
+  {
+    "overallRanking": 340,
+    "name": "Tyler Conklin",
+    "team": "NYJ",
+    "position": "TE",
+    "projections": 78.3,
+    "lastSeasonPoints": 77.3,
+    "positionRanking": 38,
+    "flexRanking": 248
+  },
+  {
+    "overallRanking": 341,
+    "name": "Greg Dulcich",
+    "team": "DEN",
+    "position": "TE",
+    "projections": 24.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 39,
+    "flexRanking": 249
+  },
+  {
+    "overallRanking": 342,
+    "name": "Demarcus Robinson",
+    "team": "LV",
+    "position": "WR",
+    "projections": 49.4,
+    "lastSeasonPoints": 44.4,
+    "positionRanking": 112,
+    "flexRanking": 250
+  },
+  {
+    "overallRanking": 343,
+    "name": "Eric Ebron",
+    "team": "FA",
+    "position": "TE",
+    "projections": 24.5,
+    "lastSeasonPoints": 20.5,
+    "positionRanking": 40,
+    "flexRanking": 251
+  },
+  {
+    "overallRanking": 344,
+    "name": "Matt Corral",
+    "team": "CAR",
+    "position": "QB",
+    "projections": 140.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 37,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 345,
+    "name": "Tyquan Thornton",
+    "team": "NE",
+    "position": "WR",
+    "projections": 79.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 113,
+    "flexRanking": 252
+  },
+  {
+    "overallRanking": 346,
+    "name": "Tarik Cohen",
+    "team": "FA",
+    "position": "RB",
+    "projections": 47.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 100,
+    "flexRanking": 253
+  },
+  {
+    "overallRanking": 347,
+    "name": "Blake Jarwin",
+    "team": "FA",
+    "position": "TE",
+    "projections": 17.6,
+    "lastSeasonPoints": 21.6,
+    "positionRanking": 41,
+    "flexRanking": 254
+  },
+  {
+    "overallRanking": 348,
+    "name": "Jelani Woods",
+    "team": "IND",
+    "position": "TE",
+    "projections": 48.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 42,
+    "flexRanking": 255
+  },
+  {
+    "overallRanking": 349,
+    "name": "Giovani Bernard",
+    "team": "TB",
+    "position": "RB",
+    "projections": 33.1,
+    "lastSeasonPoints": 36.1,
+    "positionRanking": 101,
+    "flexRanking": 256
+  },
+  {
+    "overallRanking": 350,
+    "name": "Keaontay Ingram",
+    "team": "ARI",
+    "position": "RB",
+    "projections": 61.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 102,
+    "flexRanking": 257
+  },
+  {
+    "overallRanking": 351,
+    "name": "Cameron Brate",
+    "team": "TB",
+    "position": "TE",
+    "projections": 53.5,
+    "lastSeasonPoints": 48.5,
+    "positionRanking": 43,
+    "flexRanking": 258
+  },
+  {
+    "overallRanking": 352,
+    "name": "Ricky Seals-Jones",
+    "team": "NYG",
+    "position": "TE",
+    "projections": 51.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 44,
+    "flexRanking": 259
+  },
+  {
+    "overallRanking": 353,
+    "name": "Donald Parham Jr.",
+    "team": "LAC",
+    "position": "TE",
+    "projections": 28,
+    "lastSeasonPoints": 37,
+    "positionRanking": 45,
+    "flexRanking": 260
+  },
+  {
+    "overallRanking": 354,
+    "name": "Khalil Shakir",
+    "team": "BUF",
+    "position": "WR",
+    "projections": 43.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 114,
+    "flexRanking": 261
+  },
+  {
+    "overallRanking": 355,
+    "name": "Tristan Vizcaino",
+    "team": "FA",
+    "position": "K",
+    "projections": 29,
+    "lastSeasonPoints": 34,
+    "positionRanking": 29,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 356,
+    "name": "Las Vegas Raiders",
+    "team": "LV",
+    "position": "DST",
+    "projections": 176.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 29,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 357,
+    "name": "James Washington",
+    "team": "DAL",
+    "position": "WR",
+    "projections": 46.8,
+    "lastSeasonPoints": 41.8,
+    "positionRanking": 115,
+    "flexRanking": 262
+  },
+  {
+    "overallRanking": 358,
+    "name": "Velus Jones Jr.",
+    "team": "CHI",
+    "position": "WR",
+    "projections": 32.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 116,
+    "flexRanking": 263
+  },
+  {
+    "overallRanking": 359,
+    "name": "Malik Willis",
+    "team": "TEN",
+    "position": "QB",
+    "projections": 151.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 38,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 360,
+    "name": "Taysom Hill",
+    "team": "NO",
+    "position": "QB",
+    "projections": 104.7,
+    "lastSeasonPoints": 117.7,
+    "positionRanking": 39,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 361,
+    "name": "Josiah Deguara",
+    "team": "GB",
+    "position": "TE",
+    "projections": 30.5,
+    "lastSeasonPoints": 36.5,
+    "positionRanking": 46,
+    "flexRanking": 264
+  },
+  {
+    "overallRanking": 362,
+    "name": "Atlanta Falcons",
+    "team": "ATL",
+    "position": "DST",
+    "projections": 152.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 30,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 363,
+    "name": "Kene Nwangwu",
+    "team": "MIN",
+    "position": "RB",
+    "projections": 6,
+    "lastSeasonPoints": 7,
+    "positionRanking": 103,
+    "flexRanking": 265
+  },
+  {
+    "overallRanking": 364,
+    "name": "Tommy Tremble",
+    "team": "CAR",
+    "position": "TE",
+    "projections": 30.1,
+    "lastSeasonPoints": 31.1,
+    "positionRanking": 47,
+    "flexRanking": 266
+  },
+  {
+    "overallRanking": 365,
+    "name": "Tyler Badie",
+    "team": "BAL",
+    "position": "RB",
+    "projections": 84.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 104,
+    "flexRanking": 267
+  },
+  {
+    "overallRanking": 366,
+    "name": "Teddy Bridgewater",
+    "team": "MIA",
+    "position": "QB",
+    "projections": 194.7,
+    "lastSeasonPoints": 200.7,
+    "positionRanking": 40,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 367,
+    "name": "Danny Gray",
+    "team": "SF",
+    "position": "WR",
+    "projections": 20.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 117,
+    "flexRanking": 268
+  },
+  {
+    "overallRanking": 368,
+    "name": "Justyn Ross",
+    "team": "KC",
+    "position": "WR",
+    "projections": 19.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 118,
+    "flexRanking": 269
+  },
+  {
+    "overallRanking": 369,
+    "name": "Romeo Doubs",
+    "team": "GB",
+    "position": "WR",
+    "projections": 26.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 119,
+    "flexRanking": 270
+  },
+  {
+    "overallRanking": 370,
+    "name": "Jalen Guyton",
+    "team": "LAC",
+    "position": "WR",
+    "projections": 58.2,
+    "lastSeasonPoints": 66.2,
+    "positionRanking": 120,
+    "flexRanking": 271
+  },
+  {
+    "overallRanking": 371,
+    "name": "Tyler Johnson",
+    "team": "TB",
+    "position": "WR",
+    "projections": 33,
+    "lastSeasonPoints": 36,
+    "positionRanking": 121,
+    "flexRanking": 272
+  },
+  {
+    "overallRanking": 372,
+    "name": "Detroit Lions",
+    "team": "DET",
+    "position": "DST",
+    "projections": 147,
+    "lastSeasonPoints": 0,
+    "positionRanking": 31,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 373,
+    "name": "Jimmy Graham",
+    "team": "FA",
+    "position": "TE",
+    "projections": 43.7,
+    "lastSeasonPoints": 34.7,
+    "positionRanking": 48,
+    "flexRanking": 273
+  },
+  {
+    "overallRanking": 374,
+    "name": "Carlos Hyde",
+    "team": "FA",
+    "position": "RB",
+    "projections": 39.8,
+    "lastSeasonPoints": 33.8,
+    "positionRanking": 105,
+    "flexRanking": 274
+  },
+  {
+    "overallRanking": 375,
+    "name": "Dontrell Hilliard",
+    "team": "TEN",
+    "position": "RB",
+    "projections": 51.7,
+    "lastSeasonPoints": 53.7,
+    "positionRanking": 106,
+    "flexRanking": 275
+  },
+  {
+    "overallRanking": 376,
+    "name": "Calvin Austin III",
+    "team": "PIT",
+    "position": "WR",
+    "projections": 25.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 122,
+    "flexRanking": 276
+  },
+  {
+    "overallRanking": 377,
+    "name": "Tyrell Williams",
+    "team": "FA",
+    "position": "WR",
+    "projections": 5.4,
+    "lastSeasonPoints": 1.4,
+    "positionRanking": 123,
+    "flexRanking": 277
+  },
+  {
+    "overallRanking": 378,
+    "name": "Anthony Schwartz",
+    "team": "CLE",
+    "position": "WR",
+    "projections": 27.4,
+    "lastSeasonPoints": 23.4,
+    "positionRanking": 124,
+    "flexRanking": 278
+  },
+  {
+    "overallRanking": 379,
+    "name": "Jordan Howard",
+    "team": "FA",
+    "position": "RB",
+    "projections": 64.5,
+    "lastSeasonPoints": 60.5,
+    "positionRanking": 107,
+    "flexRanking": 279
+  },
+  {
+    "overallRanking": 380,
+    "name": "Laquon Treadwell",
+    "team": "JAC",
+    "position": "WR",
+    "projections": 45.4,
+    "lastSeasonPoints": 49.4,
+    "positionRanking": 125,
+    "flexRanking": 280
+  },
+  {
+    "overallRanking": 381,
+    "name": "Foster Moreau",
+    "team": "LV",
+    "position": "TE",
+    "projections": 56.3,
+    "lastSeasonPoints": 55.3,
+    "positionRanking": 49,
+    "flexRanking": 281
+  },
+  {
+    "overallRanking": 382,
+    "name": "Dee Eskridge",
+    "team": "SEA",
+    "position": "WR",
+    "projections": 3.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 126,
+    "flexRanking": 282
+  },
+  {
+    "overallRanking": 383,
+    "name": "Chris Herndon IV",
+    "team": "FA",
+    "position": "TE",
+    "projections": 4,
+    "lastSeasonPoints": 10,
+    "positionRanking": 50,
+    "flexRanking": 283
+  },
+  {
+    "overallRanking": 384,
+    "name": "Geno Smith",
+    "team": "SEA",
+    "position": "QB",
+    "projections": 46.3,
+    "lastSeasonPoints": 54.3,
+    "positionRanking": 41,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 385,
+    "name": "Kylen Granson",
+    "team": "IND",
+    "position": "TE",
+    "projections": 12.6,
+    "lastSeasonPoints": 10.6,
+    "positionRanking": 51,
+    "flexRanking": 284
+  },
+  {
+    "overallRanking": 386,
+    "name": "Kevin Harris",
+    "team": "NE",
+    "position": "RB",
+    "projections": 103.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 108,
+    "flexRanking": 285
+  },
+  {
+    "overallRanking": 387,
+    "name": "Houston Texans",
+    "team": "HOU",
+    "position": "DST",
+    "projections": 137.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 32,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 388,
+    "name": "Austin Seibert",
+    "team": "DET",
+    "position": "K",
+    "projections": 37,
+    "lastSeasonPoints": 45,
+    "positionRanking": 30,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 389,
+    "name": "Devin Duvernay",
+    "team": "BAL",
+    "position": "WR",
+    "projections": 46.2,
+    "lastSeasonPoints": 44.2,
+    "positionRanking": 127,
+    "flexRanking": 286
+  },
+  {
+    "overallRanking": 390,
+    "name": "Cade York",
+    "team": "CLE",
+    "position": "K",
+    "projections": 74.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 31,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 391,
+    "name": "Derrick Gore",
+    "team": "KC",
+    "position": "RB",
+    "projections": 45.1,
+    "lastSeasonPoints": 48.1,
+    "positionRanking": 109,
+    "flexRanking": 287
+  },
+  {
+    "overallRanking": 392,
+    "name": "Nick Westbrook-Ikhine",
+    "team": "TEN",
+    "position": "WR",
+    "projections": 78.6,
+    "lastSeasonPoints": 69.6,
+    "positionRanking": 128,
+    "flexRanking": 288
+  },
+  {
+    "overallRanking": 393,
+    "name": "Jeremy Ruckert",
+    "team": "NYJ",
+    "position": "TE",
+    "projections": 28.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 52,
+    "flexRanking": 289
+  },
+  {
+    "overallRanking": 394,
+    "name": "Snoop Conner",
+    "team": "JAC",
+    "position": "RB",
+    "projections": 85.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 110,
+    "flexRanking": 290
+  },
+  {
+    "overallRanking": 395,
+    "name": "Quinn Nordin",
+    "team": "NE",
+    "position": "K",
+    "projections": 70.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 32,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 396,
+    "name": "Olamide Zaccheaus",
+    "team": "ATL",
+    "position": "WR",
+    "projections": 48.8,
+    "lastSeasonPoints": 58.8,
+    "positionRanking": 129,
+    "flexRanking": 291
+  },
+  {
+    "overallRanking": 397,
+    "name": "Le'Veon Bell",
+    "team": "FA",
+    "position": "RB",
+    "projections": 26.1,
+    "lastSeasonPoints": 31.1,
+    "positionRanking": 111,
+    "flexRanking": 292
+  },
+  {
+    "overallRanking": 398,
+    "name": "John Bates",
+    "team": "WAS",
+    "position": "TE",
+    "projections": 20.9,
+    "lastSeasonPoints": 30.9,
+    "positionRanking": 53,
+    "flexRanking": 293
+  },
+  {
+    "overallRanking": 399,
+    "name": "Daniel Bellinger",
+    "team": "NYG",
+    "position": "TE",
+    "projections": 25.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 54,
+    "flexRanking": 294
+  },
+  {
+    "overallRanking": 400,
+    "name": "Gardner Minshew II",
+    "team": "PHI",
+    "position": "QB",
+    "projections": 37.7,
+    "lastSeasonPoints": 33.7,
+    "positionRanking": 42,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 401,
+    "name": "Kyle Rudolph",
+    "team": "FA",
+    "position": "TE",
+    "projections": 26.7,
+    "lastSeasonPoints": 31.7,
+    "positionRanking": 55,
+    "flexRanking": 295
+  },
+  {
+    "overallRanking": 402,
+    "name": "Isaiah Likely",
+    "team": "BAL",
+    "position": "TE",
+    "projections": 19.8,
+    "lastSeasonPoints": 0,
+    "positionRanking": 56,
+    "flexRanking": 296
+  },
+  {
+    "overallRanking": 403,
+    "name": "Joey Slye",
+    "team": "WAS",
+    "position": "K",
+    "projections": 91,
+    "lastSeasonPoints": 110,
+    "positionRanking": 33,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 404,
+    "name": "Jauan Jennings",
+    "team": "SF",
+    "position": "WR",
+    "projections": 56.2,
+    "lastSeasonPoints": 58.2,
+    "positionRanking": 130,
+    "flexRanking": 297
+  },
+  {
+    "overallRanking": 405,
+    "name": "Chris Evans",
+    "team": "CIN",
+    "position": "RB",
+    "projections": 41.8,
+    "lastSeasonPoints": 34.8,
+    "positionRanking": 112,
+    "flexRanking": 298
+  },
+  {
+    "overallRanking": 406,
+    "name": "James Proche II",
+    "team": "BAL",
+    "position": "WR",
+    "projections": 26.2,
+    "lastSeasonPoints": 20.2,
+    "positionRanking": 131,
+    "flexRanking": 299
+  },
+  {
+    "overallRanking": 407,
+    "name": "Riley Patterson",
+    "team": "DET",
+    "position": "K",
+    "projections": 59,
+    "lastSeasonPoints": 68,
+    "positionRanking": 34,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 408,
+    "name": "Isaih Pacheco",
+    "team": "KC",
+    "position": "RB",
+    "projections": 90.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 113,
+    "flexRanking": 300
+  },
+  {
+    "overallRanking": 409,
+    "name": "Kyle Philips",
+    "team": "TEN",
+    "position": "WR",
+    "projections": 88.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 132,
+    "flexRanking": 301
+  },
+  {
+    "overallRanking": 410,
+    "name": "Jalen Wydermyer",
+    "team": "BUF",
+    "position": "TE",
+    "projections": 10.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 57,
+    "flexRanking": 302
+  },
+  {
+    "overallRanking": 411,
+    "name": "Amari Rodgers",
+    "team": "GB",
+    "position": "WR",
+    "projections": 0.6,
+    "lastSeasonPoints": 5.6,
+    "positionRanking": 133,
+    "flexRanking": 303
+  },
+  {
+    "overallRanking": 412,
+    "name": "Jermar Jefferson",
+    "team": "DET",
+    "position": "RB",
+    "projections": 18.7,
+    "lastSeasonPoints": 21.7,
+    "positionRanking": 114,
+    "flexRanking": 304
+  },
+  {
+    "overallRanking": 413,
+    "name": "Benny Snell Jr.",
+    "team": "PIT",
+    "position": "RB",
+    "projections": 11.1,
+    "lastSeasonPoints": 11.1,
+    "positionRanking": 115,
+    "flexRanking": 305
+  },
+  {
+    "overallRanking": 414,
+    "name": "Zach Pascal",
+    "team": "PHI",
+    "position": "WR",
+    "projections": 55.5,
+    "lastSeasonPoints": 56.5,
+    "positionRanking": 134,
+    "flexRanking": 306
+  },
+  {
+    "overallRanking": 415,
+    "name": "Abram Smith",
+    "team": "NO",
+    "position": "RB",
+    "projections": 74.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 116,
+    "flexRanking": 307
+  },
+  {
+    "overallRanking": 416,
+    "name": "Zane Gonzalez",
+    "team": "CAR",
+    "position": "K",
+    "projections": 84,
+    "lastSeasonPoints": 102,
+    "positionRanking": 35,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 417,
+    "name": "Kennedy Brooks",
+    "team": "PHI",
+    "position": "RB",
+    "projections": 61,
+    "lastSeasonPoints": 0,
+    "positionRanking": 117,
+    "flexRanking": 308
+  },
+  {
+    "overallRanking": 418,
+    "name": "Sam Howell",
+    "team": "WAS",
+    "position": "QB",
+    "projections": 154.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 43,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 419,
+    "name": "Deonte Harty",
+    "team": "NO",
+    "position": "WR",
+    "projections": 81.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 135,
+    "flexRanking": 309
+  },
+  {
+    "overallRanking": 420,
+    "name": "Ashton Dulin",
+    "team": "IND",
+    "position": "WR",
+    "projections": 29.5,
+    "lastSeasonPoints": 32.5,
+    "positionRanking": 136,
+    "flexRanking": 310
+  },
+  {
+    "overallRanking": 421,
+    "name": "DeeJay Dallas",
+    "team": "SEA",
+    "position": "RB",
+    "projections": 32.1,
+    "lastSeasonPoints": 39.1,
+    "positionRanking": 118,
+    "flexRanking": 311
+  },
+  {
+    "overallRanking": 422,
+    "name": "Chris Naggar",
+    "team": "FA",
+    "position": "K",
+    "projections": 4,
+    "lastSeasonPoints": 5,
+    "positionRanking": 36,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 423,
+    "name": "Brandon Bolden",
+    "team": "LV",
+    "position": "RB",
+    "projections": 86.1,
+    "lastSeasonPoints": 81.1,
+    "positionRanking": 119,
+    "flexRanking": 312
+  },
+  {
+    "overallRanking": 424,
+    "name": "Equanimeous St. Brown",
+    "team": "CHI",
+    "position": "WR",
+    "projections": 6.2,
+    "lastSeasonPoints": 11.2,
+    "positionRanking": 137,
+    "flexRanking": 313
+  },
+  {
+    "overallRanking": 425,
+    "name": "Tony Jones Jr.",
+    "team": "NO",
+    "position": "RB",
+    "projections": 12.1,
+    "lastSeasonPoints": 17.1,
+    "positionRanking": 120,
+    "flexRanking": 314
+  },
+  {
+    "overallRanking": 426,
+    "name": "Ty Chandler",
+    "team": "MIN",
+    "position": "RB",
+    "projections": 95.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 121,
+    "flexRanking": 315
+  },
+  {
+    "overallRanking": 427,
+    "name": "Chigoziem Okonkwo",
+    "team": "TEN",
+    "position": "TE",
+    "projections": 46.4,
+    "lastSeasonPoints": 0,
+    "positionRanking": 58,
+    "flexRanking": 316
+  },
+  {
+    "overallRanking": 428,
+    "name": "Cade Otton",
+    "team": "TB",
+    "position": "TE",
+    "projections": 40.5,
+    "lastSeasonPoints": 0,
+    "positionRanking": 59,
+    "flexRanking": 317
+  },
+  {
+    "overallRanking": 429,
+    "name": "Sincere McCormick",
+    "team": "LV",
+    "position": "RB",
+    "projections": 99.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 122,
+    "flexRanking": 318
+  },
+  {
+    "overallRanking": 430,
+    "name": "Jacoby Brissett",
+    "team": "CLE",
+    "position": "QB",
+    "projections": 64.3,
+    "lastSeasonPoints": 70.3,
+    "positionRanking": 44,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 431,
+    "name": "Tyrod Taylor",
+    "team": "NYG",
+    "position": "QB",
+    "projections": 76.7,
+    "lastSeasonPoints": 81.7,
+    "positionRanking": 45,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 432,
+    "name": "Jamal Agnew",
+    "team": "JAC",
+    "position": "WR",
+    "projections": 83.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 138,
+    "flexRanking": 319
+  },
+  {
+    "overallRanking": 433,
+    "name": "Ryan Santoso",
+    "team": "JAC",
+    "position": "K",
+    "projections": 115.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 37,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 434,
+    "name": "Jordan Akins",
+    "team": "NYG",
+    "position": "TE",
+    "projections": 18.7,
+    "lastSeasonPoints": 17.7,
+    "positionRanking": 60,
+    "flexRanking": 320
+  },
+  {
+    "overallRanking": 435,
+    "name": "Rashard Higgins",
+    "team": "CAR",
+    "position": "WR",
+    "projections": 29.5,
+    "lastSeasonPoints": 33.5,
+    "positionRanking": 139,
+    "flexRanking": 321
+  },
+  {
+    "overallRanking": 436,
+    "name": "Freddie Swain",
+    "team": "SEA",
+    "position": "WR",
+    "projections": 65.5,
+    "lastSeasonPoints": 61.5,
+    "positionRanking": 140,
+    "flexRanking": 322
+  },
+  {
+    "overallRanking": 437,
+    "name": "Erik Ezukanma",
+    "team": "MIA",
+    "position": "WR",
+    "projections": 83.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 141,
+    "flexRanking": 323
+  },
+  {
+    "overallRanking": 438,
+    "name": "Damoun Patterson",
+    "team": "FA",
+    "position": "WR",
+    "projections": 82.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 142,
+    "flexRanking": 324
+  },
+  {
+    "overallRanking": 439,
+    "name": "Mike Boone",
+    "team": "DEN",
+    "position": "RB",
+    "projections": 14.7,
+    "lastSeasonPoints": 5.7,
+    "positionRanking": 123,
+    "flexRanking": 325
+  },
+  {
+    "overallRanking": 440,
+    "name": "Andy Dalton",
+    "team": "NO",
+    "position": "QB",
+    "projections": 86.2,
+    "lastSeasonPoints": 80.2,
+    "positionRanking": 46,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 441,
+    "name": "Ryan Griffin",
+    "team": "CHI",
+    "position": "TE",
+    "projections": 37.1,
+    "lastSeasonPoints": 38.1,
+    "positionRanking": 61,
+    "flexRanking": 326
+  },
+  {
+    "overallRanking": 442,
+    "name": "Will Dissly",
+    "team": "SEA",
+    "position": "TE",
+    "projections": 33.1,
+    "lastSeasonPoints": 29.1,
+    "positionRanking": 62,
+    "flexRanking": 327
+  },
+  {
+    "overallRanking": 443,
+    "name": "Jalen Nailor",
+    "team": "MIN",
+    "position": "WR",
+    "projections": 70.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 143,
+    "flexRanking": 328
+  },
+  {
+    "overallRanking": 444,
+    "name": "Jacob Harris",
+    "team": "LAR",
+    "position": "TE",
+    "projections": 48.6,
+    "lastSeasonPoints": 0,
+    "positionRanking": 63,
+    "flexRanking": 329
+  },
+  {
+    "overallRanking": 445,
+    "name": "Kylin Hill",
+    "team": "GB",
+    "position": "RB",
+    "projections": 7.9,
+    "lastSeasonPoints": 2.9,
+    "positionRanking": 124,
+    "flexRanking": 330
+  },
+  {
+    "overallRanking": 446,
+    "name": "Tylan Wallace",
+    "team": "BAL",
+    "position": "WR",
+    "projections": -7.7,
+    "lastSeasonPoints": 2.3,
+    "positionRanking": 144,
+    "flexRanking": 331
+  },
+  {
+    "overallRanking": 447,
+    "name": "Kalen Ballage",
+    "team": "FA",
+    "position": "RB",
+    "projections": 1.4,
+    "lastSeasonPoints": 4.4,
+    "positionRanking": 125,
+    "flexRanking": 332
+  },
+  {
+    "overallRanking": 448,
+    "name": "Anthony McFarland Jr.",
+    "team": "PIT",
+    "position": "RB",
+    "projections": 8.4,
+    "lastSeasonPoints": 1.4,
+    "positionRanking": 126,
+    "flexRanking": 333
+  },
+  {
+    "overallRanking": 449,
+    "name": "Jordan Love",
+    "team": "GB",
+    "position": "QB",
+    "projections": 16.1,
+    "lastSeasonPoints": 19.1,
+    "positionRanking": 47,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 450,
+    "name": "Jerrion Ealy",
+    "team": "KC",
+    "position": "RB",
+    "projections": 54.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 127,
+    "flexRanking": 334
+  },
+  {
+    "overallRanking": 451,
+    "name": "Juwan Johnson",
+    "team": "NO",
+    "position": "TE",
+    "projections": 51.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 64,
+    "flexRanking": 335
+  },
+  {
+    "overallRanking": 452,
+    "name": "Breshad Perriman",
+    "team": "TB",
+    "position": "WR",
+    "projections": 24.4,
+    "lastSeasonPoints": 22.4,
+    "positionRanking": 145,
+    "flexRanking": 336
+  },
+  {
+    "overallRanking": 453,
+    "name": "Zonovan Knight",
+    "team": "NYJ",
+    "position": "RB",
+    "projections": 73.7,
+    "lastSeasonPoints": 0,
+    "positionRanking": 128,
+    "flexRanking": 337
+  },
+  {
+    "overallRanking": 454,
+    "name": "Craig Reynolds",
+    "team": "DET",
+    "position": "RB",
+    "projections": 25.2,
+    "lastSeasonPoints": 28.2,
+    "positionRanking": 129,
+    "flexRanking": 338
+  },
+  {
+    "overallRanking": 455,
+    "name": "Miles Boykin",
+    "team": "PIT",
+    "position": "WR",
+    "projections": -5.4,
+    "lastSeasonPoints": 0.6,
+    "positionRanking": 146,
+    "flexRanking": 339
+  },
+  {
+    "overallRanking": 456,
+    "name": "Denzel Mims",
+    "team": "NYJ",
+    "position": "WR",
+    "projections": 19.3,
+    "lastSeasonPoints": 13.3,
+    "positionRanking": 147,
+    "flexRanking": 340
+  },
+  {
+    "overallRanking": 457,
+    "name": "Jake Ferguson",
+    "team": "DAL",
+    "position": "TE",
+    "projections": 50.1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 65,
+    "flexRanking": 341
+  },
+  {
+    "overallRanking": 458,
+    "name": "JaMycal Hasty",
+    "team": "SF",
+    "position": "RB",
+    "projections": 72.9,
+    "lastSeasonPoints": 0,
+    "positionRanking": 130,
+    "flexRanking": 342
+  },
+  {
+    "overallRanking": 459,
+    "name": "Ryan Fitzpatrick",
+    "team": "FA",
+    "position": "QB",
+    "projections": 5.7,
+    "lastSeasonPoints": 0.7,
+    "positionRanking": 48,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 460,
+    "name": "N'Keal Harry",
+    "team": "NE",
+    "position": "WR",
+    "projections": 20.4,
+    "lastSeasonPoints": 18.4,
+    "positionRanking": 148,
+    "flexRanking": 343
+  },
+  {
+    "overallRanking": 461,
+    "name": "James O'Shaughnessy",
+    "team": "CHI",
+    "position": "TE",
+    "projections": 17.4,
+    "lastSeasonPoints": 24.4,
+    "positionRanking": 66,
+    "flexRanking": 344
+  },
+  {
+    "overallRanking": 462,
+    "name": "Ian Thomas",
+    "team": "CAR",
+    "position": "TE",
+    "projections": 13.8,
+    "lastSeasonPoints": 18.8,
+    "positionRanking": 67,
+    "flexRanking": 345
+  },
+  {
+    "overallRanking": 463,
+    "name": "Charlie Kolar",
+    "team": "BAL",
+    "position": "TE",
+    "projections": 57,
+    "lastSeasonPoints": 0,
+    "positionRanking": 68,
+    "flexRanking": 346
+  },
+  {
+    "overallRanking": 464,
+    "name": "Antoine Wesley",
+    "team": "ARI",
+    "position": "WR",
+    "projections": 44.8,
+    "lastSeasonPoints": 38.8,
+    "positionRanking": 149,
+    "flexRanking": 347
+  },
+  {
+    "overallRanking": 465,
+    "name": "DeSean Jackson",
+    "team": "FA",
+    "position": "WR",
+    "projections": 45.8,
+    "lastSeasonPoints": 55.8,
+    "positionRanking": 150,
+    "flexRanking": 348
+  },
+  {
+    "overallRanking": 466,
+    "name": "Jeremy McNichols",
+    "team": "FA",
+    "position": "RB",
+    "projections": 37.6,
+    "lastSeasonPoints": 45.6,
+    "positionRanking": 131,
+    "flexRanking": 349
+  },
+  {
+    "overallRanking": 467,
+    "name": "Pharaoh Brown",
+    "team": "HOU",
+    "position": "TE",
+    "projections": 19.1,
+    "lastSeasonPoints": 15.1,
+    "positionRanking": 69,
+    "flexRanking": 350
+  },
+  {
+    "overallRanking": 468,
+    "name": "Samori Toure",
+    "team": "GB",
+    "position": "WR",
+    "projections": 70.2,
+    "lastSeasonPoints": 0,
+    "positionRanking": 151,
+    "flexRanking": 351
+  },
+  {
+    "overallRanking": 469,
+    "name": "Tyler Huntley",
+    "team": "BAL",
+    "position": "QB",
+    "projections": 80.6,
+    "lastSeasonPoints": 82.6,
+    "positionRanking": 49,
+    "flexRanking": 0
+  },
+  {
+    "overallRanking": 470,
+    "name": "Tutu Atwell",
+    "team": "LAR",
+    "position": "WR",
+    "projections": 1,
+    "lastSeasonPoints": 0,
+    "positionRanking": 152,
+    "flexRanking": 352
+  },
+  {
+    "overallRanking": 471,
+    "name": "Tre' McKitty",
+    "team": "LAC",
+    "position": "TE",
+    "projections": 3.5,
+    "lastSeasonPoints": 4.5,
+    "positionRanking": 70,
+    "flexRanking": 353
+  },
+  {
+    "overallRanking": 472,
+    "name": "Bo Melton",
+    "team": "SEA",
+    "position": "WR",
+    "projections": 64.3,
+    "lastSeasonPoints": 0,
+    "positionRanking": 153,
+    "flexRanking": 354
+  },
+  {
+    "overallRanking": 473,
+    "name": "Mack Hollins",
+    "team": "LV",
+    "position": "WR",
+    "projections": 52.3,
+    "lastSeasonPoints": 46.3,
+    "positionRanking": 154,
+    "flexRanking": 355
+  },
+  {
+    "overallRanking": 474,
+    "name": "Grant Calcaterra",
+    "team": "PHI",
+    "position": "TE",
+    "projections": 35,
+    "lastSeasonPoints": 0,
+    "positionRanking": 71,
+    "flexRanking": 356
+  }
+]

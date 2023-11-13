@@ -1,0 +1,24 @@
+forest - 9
+log - 9
+points - 11
+tf - 10
+pred_predictions - 10
+tf_pred_predictions - 10
+
+key,wy,home_abbr,away_abbr,predictions_home_won_forest,predictions_home_won_log,predictions_points_linear_h_won,pred_predictions_pred_home_won,tf_predictions_home_won,tf_predictions_points_h_won,tf_pred_predictions_home_won,tf_pred_predictions_points_h_won,most_common,consensus,consensus_abbr
+202309070kan,1 | 2023,KAN,DET,1,1,1,1,1,1,1,1,1,100.0,KAN - NO
+202309100atl,1 | 2023,ATL,CAR,0,1,1,0,0,1,0,0,0,62.5,CAR - NO
+202309100cle,1 | 2023,CLE,CIN,0,0,1,0,0,1,0,1,0,62.5,CIN - NO
+202309100clt,1 | 2023,CLT,JAX,0,0,0,0,0,0,0,1,0,87.5,JAX - YES
+202309100min,1 | 2023,MIN,TAM,1,1,1,1,0,0,1,0,1,62.5,MIN - NO
+202309100nor,1 | 2023,NOR,OTI,1,1,1,0,1,0,0,1,1,62.5,NOR - YES
+202309100pit,1 | 2023,PIT,SFO,1,1,0,0,0,0,0,0,0,75.0,SFO - YES
+202309100rav,1 | 2023,RAV,HTX,1,1,1,1,1,1,1,1,1,100.0,RAV - YES
+202309100was,1 | 2023,WAS,CRD,1,1,1,1,1,1,0,1,1,87.5,WAS - YES
+202309100chi,1 | 2023,CHI,GNB,0,0,0,0,0,0,0,0,0,100.0,GNB - YES
+202309100den,1 | 2023,DEN,RAI,0,1,0,1,1,0,0,0,0,62.5,RAI - YES
+202309100nwe,1 | 2023,NWE,PHI,1,0,0,0,0,0,0,0,0,87.5,PHI - YES
+202309100sdg,1 | 2023,SDG,MIA,0,1,1,0,1,1,1,0,1,62.5,SDG - NO
+202309100sea,1 | 2023,SEA,RAM,1,1,1,1,1,0,0,1,1,75.0,SEA - NO
+202309100nyg,1 | 2023,NYG,DAL,1,0,0,1,0,0,0,1,0,62.5,DAL - YES
+202309110nyj,1 | 2023,NYJ,BUF,1,1,0,0,1,0,0,0,0,62.5,BUF - NO

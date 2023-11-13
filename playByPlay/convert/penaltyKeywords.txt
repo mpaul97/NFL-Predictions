@@ -1,0 +1,580 @@
+18103: False Start
+15400: Offensive Holding
+4833: Defensive Offside
+4622: Defensive Pass Interference
+4057: Defensive Holding
+3991: Unnecessary Roughness
+3761: Delay of Game
+2425: Holding
+2403: Offensive Holding 
+2372: Face Mask 
+2330: Roughing the Passer
+2038: Illegal Block Above the Waist
+1997: Neutral Zone Infraction
+1978: Encroachment
+1895: Illegal Use of Hands
+1763: Illegal Contact
+1565: Defensive Offside 
+1513: Offensive Pass Interference
+1246: Illegal Formation
+1095: Defensive Holding 
+1072: Offside
+1028: Intentional Grounding
+978: Pass Interference
+965: Defensive Pass Interfere
+960: Unsportsmanlike Conduct
+931: Personal Foul
+638: Illegal Shift
+592: Illegal Formation 
+583: Illegal Block Above the 
+543: Illegal Contact 
+521: Defensive 12 On-field
+520: Illegal Use of Hands 
+498: Ineligible Downfield Pass
+461: Offside on Free Kick
+455: Illegal Motion
+449: Defensive Pass Interference 
+408: Face Mask
+402: Illegal Block
+389: Taunting
+352: Tripping
+331: Offensive Pass Interfere
+317: Illegal Substitution
+314: Offensive Pass Interference 
+295: Illegal Shift 
+250: Chop Block
+250: Unnecessary Roughness / Defense
+249: Horse Collar Tackle
+231: Illegal Forward Pass
+224: Ineligible Downfield Pass 
+209: Ineligible Downfield Kick
+206: Roughing Passer
+196: Illegal Motion 
+193: Running Into the Kicker
+176: Defensive 12 On-field 
+173: Delay of Game 
+159: Unnecessary Roughness 
+159: Illegal Touch Kick
+152: Defensive Too Many Men on Field
+149: Fair Catch Interference
+143: Roughing the Kicker
+138: Illegal Block Above the Waist 
+137: Illegal Use of Hands / Defense
+133: Illegal Touch Pass
+133: Low Block
+125: False Start 
+123: Clipping
+123: Illegal Crackback
+114: Illegal Blindside Block
+110: Running Into the Kicker 
+108: Illegal Block Above Wais
+108: Offensive Illegal Block Above the Waist
+107: Defensive Delay of Game
+107: Face Mask  
+106: Illegal Plyr Downfld
+105: Illegal Touch Pass 
+102: Offensive 12 On-field
+101: Ineligible Downfield Kic
+101: Player Out of Bounds on Punt
+100: Ineligible Downfield Kick 
+94: Offensive Offside
+89: Disqualification
+89: Personal Foul 
+85: Defensive Pass Interfere 
+80: Face Mask (PerFoul-15 yr
+79: Lowering the Head to Initiate Contact
+71: Encroachment 
+71: Illegal Procedure
+68: Offside on Free Kick 
+68: Ineligible Downfield Pas
+67: Offensive Pass Interfere 
+66: Leverage
+60: Unnecessary Roughness / Offense
+52: Unsportsmanlike Conduct 
+49: Tripping 
+49: Chop Block 
+49: Offensive Too Many Men on Field
+44: Illegal Touch Kick 
+44: Unsportsmanlike Conduct / Offense
+44: Ineligible Downfield Pas 
+43: Roughing the Passer 
+43: Illegal Use of Hands / Offense
+42: Running into Kicker
+42: Interference with Opportunity to Catch
+39: Unsportsmanlike Conduct / Defense
+39: Illegal Substitution 
+37: FC Interference
+36: Offensive Holding  
+34: Illegal Touch
+33: Taunting / Defense
+32: Taunting / Offense
+31: Illegal Double-Team Block
+31: Offensive Offside 
+30: Illegal Forward Pass 
+30: Face Mask (Incdntl-5 yar
+28: Neutral Zone Infraction 
+28: Personal Foul / Defense
+27: Invalid Fair Catch Signal
+26: Player Out of Bounds on Kick
+23: Kickoff Out of Bounds
+23: Kick Catch Interference
+22: Defensive Too Many Men on Field 
+21: Horse Collar
+20: Interference with Opportunity to
+20: Ineligible Receiver
+20: Too Many Men on Field
+20: Player Out of Bounds on 
+19: Disqualification 
+18: Defensive 12 on Field
+17: Player Out of Bounds on a Punt
+17: Leaping
+16: Illegal Wedge
+16: Defensive Holding  
+16: Illegal Bat
+14: Player Out of Bounds on Punt 
+14: Illegal Bat 
+14: Offensive 12 On-field 
+14: Taunting 
+14: Illegal Kick 
+14: Intentional Grounding 
+12: Illegal Receiver
+11: Interference with Opport
+11: Offside 
+10: Ineligible Downfield Kic 
+10: Illegal Receiver Pass
+10: Personal Foul / Offense
+10: Tripping / Offense
+10: Disqualification / Defense
+10: Illegal Fair Catch
+10: Kickoff OOB
+10: No Data
+10: Short Free Kick
+10: Offensive Low Block
+10: Defensive Offside  
+10: Illegal Crackback 
+8: Illegal Touch - Kick
+8: Invalid Fair Catch Signa
+8: Defensive Illegal Blindside Block
+8: Illegal Peelback
+7: Offensive 12 on Field
+6: Illegal Blindside Block 
+6: Illegal Kick
+6: Defensive Lowering the head to initiate contact
+6: Pass Interference 
+5: Roughing the Kicker 
+5: Disqualification / Offense
+5: Delay of Kickoff
+5: Kick Out of Bounds
+5: Illegal Procedure 
+5: False Start  
+5: Late Hit
+4: Holding 
+4: Fair Catch Interference 
+4: Clipping 
+4: Tripping / Defense
+4: Running into the Kicker
+4: Defensive Chop Block
+4: Illegal Touch - Pass
+4: Illegal Formation  
+4: Horse Collar Tackle 
+4: Defensive Too Many Men on Field  
+4: Kickoff Out of Bounds 
+4: Illegal Cut
+3: Illegal Shift  
+3: Delay of Game  
+3: Defensive Delay of Game 
+3: Illegal Receiver Pass 
+3: Defensive Pass Interference  
+3: Batting Loose Ball
+3: Illegal Block Above Waist
+3: Interference with Opportunity to Catch 
+3: Leaping 
+3: Illegal Use of Hands  
+2: Leverage 
+2: Illegal Motion  
+2: Jeff Garcia pass incomplete
+2: Illegal Block Above the Waist  
+2: Offensive Pass Interference  
+2: Horse Collar Tackle  
+2: Excess Celebration
+2: Lowering the Head to Initiate Contact  Penalty on MINOffensive Holding  
+2: Illegally Kicking Ball
+2: Roughing the Passer  
+2: Illegal Contact  
+2: Defensive Offside  . Penalty on Janoris JenkinsDefensive Pass Interference
+2: Unnecessary Roughness / Defense 
+2: Encroachment  
+2: Offensive Lowering the head to initiate contact
+2: Low Block 
+1: Kerry Collins pass incomplete intended for Randy Moss
+1: Offensive Holding  . Penalty on Joseph JonesIllegal Use of Hands  
+1: Colt McCoy pass incomplete intended for Mohamed Massaquoi
+1: Unnecessary Roughness / Defense  . Penalty on Andrew SendejoIllegal Shift
+1: Defensive Offside  . Penalty on Tyler OttOffensive Holding  
+1: Aaron Brooks pass complete to Boo Williams
+1: Defensive Holding  . Penalty on Mike FordDefensive Pass Interference
+1: Unnecessary Roughness  . Penalty on Devonta FreemanDisqualification 
+1: Kirk Cousins pass incomplete intended for Adam Thielen
+1: Illegal Formation  Penalty on INDOffensive Holding  
+1: Chad Pennington pass incomplete intended for Curtis Conway
+1: Ineligible Downfield Pass  . Penalty on Korey CunninghamOffensive Holding
+1: Unnecessary Roughness  . Penalty on Deion JonesUnnecessary Roughness 
+1: Offensive Holding  . Penalty on Foster MoreauOffensive Holding
+1: Brett Favre pass incomplete
+1: Daunte Culpepper pass complete to Moe Williams
+1: Offensive Holding  Penalty on CHIUnnecessary Roughness  
+1: Mitch Wishnowsky rushes
+1: Unnecessary Roughness  . Penalty on Marcus EppsUnnecessary Roughness 
+1: Chop Block  
+1: Defensive Pass Interference  . Penalty on Bobby EvansOffensive Holding  
+1: Player Out of Bounds on Kick  . Penalty on Tyler MatakevichIllegal Block Above the Waist  
+1: Taunting  . Penalty on Bobby McCainTaunting 
+1: declined. PENALTY on SF-91-C.Okeafor
+1: Stoney Case pass incomplete intended for Johnnie Morton
+1: Jeff Blake pass incomplete intended for Todd Heap
+1: Josh McCown pass complete to Ronald Curry
+1: Lowering the Head to Initiate Contact  Penalty on LACLowering the Head to Initiate Contact  
+1: Josh McCown pass incomplete intended for Dante Rosario
+1: Defensive Holding  . Penalty on Braden SmithChop Block  
+1: Derek Carr pass complete to Michael Crabtree
+1: Illegal Use of Hands / Defense 
+1: Andrew Luck pass incomplete intended for Darrius Heyward-Bey
+1: Aaron Rodgers pass complete to Randall Cobb
+1: Ineligible Downfield Pass  . Penalty on John SullivanOffensive Holding
+1: Defensive Offside  Penalty on PITDefensive Too Many Men on Field 
+1: Daniel Jones pass complete to Golden Tate
+1: Donald Hollas pass complete to Jon Ritchie
+1: Illegal Blindside Block  . Penalty on B.W. WebbDefensive Holding  . Penalty on Carl LawsonIllegal Use of Hands
+1: Offensive Holding  . Penalty on Garett BollesOffensive Holding
+1: Defensive Too Many Men on Field  . Penalty on Dawuane SmootDefensive Offside
+1: Priest Holmes up the middle
+1: Player Out of Bounds on Kick  . Penalty on Cam BrownUnnecessary Roughness
+1: Troy Aikman pass incomplete intended for Jason Tucker
+1: Roughing Passer 
+1: Defensive Offside  . Penalty on Anthony HitchensLowering the Head to Initiate Contact
+1: Unsportsmanlike Conduct  . Penalty on Patrick LairdUnnecessary Roughness  
+1: Eli Manning pass incomplete intended for Brandon Stokley
+1: Matthew Stafford pass incomplete intended for Marvin Jones
+1: Offensive Holding  Penalty on ARILowering the Head to Initiate Contact  
+1: Kyle Boller pass incomplete intended for Devard Darling
+1: Jay Cutler pass incomplete intended for Alshon Jeffery
+1: Peyton Manning pass complete to Marvin Harrison
+1: conversion succeeds. Penalty on Barry WilburnHolding
+1: Defensive Holding  . Penalty on Lamarcus JoynerDefensive Pass Interference
+1: Offensive Holding  Penalty on SFOFace Mask   
+1: Joey Harrington pass incomplete intended for Tai Streets
+1: Ben Roethlisberger pass complete to Will Johnson
+1: Intentional Grounding. Penalty on Quenton NelsonIneligible Downfield Pass
+1: Philip Rivers pass incomplete
+1: Joe Burrow pass incomplete. Penalty on Marcus PetersDefensive Pass Interference
+1: Carson Wentz pass complete to Alshon Jeffery
+1: Illegal Block Above the Waist  . Penalty on Kenjon BarnerLowering the Head to Initiate Contact  
+1: Offensive Holding  . Penalty on Will RedmondIllegal Contact  
+1: Tom Brady pass incomplete intended for Danny Amendola
+1: Teddy Bridgewater pass complete to Charles Johnson
+1: Daunte Culpepper
+1: Kyle Boller pass complete to Clarence Moore
+1: Offensive Holding  Penalty on LARRoughing the Passer  
+1: Offensive Pass Interference  . Penalty on Bryan BulagaOffensive Holding
+1: Offensive Holding  Penalty on MINDefensive Holding  
+1: Illegal Bat  
+1: Nyheim Hines rushes
+1: Offensive Holding  . Penalty on Mike IupatiOffensive Holding  
+1: Jeff Garcia pass complete to Reggie Brown
+1: Kurt Warner pass incomplete
+1: Illegal Touch Kick. Penalty on Jimmy MorelandIllegal Formation
+1: Intentional Grounding  . Penalty on Cody FordUnnecessary Roughness
+1: Defensive Holding  Penalty on DENDisqualification  
+1: T.J. Yates pass incomplete intended for DeAndre Hopkins
+1: Unnecessary Roughness  . Penalty on Dion DawkinsOffensive Holding
+1: Unnecessary Roughness  . Penalty on Latavius MurrayUnnecessary Roughness 
+1: Matt Hasselbeck pass complete to Jerramy Stevens
+1: Teddy Bridgewater left tackle
+1: Deshaun Watson pass complete to Ryan Griffin
+1: Ineligible Downfield Pass  Penalty on CHIIllegal Formation 
+1: Illegal Use of Hands  Penalty on NOROffensive Pass Interference  
+1: Offensive Holding  . Penalty on LeGarrette BlountDisqualification
+1: Trent Green pass incomplete intended for Snoop Minnis
+1: Aaron Rodgers pass incomplete intended for Jimmy Graham
+1: Offensive Holding  . Penalty on Maurice HurstRoughing the Passer  
+1: Defensive Pass Interference  Penalty on DETOffensive Pass Interference  
+1: Brett Favre pass incomplete intended for Bubba Franks
+1: Face Mask (Personal Foul
+1: conversion fails. Penalty on Jeff CothranUnnecessary Roughness
+1: Illegal Contact  . Penalty on Isaiah OliverDefensive Holding
+1: Fred Jackson left tackle
+1: Defensive Pass Interfere  
+1: Josh McCown pass complete
+1: Jacoby Brissett pass complete to Jack Doyle
+1: Tom Brady pass incomplete. Penalty on Patrick QueenDefensive Holding
+1: Offensive Holding  . Penalty on Emmanuel OgbahIllegal Blindside Block
+1: Josh McCown pass incomplete intended for Travis Benjamin
+1: Kyle Boller pass complete to Todd Heap
+1: Illegal Contact  . Penalty on Carlton DavisDefensive Holding
+1: Offensive Holding  . Penalty on Cody FordIllegal Use of Hands 
+1: Mark Sanchez pass complete to Wallace Wright
+1: Offensive Offside  . Penalty on Kelvin BeachumOffensive Holding
+1: conversion succeeds. Penalty on Keith JacksonTaunting
+1: Player Out of Bounds on Kick  . Penalty on Frankie LuvuOffensive Holding
+1: Illegal Contact  . Penalty on Zach KerrIllegal Use of Hands
+1: Offensive Holding  . Penalty on Shaq MasonTripping
+1: Jake Plummer pass incomplete intended for Frank Sanders
+1: Unnecessary Roughness  . Penalty on Matt JudonUnnecessary Roughness  . Penalty on Matt JudonDisqualification
+1: Running into Kicker 
+1: Cam Newton left tackle
+1: Marcus Mariota pass incomplete intended for Tajae Sharpe
+1: Offensive Holding  Penalty on CLEDefensive Holding  
+1: Defensive Offside  Penalty on LARDefensive Too Many Men on Field 
+1: conversion fails. Penalty on Chris BakerPersonal Foul 
+1: Offensive Holding  . Penalty on Cole MazzaUnnecessary Roughness 
+1: Defensive Holding  . Penalty on Steven NelsonDefensive Pass Interference
+1: Lorenzo Taliaferro up the middle
+1: Danny Wuerffel pass complete left to Keith Poole
+1: Offensive Holding  . Penalty on Christian JonesDefensive Offside  
+1: Carson Palmer pass incomplete intended for Chad Ochocinco
+1: Roughing the Passer  . Penalty on Nevin LawsonDefensive Pass Interference
+1: Offensive Holding  . Penalty on William GholstonRoughing the Passer  
+1: Illegal Use of Hands  . Penalty on Trent WilliamsOffensive Holding 
+1: Offensive Holding  . Penalty on Rashad FentonDefensive Holding  
+1: Nick Foles pass incomplete intended for Zach Ertz
+1: Roughing the Passer  Penalty on LVRLowering the Head to Initiate Contact  
+1: Illegal Shift  . Penalty on Josh AllenRoughing the Passer
+1: Tripping  
+1: Unnecessary Roughness  Penalty on CHIOffensive Holding  
+1: Joey Harrington pass complete to Marty Booker
+1: Illegal Scrimmage Kick
+1: Offensive Holding  . Penalty on Kelechi OsemeleOffensive Holding
+1: Defensive Holding  . Penalty on Kendall FullerDefensive Pass Interference
+1: Alvin Kamara rushes
+1: Ryan Tannehill pass incomplete intended for Brian Hartline
+1: Donovan McNabb pass incomplete intended for Chad Lewis
+1: Sam Darnold pass incomplete intended for Ryan Griffin
+1: Defensive Holding  . Penalty on Chris ConteDefensive Pass Interference
+1: Illegal Block Above the Waist  . Penalty on Armani WattsIllegal Block Above the Waist
+1: Jalen Hurts pass incomplete intended for Richard Rodgers
+1: EJ Manuel pass incomplete intended for Chris Gragg
+1: Illegal Touch 
+1: Eli Manning pass incomplete intended for Odell Beckham
+1: Illegal Block Above the Waist  . Penalty on Rayshawn JenkinsOffensive Holding
+1: Eric Zeier
+1: Illegal Use of Hands  . Penalty on DaeSean HamiltonIllegal Shift  
+1: Dan Orlovsky pass incomplete intended for Calvin Johnson
+1: Baker Mayfield pass complete to . Penalty on Morris ClaiborneDefensive Holding  
+1: Offensive Holding  Penalty on MIAFace Mask   
+1: Carson Wentz pass complete to . Penalty on Tyler LarsenIllegal Use of Hands / Offense
+1: Offensive Holding  . Penalty on Myles GaskinUnnecessary Roughness  
+1: Offensive 12 on Field 
+1: Unnecessary Roughness  
+1: Disqualification  . Penalty on Nate HolleyDisqualification  . Penalty on Mack HollinsDisqualification  Penalty on CINDisqualification 
+1: Damon Huard pass incomplete intended for Dwayne Bowe
+1: Offensive Holding  . Penalty on Sean DavisTaunting  
+1: Offensive Too Many Men on Field 
+1: Nick Foles pass incomplete
+1: Charlie Whitehurst pass incomplete intended for John Carlson
+1: Disqualification  . Penalty on Leterrius WaltonDisqualification  . Penalty on Larry OgunjobiDisqualification 
+1: Offensive Holding  . Penalty on Tre'Quan SmithOffensive Holding
+1: Chris Chandler pass incomplete intended for Jamal Anderson
+1: Illegal Use of Hands  . Penalty on Donte JacksonDefensive Pass Interference
+1: Josh McCown pass incomplete intended for Anquan Boldin
+1: Philip Rivers pass complete to Legedu Naanee
+1: Offensive Holding  . Penalty on Ricky WagnerOffensive Holding  
+1: Horse Collar 
+1: Unnecessary Roughness  . Penalty on Jon FelicianoUnsportsmanlike Conduct 
+1: Disqualification  . Penalty on Jordan MillsDisqualification 
+1: Offensive Holding  . Penalty on Kerryon JohnsonDefensive Holding  
+1: Eddie George middle
+1: Ineligible Downfield Pass  . Penalty on Carlos DunlapUnnecessary Roughness
+1: Kerry Collins pass incomplete intended for Jeremy Shockey
+1: Offensive Holding  . Penalty on Antwaun WoodsRoughing the Passer  
+1: Carson Wentz pass complete to Nelson Agholor
+1: Aaron Rodgers pass complete to Richard Rodgers
+1: Illegal Shift  Penalty on BALDefensive Holding  
+1: Tony Banks pass complete to Shannon Sharpe
+1: Unnecessary Roughness  . Penalty on Mecole HardmanUnnecessary Roughness 
+1: Unsportsmanlike Conduct. Penalty on Chris JonesDefensive Offside
+1: Ben Roethlisberger pass complete to Heath Miller
+1: Defensive Pass Interference  Penalty on ARIIneligible Downfield Pass  
+1: Drew Lock pass incomplete intended for Nick Vannett
+1: Illegal Block Above the Waist  . Penalty on Garrett BradburyOffensive Holding
+1: conversion succeeds. Penalty on Chad CotaDefensive Holding 
+1: Offensive Holding  . Penalty on Gabe JacksonOffensive Holding
+1: Marcus Mariota pass complete to Dexter McCluster
+1: Defensive Pass Interference  . Penalty on Damiere ByrdOffensive Pass Interference  
+1: Defensive Offside  . Penalty on Russell OkungUnnecessary Roughness
+1: Palpably Unfair Act
+1: David Carr pass complete to Jabar Gaffney
+1: Illegal Contact  . Penalty on Richard ShermanDefensive Pass Interference
+1: Illegal Use of Hands  Penalty on BALIllegal Shift  
+1: Offensive Sideline Interference
+1: Illegal Use of Hands  . Penalty on Chandler CoxDefensive Pass Interference  
+1: Carson Wentz pass incomplete
+1: Defensive Too Many Men on Field  . Penalty on Al WoodsDefensive Offside
+1: Offensive Holding  . Penalty on Anthony MillerDisqualification  . Penalty on Richard ShermanDisqualification  
+1: Mark Brunell left guard
+1: Offensive Holding  Penalty on DENDefensive Offside  
+1: Illegal Use of Hands  . Penalty on DeMarcus LawrenceUnnecessary Roughness
+1: Dak Prescott pass incomplete is intercepted by Mark Barron
+1: Offensive Holding  . Penalty on Jeff HeathDefensive Holding  
+1: Colin Kaepernick right end
+1: Illegal Block Above the Waist  . Penalty on Tre HerndonIllegal Block Above the Waist
+1: Player Out of Bounds on Kick  
+1: Kick Catch Interference  . Penalty on Mason SchreckIllegal Blindside Block  
+1: Defensive Holding  . Penalty on Carl GrandersonRoughing the Passer
+1: Vince Young pass incomplete intended for Bobby Wade
+1: Illegal Formation  . Penalty on Janoris JenkinsIllegal Contact  
+1: Illegal Formation  . Penalty on Henry MondeauxRoughing the Passer
+1: Marc Bulger pass complete to Torry Holt
+1: Illegal Substitution  . Penalty on Jacob BobenmoyerFace Mask  
+1: Defensive Pass Interference  . Penalty on Za'Darius SmithRoughing the Passer
+1: Defensive Too Many Men on Field  . Penalty on Clinton McDonaldDefensive Offside
+1: Jameis Winston pass complete to Russell Shepard
+1: Defensive Offside  . Penalty on Rodney McLeodFace Mask 
+1: Illegal Bat / Offense
+1: Interference with Opport 
+1: Trent Dilfer pass incomplete intended for Itula Mili
+1: Ben Roethlisberger pass incomplete intended for Emmanuel Sanders
+1: Matt Ryan pass complete to Mohamed Sanu
+1: Drew Brees pass complete to Michael Thomas
+1: Illegal Block Above the Waist  . Penalty on Senorise PerryUnnecessary Roughness  
+1: Offensive Holding  . Penalty on Dontari PoeRoughing the Passer  
+1: Defensive Offside  Penalty on DETOffensive Holding  
+1: Joe Flacco pass complete to Mike Wallace
+1: Offensive Holding  . Penalty on Jameis WinstonIntentional Grounding
+1: Illegal Use of Hands / Defense  
+1: Illegal Touch Pass  . Penalty on Daryl WilliamsOffensive Holding 
+1: Offensive Pass Interference  Penalty on PITDefensive Pass Interference  
+1: Intentional Grounding  Penalty on TAMUnnecessary Roughness  
+1: Billy Joe Tolliver pass incomplete
+1: Illegal Block Above the Waist  . Penalty on Fabian MoreauUnnecessary Roughness
+1: Offensive Holding  . Penalty on John SimpsonOffensive Holding
+1: Offensive Holding  . Penalty on Darnell SavageDefensive Holding  
+1: Tom Brady pass complete to Julian Edelman
+1: Defensive Holding  . Penalty on Sean ChandlerIllegal Contact 
+1: Offensive Holding  . Penalty on Cory LittletonDefensive Holding  
+1: Mike McMahon pass complete to Bill Schroeder
+1: Illegal Use of Hands  Penalty on HOUIllegal Touch Pass  
+1: Drew Bledsoe pass incomplete intended for Mark Campbell
+1: Jeff Blake pass complete to Carl Pickens
+1: Offensive Holding  . Penalty on Ryan RamczykDefensive Holding  
+1: Brad Johnson pass incomplete intended for Ken Dilger
+1: Jay Cutler pass incomplete intended for Matt Forte
+1: Offensive Holding  . Penalty on Richie IncognitoChop Block
+1: Illegal Block Above the Waist  . Penalty on Eric KushChop Block
+1: Defensive Pass Interference  . Penalty on Yetur Gross-MatosRoughing the Passer
+1: Matthew Stafford pass complete
+1: Kyle Allen pass complete to Curtis Samuel
+1: Defensive Offside  . Penalty on Gerald McCoyRoughing the Passer
+1: Jared Goff pass incomplete
+1: Offensive Holding  . Penalty on Cassius MarshDefensive Offside  
+1: Unnecessary Roughness  . Penalty on J.C. TretterUnnecessary Roughness  
+1: Offensive Holding  . Penalty on Dwayne WashingtonRoughing the Kicker
+1: Illegal Formation  . Penalty on Maliek CollinsOffensive Holding  
+1: Kerry Collins pass incomplete intended for Doug Jolley
+1: Illegal Contact  . Penalty on Jimmie WardDefensive Holding
+1: Running Into the Kicker  
+1: Defensive Pass Interference  . Penalty on De'Lance TurnerOffensive Holding  
+1: Ben Roethlisberger pass incomplete intended for Antonio Brown
+1: Baker Mayfield pass complete to Demetrius Harris
+1: conversion succeeds. Penalty on Donnell WoolfordOffside
+1: Illegal Use of Hands  . Penalty on Will ClappOffensive Holding  
+1: Illegal Formation  . Penalty on Ronald DarbyDefensive Pass Interference  
+1: Ben Roethlisberger pass incomplete intended for Le'Veon Bell
+1: Peyton Manning pass complete to Jerome Pathon
+1: Kirk Cousins pass complete to Adam Thielen
+1: Josh Freeman pass incomplete intended for Dezmon Briscoe
+1: Peyton Manning pass incomplete intended for Marvin Harrison
+1: Unnecessary Roughness / Defense  
+1: Illegally Kicking Ball 
+1: Illegal Formation  . Penalty on Sterling ShepardIllegal Block Above the Waist
+1: Trent Edwards pass complete to Lee Evans
+1: Offensive Holding  . Penalty on Chris ReedOffensive Holding
+1: Vinny Testaverde pass complete to Anthony Becht
+1: Dwayne Haskins pass incomplete intended for Kelvin Harmon
+1: Illegal Kick/Kicking Loose Ball / Offense
+1: Drew Bledsoe pass incomplete intended for Josh Reed
+1: Offensive Holding  . Penalty on Luke RhodesOffensive Holding  
+1: Illegal Substitution  . Penalty on Zach AllenDefensive Offside
+1: Ben Roethlisberger pass incomplete intended for Jesse James
+1: Philip Rivers pass complete to Melvin Gordon
+1: Jared Goff pass incomplete intended for Todd Gurley
+1: Brett Favre pass incomplete intended for Brad Smith
+1: Drew Stanton pass incomplete intended for Jaron Brown
+1: Disqualification  . Penalty on Demarcus RobinsonUnsportsmanlike Conduct  . Penalty on Damien WilliamsUnnecessary Roughness  
+1: Kerry Collins pass incomplete intended for Ike Hilliard
+1: Mitchell Trubisky pass complete to Taylor Gabriel
+1: Miles Sanders rushes
+1: Illegal Block Above the Waist  . Penalty on Jordan DangerfieldOffensive Holding
+1: Aaron Brooks middle
+1: Unnecessary Roughness  . Penalty on Mackensie AlexanderUnnecessary Roughness 
+1: Defensive Offside  Penalty on BUFIllegal Block Above the Waist  
+1: Offensive Holding  . Penalty on David MontgomeryDefensive Pass Interference  
+1: Trent Green pass complete to Leslie Shepherd
+1: Kelly Holcomb pass complete to Quincy Morgan
+1: Defensive Holding  Penalty on PITIllegal Formation  
+1: Billy Joe Hobert pass incomplete intended for Lawrence Dawsey
+1: Defensive Pass Interference  . Penalty on Mark BarronDefensive Holding
+1: Defensive Offside  . Penalty on Mitch MorseOffensive Holding  
+1: Defensive Offside  . Penalty on Buster SkrineDefensive Pass Interference
+1: Taunting  
+1: Defensive Offside  Penalty on DETIllegal Formation  
+1: Defensive Holding  Penalty on DENOffensive Holding  
+1: Ben Roethlisberger rushes
+1: Offensive Holding  DEN challenged the touchback ruling
+1: Stephen Carlson rushes
+1: Illegal Peelback 
+1: Ineligible Downfield Pass  
+1: Illegal Contact  . Penalty on Aaron LynchUnsportsmanlike Conduct
+1: Eli Manning
+1: Unnecessary Roughness  . Penalty on Malcolm JenkinsUnnecessary Roughness
+1: Arlen Harris up the middle
+1: Illegal Formation  . Penalty on Cassius MarshHorse Collar Tackle
+1: Kicking Loose Ball
+1: Gardner Minshew pass incomplete intended for DJ Chark
+1: Patrick Mahomes pass incomplete intended for intended for Clyde Edwards-Helaire. Penalty on Creed HumphreyIneligible Downfield Pass
+1: Illegal Formation  Penalty on JAXDefensive Too Many Men on Field  
+1: Offensive Holding  . Penalty on Demetrius HarrisOffensive Holding
+1: Kurt Warner pass incomplete intended for Isaac Bruce
+1: Dak Prescott middle
+1: Josh McCown pass incomplete intended for Robby Anderson is intercepted by Ramon Humber
+1: Eli Manning pass incomplete intended for Sterling Shepard
+1: Mark Ingram rushes
+1: Peyton Manning pass incomplete intended for Reggie Wayne
+1: Illegal Block Above the Waist  . Penalty on Nick BelloreIllegal Block Above the Waist
+1: Jon Kitna pass incomplete intended for Roy Williams
+1: Taylor Heinicke pass incomplete intended for intended for Ricky Seals-Jones. Penalty on Dante FowlerDefensive Offside
+1: Matt Ryan pass complete to to Tajae Sharpe for no gain. Penalty on Jake MatthewsOffensive Holding
+1: Kerry Collins pass incomplete intended for Luther Broughton
+1: Offensive Holding  . Penalty on Jordan EvansIllegal Block Above the Waist
+1: Russell Wilson pass incomplete intended for Greg Olsen
+1: Offensive Holding  . Penalty on LeSean McCoyOffensive Holding  
+1: Offensive Holding  . Penalty on Daniel SorensenOffensive Holding  
+1: Defensive Holding  . Penalty on Xavier RhodesUnsportsmanlike Conduct
+1: Lowering the Head to Initiate Contact  . Penalty on Michael ThomasUnnecessary Roughness  
+1: Illegal Touch - Kick 
+1: Matt Asiata left tackle
+1: Defensive Offside  Penalty on NYJDefensive Too Many Men on Field 
+1: Aaron Rodgers pass complete to Davante Adams
+1: Andy Dalton pass incomplete intended for Tyler Eifert
+1: Illegal Cut 
+1: Peyton Manning pass complete to Bryan Fletcher
+1: Offensive Pass Interference  . Penalty on Maurkice PounceyOffensive Holding
+1: Drew Bledsoe pass incomplete intended for Dan Campbell
+1: Defensive Pass Interference  Penalty on TENIllegal Use of Hands  
+1: Defensive Offside  . Penalty on Eric KendricksRoughing the Passer
+1: Dak Prescott pass complete to Michael Gallup
+1: Defensive Pass Interference  . Penalty on Richie IncognitoUnnecessary Roughness  
+1: Marcus Mariota pass complete to Harry Douglas
+1: Unnecessary Roughness  . Penalty on Coleman SheltonUnnecessary Roughness 
+1: Aaron Brooks pass complete to Donte' Stallworth
+1: Rian Lindell pass incomplete
+1: Rex Grossman pass incomplete intended for Chris Cooley
+1: Defensive Offside  Penalty on CAROffensive Holding  
+1: Defensive Offside  . Penalty on Benson MayowaLeverage
+1: Offensive penalty
+1: Offside on Free Kick  
+1: Offensive Holding  Penalty on CINDefensive Holding  
+1: Offensive Holding  . Penalty on Taiwan JonesDefensive Holding  
+1: Defensive Illegal Blindside Block 
+1: Joe Flacco pass incomplete intended for Marlon Brown
+1: Roughing the Passer  . Penalty on Tre'Davious WhiteDefensive Pass Interference
+1: conversion succeeds. Penalty on John HolecekUnsportsmanlike Conduct
