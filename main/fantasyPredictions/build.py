@@ -39,6 +39,7 @@ try:
     from fantasyPredictions.features.advancedStats.advancedStats import AdvancedStats
     from fantasyPredictions.features.seasonAvgSnapPercentages.seasonAvgSnapPercentages import SeasonAvgSnapPercentages
     from fantasyPredictions.features.lastSnapPercentagesN.lastSnapPercentagesN import LastSnapPercentagesN
+    from fantasyPredictions.features.lastSnapDifferencesN.lastSnapDifferencesN import LastSnapDifferencesN
 except ModuleNotFoundError:
     print('No modules found.')
     
@@ -736,6 +737,12 @@ class Build:
         lsp.build(5, source.copy(), False)
         print()
         # ---------------------------------------------
+        # build lastSnapDifferencesN if does not exist
+        f_type = 'lastSnapDifferencesN'
+        lsd = LastSnapDifferencesN(self.scdf, self.combineDir(f_type))
+        lsd.build(11, source.copy(), False)
+        print()
+        # ---------------------------------------------
         self.joinAll(source)
         print()
         # ---------------------------------------------
@@ -847,6 +854,12 @@ class Build:
         f_type = 'lastSnapPercentagesN'
         lsp = LastSnapPercentagesN(self.scdf, self.combineDir(f_type))
         df_list.append((lsp.build(5, source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build lastSnapDifferencesN
+        f_type = 'lastSnapDifferencesN'
+        lsd = LastSnapDifferencesN(self.scdf, self.combineDir(f_type))
+        df_list.append((lsd.build(11, source.copy(), True), f_type))
         print()
         # ---------------------------------------------
         # merge test

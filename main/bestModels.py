@@ -62,7 +62,7 @@ class BestModels:
         if "all_predictions.csv" in os.listdir(self.test_dir):
             df = pd.read_csv("%s.csv" % (self.test_dir + "all_predictions"))
             weeks = set([int(wy.split(" | ")[0]) for wy in df['wy']])
-            missing_weeks = list(weeks.difference(set([i for i in range(1, week)])))
+            missing_weeks = list(set([i for i in range(1, week)]).difference(weeks))
             if len(missing_weeks) != 0:
                 print("Updating for weeks: ", missing_weeks)
                 new_df = self.get_predictions(min(missing_weeks), week, year)
@@ -89,6 +89,6 @@ class BestModels:
 bm = BestModels()
 
 bm.find_all(
-    week=10, # current week -> get all weeks prior
+    week=11, # current week -> get all weeks prior
     year=2023
 )

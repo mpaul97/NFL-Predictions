@@ -70,6 +70,7 @@ class Main:
         df_list = []
         for index, (key, wy, home_abbr, away_abbr) in enumerate(cd[['key', 'wy', 'home_abbr', 'away_abbr']].values):
             # self.printProgressBar(index, cd.shape[0], 'Snap Counts')
+            print(key)
             df = self.get_snap_counts(key, home_abbr, away_abbr)
             df.insert(0, 'key', key)
             df.insert(1, 'wy', wy)

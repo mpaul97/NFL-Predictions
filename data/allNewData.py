@@ -1211,10 +1211,6 @@ def getAllData(week, year):
     print('Concatenating new starters with allStarters...')
     concatStarters(week, year, _dir)
     
-    print()
-    print('Concatenating new startsInfo...')
-    updateStartsInfo("../starters/")
-    
     # scrape player positions
     print()
     print("Scraping/building player positions...")
@@ -1276,6 +1272,11 @@ def getAllData(week, year):
     print('Adding new summaries...')
     getSummaries(week, year, _dir)
     
+    # update starts info
+    print()
+    print('Concatenating new startsInfo...')
+    updateStartsInfo("../starters/")
+    
     # update advanced stats
     print()
     print('Updating advanced stats...')
@@ -1294,6 +1295,6 @@ def getAllData(week, year):
 ########################################
 
 getAllData(
-    week=9, # -> past week
+    week=10, # -> past week
     year=2023
 )

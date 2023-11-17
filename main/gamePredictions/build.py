@@ -375,7 +375,6 @@ class Build:
         _all.sort(key=lambda x: x[0])
         new_df = source.copy()
         for _, f, df in _all:
-            print(f, end=',')
             new_df = new_df.merge(df, on=list(source.columns), how='left')
         new_df.to_csv("%s.csv" % (self._dir + "test" + suffix), index=False)
         self.test = new_df
