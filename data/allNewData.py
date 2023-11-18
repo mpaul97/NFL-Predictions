@@ -20,6 +20,7 @@ from sportsipy.nfl.roster import Player
 
 from fantasyData import concatFantasyAndSkillData
 from approximateValues import ApproximateValues
+from olStatsData import OlStatsData
 
 NAMES_PATH = "../playerNames/"
 STARTERS_PATH = "../starters/"
@@ -1289,6 +1290,10 @@ def getAllData(week, year):
     sc_dir = "../snapCounts/"
     scm = SCMain(sc_dir)
     scm.update()
+    
+    # update OLStatsData
+    osd = OlStatsData("./")
+    osd.update()
     
     return
         
