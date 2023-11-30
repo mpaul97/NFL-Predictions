@@ -91,14 +91,14 @@ class Build:
                 'linear': LinearRegression(n_jobs=-1)
             },
             'week_rank': {
-                'linear': LinearRegression(n_jobs=-1)
+                'forest': RandomForestClassifier(n_jobs=-1)
             }
         }
         self.position_all_models = {
             'points': {
                 'forestReg': RandomForestRegressor(n_jobs=-1),
                 'linear': LinearRegression(n_jobs=-1),
-                # 'log': LogisticRegression(n_jobs=-1),
+                'log': LogisticRegression(n_jobs=-1),
                 # 'forest': RandomForestClassifier(n_jobs=-1)
             }
         }

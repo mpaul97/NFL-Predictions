@@ -5,6 +5,7 @@ import pickle
 import regex as re
 import statsmodels.api as sm
 import warnings
+import time
 
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
@@ -38,6 +39,7 @@ try:
     from gamePredictions.features.advancedStarterStats.advancedStarterStats import AdvancedStarterStats
     from gamePredictions.features.short_positionGroupSeasonAvgSnapPcts.positionGroupSeasonAvgSnapPcts import PositionGroupSeasonAvgSnapPcts
     from gamePredictions.features.overUnders.overUnders import OverUnders
+    from gamePredictions.features.coachWinPctPerMonth.CoachWinPctPerMonth import CoachWinPctPerMonth
 except ModuleNotFoundError as error:
     print(error)
     
@@ -83,7 +85,7 @@ class Build:
         # models stuff
         self.str_cols = ['key', 'wy', 'home_abbr', 'away_abbr']
         self.target_ols_thresholds = {
-            'away_points': 0.25, 'home_points': 0.3, 'home_won': 0.2,
+            'away_points': 0.1, 'home_points': 0.15, 'home_won': 0.2,
         }
         self.all_models = {
             'won': {
@@ -375,6 +377,8 @@ class Build:
         _all.sort(key=lambda x: x[0])
         new_df = source.copy()
         for _, f, df in _all:
+            if df is None:
+                print(f + " - frame is NONE.")
             new_df = new_df.merge(df, on=list(source.columns), how='left')
         new_df.to_csv("%s.csv" % (self._dir + "test" + suffix), index=False)
         self.test = new_df
@@ -633,6 +637,12 @@ class Build:
         ou.buildOverUnders(source.copy(), False)
         print()
         # ---------------------------------------------
+        # build coachWinPctPerMonth if it does not exist
+        f_type = 'coachWinPctPerMonth'
+        cwpm = CoachWinPctPerMonth(self.cd, self.cdf, self.combineDir(f_type))
+        cwpm.build(source.copy(), False)
+        print()
+        # ---------------------------------------------
         # join all features/create train
         self.joinAll(source, False)
         print()
@@ -668,7 +678,7 @@ class Build:
         # ---------------------------------------------
         # build teamElos
         f_type = 'teamElos'
-        elos = Elos(self.cd, self.combineDir(f_type))
+        elos = Elos(self.cd.copy(), self.combineDir(f_type))
         elos.setRawElos(None)
         elos.update(isNewYear=False)
         df_list.append((elos.createBoth(source.copy(), isNew=True), f_type))
@@ -676,12 +686,12 @@ class Build:
         # ---------------------------------------------
         # build seasonInfo
         f_type = 'seasonInfo'
-        df_list.append((buildNewSeasonInfo(source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewSeasonInfo(source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build pred_standings
         f_type = 'pred_standings'
-        tb = TiebreakerAttributes(self.cd, self.sl, self.combineDir(f_type))
+        tb = TiebreakerAttributes(self.cd.copy(), self.sl, self.combineDir(f_type))
         tb.update()
         ps = PredStandings(self.sl, self.combineDir(f_type))
         ps.updatePredictions()
@@ -690,7 +700,7 @@ class Build:
         # ---------------------------------------------
         # build lastN_5
         f_type = 'avgN'
-        df_list.append((buildNewAvgN(5, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewAvgN(5, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build qbHalfGame
@@ -700,17 +710,17 @@ class Build:
         # ---------------------------------------------
         # build lastWonN
         f_type = 'lastWonN'
-        df_list.append((buildNewLastWonN(20, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewLastWonN(20, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build pointsAllowedN
         f_type = 'pointsAllowedN'
-        df_list.append((buildNewPointsAllowedN(50, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewPointsAllowedN(50, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build playerGrades
         f_type = 'playerGrades'
-        pg_models = PgModels('qb', self.cd, self.combineDir(f_type))
+        pg_models = PgModels('qb', self.cd.copy(), self.combineDir(f_type))
         pg_models.update()
         pg = PlayerGrades('qb', self.combineDir(f_type))
         pg.update(isNewYear=False)
@@ -719,27 +729,27 @@ class Build:
         # ---------------------------------------------
         # build seasonRankings
         f_type = 'seasonRankings'
-        df_list.append((buildNewSeasonRankings(source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewSeasonRankings(source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build pointsN
         f_type = 'pointsN'
-        df_list.append((buildNewPointsN(50, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewPointsN(50, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build vegaslines
         f_type = 'vegaslines'
-        df_list.append((buildNewVegasLine(source, self.cd, self.tn, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewVegasLine(source, self.cd.copy(), self.tn, self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build matchup info
         f_type = 'matchupInfo'
-        df_list.append((buildNewMatchupInfo(source.copy(), self.cd, self.sl, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewMatchupInfo(source.copy(), self.cd.copy(), self.sl, self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build coachElos
         f_type = 'coachElos'
-        c_elos = CoachElos(self.cd, self.cdf, self.combineDir(f_type))
+        c_elos = CoachElos(self.cd.copy(), self.cdf, self.combineDir(f_type))
         c_elos.setRawElos(None)
         c_elos.update(isNewYear=False)
         df_list.append((c_elos.createBoth(source.copy(), isNew=True), f_type))
@@ -747,7 +757,7 @@ class Build:
         # ---------------------------------------------
         # build playerGrades
         f_type = 'playerGrades'
-        pg_models = PgModels('rb', self.cd, self.combineDir(f_type))
+        pg_models = PgModels('rb', self.cd.copy(), self.combineDir(f_type))
         pg_models.update()
         pg = PlayerGrades('rb', self.combineDir(f_type))
         pg.update(isNewYear=False)
@@ -756,7 +766,7 @@ class Build:
         # ---------------------------------------------
         # build playerGrades
         f_type = 'playerGrades'
-        pg_models = PgModels('wr', self.cd, self.combineDir(f_type))
+        pg_models = PgModels('wr', self.cd.copy(), self.combineDir(f_type))
         pg_models.update()
         pg = PlayerGrades('wr', self.combineDir(f_type))
         pg.update(isNewYear=False)
@@ -807,8 +817,14 @@ class Build:
         # ---------------------------------------------
         # build overUnders
         f_type = 'overUnders'
-        ou = OverUnders(self.cd, self.tn, self.combineDir(f_type))
+        ou = OverUnders(self.cd.copy(), self.tn, self.combineDir(f_type))
         df_list.append((ou.buildOverUnders(source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build coachWinPctPerMonth
+        f_type = 'coachWinPctPerMonth'
+        cwpm = CoachWinPctPerMonth(self.cd.copy(), self.cdf, self.combineDir(f_type))
+        df_list.append((cwpm.build(source.copy(), True), f_type))
         print()
         # ---------------------------------------------
         # merge test

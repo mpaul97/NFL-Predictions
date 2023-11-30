@@ -156,11 +156,11 @@ class Main:
 
 if __name__ == '__main__':
     m = Main(
-        week=11,
+        week=13,
         year=2023
     )
-    # m.gpPredicitions('new')
-    m.fpPredicitions('new')
+    m.gpPredicitions('new')
+    # m.fpPredicitions('both')
     # m.findMissingCols_gp()
     # m.test()
     # m.createUiData()

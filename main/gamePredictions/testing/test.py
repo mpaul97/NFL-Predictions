@@ -285,18 +285,18 @@ def predict_probs(_dir):
 ###############################
 
 if __name__ == '__main__':
-    testModels(
-        modelNames=['log'],
-        targetName='home_points', 
-        _dir='../'
-    )
+    # testModels(
+    #     modelNames=['log'],
+    #     targetName='home_won', 
+    #     _dir='../'
+    # )
     # getIncorrectPredictions(
     #     targetName='home_won',
     #     rebuild=False,
     #     _dir='../'
     # )
     # testModelsEncoding('home_won', '../')
-    # findBestThresholds('../')
+    findBestThresholds('../')
     # getCorrHeatMap('../')
     # testCorrCols('../')
     # getMultiCols('../')

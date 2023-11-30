@@ -6241,3 +6241,7 @@ SimpTr00
 JackTr02
 IbraMo00
 PappOw00
+GlasCh01
+WhitBe00
+WarrCa00
+DuncJa00

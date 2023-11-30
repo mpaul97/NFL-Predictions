@@ -118,12 +118,9 @@ def buildRawData_fixed(week, year, _dir):
     return
 
 def buildPlayerData(week, year, _dir):
-
     box_list, all_players = [], []
     box_list.append(Boxscores(week, year))
-    
     count = 0
-
     for boxscores in box_list:
         for key in boxscores.games.keys():
             for item in boxscores.games[key]:
@@ -132,10 +129,8 @@ def buildPlayerData(week, year, _dir):
                 try:
                     h_players = boxscore.home_players
                     a_players = boxscore.away_players
-
                     h_abbr = boxscore.home_abbreviation.upper()
                     a_abbr = boxscore.away_abbreviation.upper()
-
                     for p in h_players:
                         df_p = p.dataframe
                         df_p['abbr'] = h_abbr
@@ -143,7 +138,6 @@ def buildPlayerData(week, year, _dir):
                         df_p['game_key'] = l1[0]
                         df_p['isHome'] = True
                         all_players.append(df_p)
-
                     for p in a_players:
                         df_p = p.dataframe
                         df_p['abbr'] = a_abbr
@@ -153,17 +147,14 @@ def buildPlayerData(week, year, _dir):
                         all_players.append(df_p)
                 except (AttributeError, TypeError) as error:
                     print('error:', error, l1[0])
-                time.sleep(2)
+                time.sleep(5)
         count += 1
-
     df_all = pd.concat(all_players)
     df_all['wy'] = [(str(week) + " | " + str(year)) for _ in range(len(df_all.index))]
     df_all.fillna(0, inplace=True)
     df_all = df_all.reset_index()
     df_all = df_all.rename(columns={'index': 'p_id'})
-
     df_all.to_csv('%s.csv' % (_dir + "playerData_" + str(week) + "-" + str(year)), index=False)
-    
     return
 
 ######################################
@@ -456,7 +447,7 @@ def buildScrapeStarters(week, year, _dir):
         away_key = away_abbr + "-" + key
         away_starters = "|".join([away_pids[i] + ":" + away_poses[i] for i in range(len(away_pids))])
         df.loc[len(df.index)-1] = [away_key, wy, away_starters]
-        time.sleep(2)
+        time.sleep(5)
         
     df.to_csv("%s.csv" % (_dir + "starters_" + str(week) + "-" + str(year)), index=False)
         
@@ -1300,6 +1291,6 @@ def getAllData(week, year):
 ########################################
 
 getAllData(
-    week=10, # -> past week
+    week=12, # -> past week
     year=2023
 )
