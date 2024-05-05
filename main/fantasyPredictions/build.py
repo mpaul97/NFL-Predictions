@@ -40,6 +40,8 @@ try:
     from fantasyPredictions.features.seasonAvgSnapPercentages.seasonAvgSnapPercentages import SeasonAvgSnapPercentages
     from fantasyPredictions.features.lastSnapPercentagesN.lastSnapPercentagesN import LastSnapPercentagesN
     from fantasyPredictions.features.lastSnapDifferencesN.lastSnapDifferencesN import LastSnapDifferencesN
+    from fantasyPredictions.features.playerRanks.playerRanks import PlayerRanks
+    from fantasyPredictions.features.avgPointsN.avgPointsN import AvgPointsN
 except ModuleNotFoundError:
     print('No modules found.')
     
@@ -58,6 +60,7 @@ class Build:
         self.coaches_path = self.all_paths['cp']
         self.madden_path = self.all_paths['mrp']
         self.snap_path = self.all_paths['sc']
+        self.player_ranks_path = self.all_paths['pr']
         # dataframes
         self.cd = pd.read_csv("%s.csv" % (self.data_path + "skillData"))
         self.fd = pd.read_csv("%s.csv" % (self.data_path + "fantasyData"))
@@ -70,6 +73,7 @@ class Build:
         self.sdf = pd.read_csv("%s.csv" % (self.starters_path + "allStarters"))
         self.adf = pd.read_csv("%s.csv" % (self.data_path + "advancedStats"))
         self.scdf = pd.read_csv("%s.csv" % (self.snap_path + "snap_counts"))
+        self.pr_df = pd.read_csv("%s.csv" % (self.player_ranks_path + "playerRanks_features"))
         # more frames
         self.train: pd.DataFrame = None
         self.target: pd.DataFrame = None
@@ -84,67 +88,112 @@ class Build:
         self.non_cont_models = ['log', 'forest', 'knn']
         self.metric_models = ['knn']
         self.target_ols_thresholds = {
-            'points': 0.2, 'week_rank': 0.2
+            'points': 0.2, 'week_rank': 0.2, 'over_25': 0.2, 'over_20': 0.2,
+            'over_15': 0.2, 'over_10': 0.2, 'over_5': 0.2, 'under_5': 0.2
         }
         self.all_models = {
-            'points': {
-                'linear': LinearRegression(n_jobs=-1)
-            },
-            'week_rank': {
-                'linear': LinearRegression(n_jobs=-1)
-            }
+            'points': {'linear': LinearRegression(n_jobs=-1)},
+            'week_rank': {'forest': RandomForestClassifier(n_jobs=-1)},
+            'over_25': {'log': LogisticRegression(n_jobs=-1)},
+            'over_20': {'log': LogisticRegression(n_jobs=-1)},
+            'over_15': {'log': LogisticRegression(n_jobs=-1)},
+            'over_10': {'log': LogisticRegression(n_jobs=-1)},
+            'over_5': {'log': LogisticRegression(n_jobs=-1)},
+            'under_5': {'log': LogisticRegression(n_jobs=-1)},
         }
         self.position_all_models = {
             'points': {
                 'forestReg': RandomForestRegressor(n_jobs=-1),
                 'linear': LinearRegression(n_jobs=-1),
-                # 'log': LogisticRegression(n_jobs=-1),
+                'log': LogisticRegression(n_jobs=-1),
                 # 'forest': RandomForestClassifier(n_jobs=-1)
             }
         }
         self.pred_target_stats = {
-            'QB': ['passing_yards', 'passing_touchdowns', 'rush_yards', 'rush_touchdowns'],
-            'RB': ['rush_yards', 'rush_touchdowns'],
-            'WR': ['receiving_yards', 'receiving_touchdowns'],
-            'TE': ['receiving_yards', 'receiving_touchdowns']
+            'QB': [
+                'completed_passes', 'attempted_passes', 'passing_yards',
+                'passing_touchdowns', 'interceptions_thrown', 'rush_yards', 
+                'rush_touchdowns'
+            ],
+            'RB': [
+                'rush_yards', 'rush_touchdowns', 'receptions', 'receiving_yards'
+            ],
+            'WR': [
+                'receptions', 'receiving_yards', 'receiving_touchdowns'
+            ],
+            'TE': [
+                'receptions', 'receiving_yards', 'receiving_touchdowns'
+            ]
         }
         self.pred_target_models = {
             'QB': {
+                'completed_passes': {
+                    'linear': LinearRegression(n_jobs=-1),
+                    'forestReg': RandomForestRegressor(n_jobs=-1)
+                },
+                'attempted_passes': {
+                    'linear': LinearRegression(n_jobs=-1),
+                    'forestReg': RandomForestRegressor(n_jobs=-1)
+                },
                 'passing_yards': {
+                    'linear': LinearRegression(n_jobs=-1),
                     'forestReg': RandomForestRegressor(n_jobs=-1)
                 },
                 'passing_touchdowns': {
-                    'lsvc': LinearSVC()
+                    'log': LogisticRegression(n_jobs=-1)
+                },
+                'interceptions_thrown': {
+                    'log': LogisticRegression(n_jobs=-1)
                 },
                 'rush_yards': {
+                    'linear': LinearRegression(n_jobs=-1),
                     'forestReg': RandomForestRegressor(n_jobs=-1)
                 },
                 'rush_touchdowns': {
-                    'lsvc': LinearSVC()
+                    'log': LogisticRegression(n_jobs=-1)
                 }
             },
             'RB': {
                 'rush_yards': {
+                    'linear': LinearRegression(n_jobs=-1),
                     'forestReg': RandomForestRegressor(n_jobs=-1)
                 },
                 'rush_touchdowns': {
-                    'lsvc': LinearSVC()
-                }
+                    'log': LogisticRegression(n_jobs=-1)
+                },
+                'receptions': {
+                    'linear': LinearRegression(n_jobs=-1),
+                    'forestReg': RandomForestRegressor(n_jobs=-1)
+                },
+                'receiving_yards': {
+                    'linear': LinearRegression(n_jobs=-1),
+                    'forestReg': RandomForestRegressor(n_jobs=-1)
+                },
             },
             'WR': {
+                'receptions': {
+                    'linear': LinearRegression(n_jobs=-1),
+                    'forestReg': RandomForestRegressor(n_jobs=-1)
+                },
                 'receiving_yards': {
+                    'linear': LinearRegression(n_jobs=-1),
                     'forestReg': RandomForestRegressor(n_jobs=-1)
                 },
                 'receiving_touchdowns': {
-                    'lsvc': LinearSVC()
+                    'log': LogisticRegression(n_jobs=-1)
                 }
             },
             'TE': {
+                'receptions': {
+                    'linear': LinearRegression(n_jobs=-1),
+                    'forestReg': RandomForestRegressor(n_jobs=-1)
+                },
                 'receiving_yards': {
+                    'linear': LinearRegression(n_jobs=-1),
                     'forestReg': RandomForestRegressor(n_jobs=-1)
                 },
                 'receiving_touchdowns': {
-                    'lsvc': LinearSVC()
+                    'log': LogisticRegression(n_jobs=-1)
                 }
             }
         }
@@ -335,15 +384,16 @@ class Build:
             if val > OLS_THRESHOLD and name != 'const':
                 drops.append(name)
         return drops
-    def createPredTrain_positions(self):
-        print('Creating pred_train and models...')
+    def createPredStats_positions(self):
+        print('Creating pred_stats and models...')
         self.setTrain()
         self.setPredTargets()
         df_list = []
         predInfo = pd.DataFrame(columns=['position', 'num', 'name'])
         for position in self.positions:
             t_cols = self.pred_target_stats[position]
-            train = self.train.loc[self.train['position']==position]
+            train = self.train.copy().loc[self.train['position']==position]
+            train_copy = train.copy()
             targets = self.pred_targets.loc[self.pred_targets['position']==position]
             count = 1
             for col in t_cols:
@@ -363,41 +413,41 @@ class Build:
                         print(f"Position: {position}, Target: {col}, {name} Accuracy: {acc}")
                         preds = model.predict(X)
                         col_name = position + '_pred_' + col + '_' + name
-                        train[col_name] = preds
+                        train_copy[col_name] = preds
                         pickle.dump(model, open((self.models_dir + col_name + '.sav'), 'wb'))
                         predInfo.loc[len(predInfo.index)] = [position, count, col_name]
                         count += 1
-            df_list.append(train)
+            df_list.append(train_copy)
         df = pd.concat(df_list)
-        df = self.train[self.str_cols].merge(df, on=self.str_cols)
-        self.saveFrame(df, "pred_train")
+        # df = self.train[self.str_cols].merge(df, on=self.str_cols)
+        self.saveFrame(df, "pred_stats")
         self.saveFrame(predInfo, 'pred_info')
         self.pred_train = df
         # -----------------------
-        self.setTrain()
-        self.setTarget()
-        df = pd.read_csv("%s.csv" % (self._dir + "pred_train"))
-        for position in self.positions:
-            drop_cols = [col for col in df.columns if col not in self.train.columns and position not in col]
-            X = df.loc[df['position']==position].drop(columns=drop_cols+self.str_cols)
-            target = self.target.loc[self.target['position']==position]
-            for t_col in self.position_all_models:
-                y = target[t_col]
-                scaler = StandardScaler()
-                X: pd.DataFrame = scaler.fit_transform(X)
-                pickle.dump(scaler, open((self.models_dir + position + '_pred_' + t_col + '-scaler.sav'), 'wb'))
-                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-                for modelName in self.position_all_models[t_col]:
-                    model: LinearRegression = self.position_all_models[t_col][modelName]
-                    with warnings.catch_warnings():
-                        warnings.filterwarnings("ignore", category=ConvergenceWarning)
-                        if modelName in self.non_cont_models:
-                            y_train = y_train.round(0)
-                            y_test = y_test.round(0)
-                        model.fit(X_train, y_train)
-                        acc = model.score(X_test, y_test)
-                        print(f"Position: {position}, Target: {t_col}, Model: {modelName}, Accuracy: {acc}")
-                        pickle.dump(model, open((self.models_dir + position + '_pred_' + t_col + '_' + modelName + '.sav'), 'wb'))
+        # self.setTrain()
+        # self.setTarget()
+        # df = pd.read_csv("%s.csv" % (self._dir + "pred_train"))
+        # for position in self.positions:
+        #     drop_cols = [col for col in df.columns if col not in self.train.columns and position not in col]
+        #     X = df.loc[df['position']==position].drop(columns=drop_cols+self.str_cols)
+        #     target = self.target.loc[self.target['position']==position]
+        #     for t_col in self.position_all_models:
+        #         y = target[t_col]
+        #         scaler = StandardScaler()
+        #         X: pd.DataFrame = scaler.fit_transform(X)
+        #         pickle.dump(scaler, open((self.models_dir + position + '_pred_' + t_col + '-scaler.sav'), 'wb'))
+        #         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        #         for modelName in self.position_all_models[t_col]:
+        #             model: LinearRegression = self.position_all_models[t_col][modelName]
+        #             with warnings.catch_warnings():
+        #                 warnings.filterwarnings("ignore", category=ConvergenceWarning)
+        #                 if modelName in self.non_cont_models:
+        #                     y_train = y_train.round(0)
+        #                     y_test = y_test.round(0)
+        #                 model.fit(X_train, y_train)
+        #                 acc = model.score(X_test, y_test)
+        #                 print(f"Position: {position}, Target: {t_col}, Model: {modelName}, Accuracy: {acc}")
+        #                 pickle.dump(model, open((self.models_dir + position + '_pred_' + t_col + '_' + modelName + '.sav'), 'wb'))
         return
     def saveModels(self, showPreds: bool):
         # clear old models
@@ -561,12 +611,13 @@ class Build:
             fdf.sort_values(by=[sort_col], ascending=False, inplace=True)
             self.saveFrame(fdf, ("predictions_" + position))
         return
-    def predTrainPredict_positions(self):
+    def predStatsPredict_positions(self):
         self.setTest()
         predInfo = pd.read_csv("%s.csv" % (self._dir + "pred_info"))
         pred_cols, df_list = [], []
         for position in self.positions:
-            df = self.test.loc[self.test['position']==position]
+            df = self.test.copy().loc[self.test['position']==position]
+            df_copy = df.copy()
             p_info = predInfo.loc[predInfo['position']==position]
             for modelName in p_info['name'].values:
                 col = '_'.join(modelName.split("_")[:-1])
@@ -576,46 +627,47 @@ class Build:
                 print(f'Pred model name: {modelName}')
                 model: LinearRegression = pickle.load(open((self.models_dir + modelName + '.sav'), 'rb'))
                 preds = model.predict(X)
-                df[modelName] = preds
+                df_copy[modelName] = preds
                 pred_cols.append(modelName)
-            df_list.append(df)
+            df_list.append(df_copy)
         new_df = pd.concat(df_list)
-        new_df = self.test[self.str_cols].merge(new_df, on=self.str_cols)
-        self.saveFrame(new_df, 'pred_test')
-        # all_models predictions
-        t_cols = ['points']
-        pred_cols_1, df_list = [], []
-        for position in self.positions:
-            drop_cols = [col for col in new_df.columns if col not in self.test.columns and position not in col]
-            X = new_df.loc[new_df['position']==position]
-            X_copy = X[self.str_cols]
-            X = X.drop(columns=self.str_cols+drop_cols)
-            for col in t_cols:
-                scaler: StandardScaler = pickle.load(open((self.models_dir + position + '_pred_' + col + '-scaler.sav'), 'rb'))
-                X = scaler.transform(X)
-                fns = [fn for fn in os.listdir(self.models_dir) if position in fn and 'pred' in fn and col in fn and 'scaler' not in fn]
-                for fn in fns:
-                    modelName = fn.replace('.sav','')
-                    print('pred model name:', modelName)
-                    model: LogisticRegression = pickle.load(open((self.models_dir + fn), 'rb'))
-                    preds = model.predict(X)
-                    X_copy['pred_' + col + '_' + modelName] = preds
-                pred_cols_1.append('pred_' + col + '_' + modelName)
-            df_list.append(X_copy)
-        new_df = pd.concat(df_list)
-        new_df = new_df.sort_values(by=[pred_cols_1[0]], ascending=False)
-        new_df = new_df.round(0)
-        self.saveFrame(new_df, "pred_predictions")
+        new_df = new_df[self.str_cols+pred_cols]
+        # new_df = self.test[self.str_cols].merge(new_df, on=self.str_cols)
+        self.saveFrame(new_df, 'pred_test_stats')
+        # # all_models predictions
+        # t_cols = ['points']
+        # pred_cols_1, df_list = [], []
+        # for position in self.positions:
+        #     drop_cols = [col for col in new_df.columns if col not in self.test.columns and position not in col]
+        #     X = new_df.loc[new_df['position']==position]
+        #     X_copy = X[self.str_cols]
+        #     X = X.drop(columns=self.str_cols+drop_cols)
+        #     for col in t_cols:
+        #         scaler: StandardScaler = pickle.load(open((self.models_dir + position + '_pred_' + col + '-scaler.sav'), 'rb'))
+        #         X = scaler.transform(X)
+        #         fns = [fn for fn in os.listdir(self.models_dir) if position in fn and 'pred' in fn and col in fn and 'scaler' not in fn]
+        #         for fn in fns:
+        #             modelName = fn.replace('.sav','')
+        #             print('pred model name:', modelName)
+        #             model: LogisticRegression = pickle.load(open((self.models_dir + fn), 'rb'))
+        #             preds = model.predict(X)
+        #             X_copy['pred_' + col + '_' + modelName] = preds
+        #         pred_cols_1.append('pred_' + col + '_' + modelName)
+        #     df_list.append(X_copy)
+        # new_df = pd.concat(df_list)
+        # new_df = new_df.sort_values(by=[pred_cols_1[0]], ascending=False)
+        # new_df = new_df.round(0)
+        # self.saveFrame(new_df, "pred_predictions")
         for position in self.positions:
             temp_df = new_df.loc[new_df['position']==position].dropna(axis=1)
             fdf = pd.read_csv("%s.csv" % (self._dir + "predictions_" + position))
-            pt = pd.read_csv("%s.csv" % (self._dir + "pred_test"))
+            pt = pd.read_csv("%s.csv" % (self._dir + "pred_test_stats"))
             pt_cols = [col for col in pred_cols if position in col]
             pt = pt[self.str_cols+pt_cols]
             fdf = fdf.merge(temp_df, on=self.str_cols)
-            fdf = fdf.merge(pt, on=self.str_cols)
+            # fdf = fdf.merge(pt, on=self.str_cols)
             fdf = fdf.round(1)
-            fdf.sort_values(by=[[col for col in pred_cols_1 if position in col][0]], ascending=False, inplace=True)
+            # fdf.sort_values(by=[[col for col in pred_cols_1 if position in col][0]], ascending=False, inplace=True)
             self.saveFrame(fdf, ("predictions_" + position))
         return
     def setTrain(self):
@@ -743,6 +795,18 @@ class Build:
         lsd.build(11, source.copy(), False)
         print()
         # ---------------------------------------------
+        # build playerRanks if it does not exist
+        f_type = 'playerRanks'
+        pr = PlayerRanks(self.pr_df, self.combineDir(f_type))
+        pr.build(source.copy(), False)
+        print()
+        # ---------------------------------------------
+        # build avgPointsN if it does not exist
+        f_type = 'avgPointsN'
+        apn = AvgPointsN(self.fd, self.combineDir(f_type))
+        apn.buildAvgPointsN(3, source.copy(), False)
+        print()
+        # ---------------------------------------------
         self.joinAll(source)
         print()
         # ---------------------------------------------
@@ -754,9 +818,9 @@ class Build:
         self.saveModels_positions()
         print()
         # # ---------------------------------------------
-        # # use train to create all pred_targets predictions and join
-        # self.createPredTrain_positions()
-        # print()
+        # use train to create all pred_targets predictions and join
+        self.createPredStats_positions()
+        print()
         return
     def new_main(self, week: int, year: int):
         wy = str(week) + ' | ' + str(year)
@@ -862,11 +926,24 @@ class Build:
         df_list.append((lsd.build(11, source.copy(), True), f_type))
         print()
         # ---------------------------------------------
+        # build playerRanks
+        f_type = 'playerRanks'
+        pr = PlayerRanks(self.pr_df, self.combineDir(f_type))
+        df_list.append((pr.build(source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build avgPointsN
+        f_type = 'avgPointsN'
+        apn = AvgPointsN(self.fd, self.combineDir(f_type))
+        df_list.append((apn.buildAvgPointsN(3, source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
         # merge test
         self.joinTest(source, df_list)
         print()
         # ---------------------------------------------
         # check test has same features as train.csv
+        self.setTest()
         self.setTrain()
         if self.train.shape[1] != self.test.shape[1]:
             print('Train shape: ' + str(self.train.shape[1]) + " != Test shape:" + str(self.test.shape[1]))
@@ -882,9 +959,9 @@ class Build:
         self.predict_positions()
         print()
         # # ---------------------------------------------
-        # # make pred_train predictions
-        # self.predTrainPredict_positions()
-        # print()
+        # make pred_train predictions
+        self.predStatsPredict_positions()
+        print()
         return
     
 # END / Build

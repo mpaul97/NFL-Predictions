@@ -89,6 +89,8 @@ def getR0(line):
     line = re.sub(r"[A-Z][a-z]+\'[a-z]+\'[a-z]+", '', line)
     # remove (St. Brown)
     line = re.sub(r"[A-Z][a-z]+\sSt.\sBrown", '', line)
+    # remove (Lukas Van Ness)
+    line = re.sub(r"Van\s[A-Z][a-z]+", '', line)
     # r0 - normal names (Aaron Rodgers)
     r0 = re.findall(r"[A-Z][a-z]+\s[A-Z][a-z]+", line)
     return r0
@@ -420,10 +422,25 @@ def getR48(line):
     r48 = re.findall(r"[A-Z][a-z]+\sSt\.\sBrown", line)
     return r48
 
+# Lukas Van Ness
+def getR49(line):
+    # remove (KaVontae)
+    line = re.sub(r"[A-Z][a-z]+[A-Z][a-z]+", '', line)
+    # remove (Ki-Jana)
+    line = re.sub(r"[A-Z][a-z]+\-[A-Z][a-z]+", '', line)
+    # remove (D'Ernest)
+    line = re.sub(r"[A-Z]\'[A-Z][a-z]+", '', line)
+    # remove (Ja'Quan)
+    line = re.sub(r"[A-Z][a-z]+\'[A-Z][a-z]+", '', line)
+    # remove (St.)
+    line = re.sub(r"St\.", '', line)
+    r49 = re.findall(r"[A-Z][a-z]+\sVan\s[A-Z][a-z]+", line)
+    return r49
+
 #--------------------
 
 # get all names
-def getNames(line, testing):
+def getNames(line, testing: bool = False):
     line = convertPenalties(line)
     all_names = [
         getR0(line), getR1(line), getR2(line), getR3(line), getR4(line), getR5(line),
@@ -434,7 +451,7 @@ def getNames(line, testing):
         getR30(line), getR31(line), getR32(line), getR33(line), getR34(line), getR35(line),
         getR36(line), getR37(line), getR38(line), getR39(line), getR40(line), getR41(line),
         getR42(line), getR43(line), getR44(line), getR45(line), getR46(line), getR47(line),
-        getR48(line)
+        getR48(line), getR49(line)
     ]
     found_names = []
     for index, names in enumerate(all_names):
@@ -556,9 +573,10 @@ def testCombos():
             sentence = sentence.replace('@', name)
             f_names, f_indexes = getNames(sentence, True)
             # print(sentence)
-            print(index, f_names, f_indexes)
-        print()
-    
+            if len(f_indexes) != 1:
+                print(name)
+                print(index, f_names, f_indexes)
+                print()
     return
 
 # test team name to abbr

@@ -77,6 +77,8 @@ def buildNewPointsN(n, source: pd.DataFrame, df: pd.DataFrame, _dir):
 # df = pd.read_csv("%s.csv" % "../../../../data/fantasyData")
 # source = pd.read_csv("%s.csv" % "../source/new_source")
 
-# buildNewPointsN(5, source, df, './')
+# df = buildNewPointsN(5, source, df, './')
+
+# df.to_csv("%s.csv" % "newPoints_5", index=False)
 
 # buildPointsN(5, source, './')

@@ -5,6 +5,7 @@ import pickle
 import regex as re
 import statsmodels.api as sm
 import warnings
+import time
 
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
@@ -38,6 +39,10 @@ try:
     from gamePredictions.features.advancedStarterStats.advancedStarterStats import AdvancedStarterStats
     from gamePredictions.features.short_positionGroupSeasonAvgSnapPcts.positionGroupSeasonAvgSnapPcts import PositionGroupSeasonAvgSnapPcts
     from gamePredictions.features.overUnders.overUnders import OverUnders
+    from gamePredictions.features.coachWinPctPerMonth.CoachWinPctPerMonth import CoachWinPctPerMonth
+    from gamePredictions.features.short_playerRanks.playerRanks import PlayerRanks
+    from gamePredictions.features.short_seasonAvgPossessionEpas.seasonAvgPossessionEpas import SeasonAvgPossessionEpas
+    from gamePredictions.features.short_lastPossessionEpasN.lastPossessionEpasN import LastPossessionEpasN
 except ModuleNotFoundError as error:
     print(error)
     
@@ -56,6 +61,8 @@ class Build:
         self.coaches_path = self.all_paths['cp']
         self.madden_path = self.all_paths['mrp']
         self.snap_path = self.all_paths['sc']
+        self.player_ranks_path = self.all_paths['pr']
+        self.pbp_path = self.all_paths['pbp']
         # dataframes
         self.cd = pd.read_csv("%s.csv" % (self.data_path + "gameData"))
         self.ocd = pd.read_csv("%s.csv" % (self.data_path + "oldGameData_78"))
@@ -68,6 +75,8 @@ class Build:
         self.sum_df = pd.read_csv("%s.csv" % (self.data_path + "summaries"))
         self.adf = pd.read_csv("%s.csv" % (self.data_path + "advancedStats"))
         self.scdf = pd.read_csv("%s.csv" % (self.snap_path + "snap_counts"))
+        self.pr_df = pd.read_csv("%s.csv" % (self.player_ranks_path + "playerRanks_features"))
+        self.epas = pd.read_csv("%s.csv" % (self.pbp_path + "possession_epas"))
         self.position_frames: dict = {
             pos: (pd.read_csv("%s.csv" % (self.position_path + pos + "Data")) if pos not in ['LB', 'DL'] else pd.read_csv("%s.csv" % (self.position_path + "LBDLData")))
             for pos in self.positions
@@ -83,7 +92,7 @@ class Build:
         # models stuff
         self.str_cols = ['key', 'wy', 'home_abbr', 'away_abbr']
         self.target_ols_thresholds = {
-            'away_points': 0.25, 'home_points': 0.3, 'home_won': 0.2,
+            'away_points': 0.1, 'home_points': 0.15, 'home_won': 0.05,
         }
         self.all_models = {
             'won': {
@@ -91,7 +100,8 @@ class Build:
                 'forest': RandomForestClassifier(n_jobs=-1)
             },
             'points': {
-                'linear': LinearRegression(n_jobs=-1)
+                'linear': LinearRegression(n_jobs=-1),
+                'log': LogisticRegression(n_jobs=-1)
             }
         }
         # pred targets info
@@ -117,7 +127,8 @@ class Build:
             },
         }
         self.short_features = [
-            'positionGroupSeasonAvgSnapPcts'
+            'positionGroupSeasonAvgSnapPcts', 'playerRanks', 'seasonAvgPossessionEpas',
+            'lastPossessionEpasN'
         ]
         return
     def printProgressBar(self, iteration, total, prefix = 'Progress', suffix = 'Complete', decimals = 1, length = 50, fill = '█', printEnd = "\r"):
@@ -226,9 +237,13 @@ class Build:
                                 num += 1
                     else:
                         if re.search(r".*[N]$", fn): # fn ends with capital N
-                            filename = [f for f in os.listdir(self.combineDir(fn)) if fn in f and '.csv' in f][0]
-                            filename = filename.replace('short_','')
-                            df = pd.read_csv(self.combineDir(fn) + filename)
+                            if 'short_' in fn:
+                                fn = fn.replace('short_', '')
+                                filename = [f for f in os.listdir(self.combineDir(fn, True)) if fn in f and '.csv' in f][0]
+                                df = pd.read_csv(self.combineDir(fn, True) + filename)
+                            else:
+                                filename = [f for f in os.listdir(self.combineDir(fn)) if fn in f and '.csv' in f][0]
+                                df = pd.read_csv(self.combineDir(fn) + filename)
                         else:
                             df = pd.read_csv("%s.csv" % (self.combineDir(fn) + fn.replace('short_','')))
                         new_df = new_df.merge(df, on=list(source.columns), how='left')
@@ -375,6 +390,8 @@ class Build:
         _all.sort(key=lambda x: x[0])
         new_df = source.copy()
         for _, f, df in _all:
+            if df is None:
+                print(f + " - frame is NONE.")
             new_df = new_df.merge(df, on=list(source.columns), how='left')
         new_df.to_csv("%s.csv" % (self._dir + "test" + suffix), index=False)
         self.test = new_df
@@ -633,6 +650,30 @@ class Build:
         ou.buildOverUnders(source.copy(), False)
         print()
         # ---------------------------------------------
+        # build coachWinPctPerMonth if it does not exist
+        f_type = 'coachWinPctPerMonth'
+        cwpm = CoachWinPctPerMonth(self.cd, self.cdf, self.combineDir(f_type))
+        cwpm.build(source.copy(), False)
+        print()
+        # ---------------------------------------------
+        # build playerRanks if it does not exist
+        f_type = 'playerRanks'
+        pr = PlayerRanks(self.pr_df, self.combineDir(f_type, True))
+        pr.build(source.copy(), False)
+        print()
+        # ---------------------------------------------
+        # build seasonAvgPossessionEpas if it does not exist
+        f_type = 'seasonAvgPossessionEpas'
+        sape = SeasonAvgPossessionEpas(self.epas, self.combineDir(f_type, True))
+        sape.build(source.copy(), False)
+        print()
+        # ---------------------------------------------
+        # build lastPossessionEpasN if it does not exist
+        f_type = 'lastPossessionEpasN'
+        lpen = LastPossessionEpasN(5, self.epas, self.combineDir(f_type, True))
+        lpen.build(source.copy(), False)
+        print()
+        # ---------------------------------------------
         # join all features/create train
         self.joinAll(source, False)
         print()
@@ -668,7 +709,7 @@ class Build:
         # ---------------------------------------------
         # build teamElos
         f_type = 'teamElos'
-        elos = Elos(self.cd, self.combineDir(f_type))
+        elos = Elos(self.cd.copy(), self.combineDir(f_type))
         elos.setRawElos(None)
         elos.update(isNewYear=False)
         df_list.append((elos.createBoth(source.copy(), isNew=True), f_type))
@@ -676,12 +717,12 @@ class Build:
         # ---------------------------------------------
         # build seasonInfo
         f_type = 'seasonInfo'
-        df_list.append((buildNewSeasonInfo(source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewSeasonInfo(source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build pred_standings
         f_type = 'pred_standings'
-        tb = TiebreakerAttributes(self.cd, self.sl, self.combineDir(f_type))
+        tb = TiebreakerAttributes(self.cd.copy(), self.sl, self.combineDir(f_type))
         tb.update()
         ps = PredStandings(self.sl, self.combineDir(f_type))
         ps.updatePredictions()
@@ -690,7 +731,7 @@ class Build:
         # ---------------------------------------------
         # build lastN_5
         f_type = 'avgN'
-        df_list.append((buildNewAvgN(5, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewAvgN(5, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build qbHalfGame
@@ -700,17 +741,17 @@ class Build:
         # ---------------------------------------------
         # build lastWonN
         f_type = 'lastWonN'
-        df_list.append((buildNewLastWonN(20, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewLastWonN(20, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build pointsAllowedN
         f_type = 'pointsAllowedN'
-        df_list.append((buildNewPointsAllowedN(50, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewPointsAllowedN(50, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build playerGrades
         f_type = 'playerGrades'
-        pg_models = PgModels('qb', self.cd, self.combineDir(f_type))
+        pg_models = PgModels('qb', self.cd.copy(), self.combineDir(f_type))
         pg_models.update()
         pg = PlayerGrades('qb', self.combineDir(f_type))
         pg.update(isNewYear=False)
@@ -719,27 +760,27 @@ class Build:
         # ---------------------------------------------
         # build seasonRankings
         f_type = 'seasonRankings'
-        df_list.append((buildNewSeasonRankings(source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewSeasonRankings(source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build pointsN
         f_type = 'pointsN'
-        df_list.append((buildNewPointsN(50, source, self.cd, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewPointsN(50, source, self.cd.copy(), self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build vegaslines
         f_type = 'vegaslines'
-        df_list.append((buildNewVegasLine(source, self.cd, self.tn, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewVegasLine(source, self.cd.copy(), self.tn, self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build matchup info
         f_type = 'matchupInfo'
-        df_list.append((buildNewMatchupInfo(source.copy(), self.cd, self.sl, self.combineDir(f_type)), f_type))
+        df_list.append((buildNewMatchupInfo(source.copy(), self.cd.copy(), self.sl, self.combineDir(f_type)), f_type))
         print()
         # ---------------------------------------------
         # build coachElos
         f_type = 'coachElos'
-        c_elos = CoachElos(self.cd, self.cdf, self.combineDir(f_type))
+        c_elos = CoachElos(self.cd.copy(), self.cdf, self.combineDir(f_type))
         c_elos.setRawElos(None)
         c_elos.update(isNewYear=False)
         df_list.append((c_elos.createBoth(source.copy(), isNew=True), f_type))
@@ -747,7 +788,7 @@ class Build:
         # ---------------------------------------------
         # build playerGrades
         f_type = 'playerGrades'
-        pg_models = PgModels('rb', self.cd, self.combineDir(f_type))
+        pg_models = PgModels('rb', self.cd.copy(), self.combineDir(f_type))
         pg_models.update()
         pg = PlayerGrades('rb', self.combineDir(f_type))
         pg.update(isNewYear=False)
@@ -756,7 +797,7 @@ class Build:
         # ---------------------------------------------
         # build playerGrades
         f_type = 'playerGrades'
-        pg_models = PgModels('wr', self.cd, self.combineDir(f_type))
+        pg_models = PgModels('wr', self.cd.copy(), self.combineDir(f_type))
         pg_models.update()
         pg = PlayerGrades('wr', self.combineDir(f_type))
         pg.update(isNewYear=False)
@@ -807,8 +848,32 @@ class Build:
         # ---------------------------------------------
         # build overUnders
         f_type = 'overUnders'
-        ou = OverUnders(self.cd, self.tn, self.combineDir(f_type))
+        ou = OverUnders(self.cd.copy(), self.tn, self.combineDir(f_type))
         df_list.append((ou.buildOverUnders(source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build coachWinPctPerMonth
+        f_type = 'coachWinPctPerMonth'
+        cwpm = CoachWinPctPerMonth(self.cd.copy(), self.cdf, self.combineDir(f_type))
+        df_list.append((cwpm.build(source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build playerRanks
+        f_type = 'playerRanks'
+        pr = PlayerRanks(self.pr_df, self.combineDir(f_type, True))
+        df_list.append((pr.build(source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build seasonAvgPossessionEpas
+        f_type = 'seasonAvgPossessionEpas'
+        sape = SeasonAvgPossessionEpas(self.epas, self.combineDir(f_type, True))
+        df_list.append((sape.build(source.copy(), True), f_type))
+        print()
+        # ---------------------------------------------
+        # build lastPossessionEpasN
+        f_type = 'lastPossessionEpasN'
+        lpen = LastPossessionEpasN(5, self.epas, self.combineDir(f_type, True))
+        df_list.append((lpen.build(source.copy(), True), f_type))
         print()
         # ---------------------------------------------
         # merge test

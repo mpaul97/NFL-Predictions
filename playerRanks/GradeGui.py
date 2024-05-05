@@ -57,7 +57,7 @@ class GradeGui:
         pid = row['p_id']
         row = row[len(self.merge_cols):]
         row_str = '\n'.join([f"{col}: {value}" for col, value in row.items()])
-        # self.pid.configure(text=pid, foreground=self.o_color, background=self.b_color, font=('Helvetica', 25))
+        self.pid.configure(text=pid, foreground=self.o_color, background=self.b_color, font=('Helvetica', 25))
         self.label.configure(text=row_str, background=self.b_color, foreground=self.w_color, font=('Helvetica', 20))
         return
     def submit(self):

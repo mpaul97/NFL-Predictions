@@ -1,0 +1,30 @@
+{"label":"PERSON","pattern":"Ha Ha Clinton-Dix"}
+{"label":"PERSON","pattern":"Robert Griffin III"}
+{"label":"PERSON","pattern":"Brian De La Puente"}
+{"label":"PERSON","pattern":"C.J. Ah You"}
+{"label":"PERSON","pattern":"Tyrion Davis-Price"}
+{"label":"PERSON","pattern":"Yetur Gross-Matos"}
+{"label":"PENALTY","pattern":"Horse Collar Tackle"}
+{"label":"PENALTY","pattern":"Low Block"}
+{"label":"PENALTY","pattern":"Unnecessary Roughness"}
+{"label":"PENALTY","pattern":"False Start"}
+{"label":"PENALTY","pattern":"Offside on Free Kick"}
+{"label":"PENALTY","pattern":"Neutral Zone Infraction"}
+{"label":"PENALTY","pattern":"Defensive Pass Interference"}
+{"label":"PENALTY","pattern":"Offensive Pass Interference"}
+{"label":"PENALTY","pattern":"Defensive Holding"}
+{"label":"PENALTY","pattern":"Offensive Holding"}
+{"label":"PENALTY","pattern":"Defensive Offside"}
+{"label":"PENALTY","pattern":"Offensive Offside"}
+{"label":"PENALTY","pattern":"Illegal Block Above the Waist"}
+{"label":"PENALTY","pattern":"Illegal Use of Hands"}
+{"label":"PENALTY","pattern":"Illegal Formation"}
+{"label":"PENALTY","pattern":"Illegal Touch Pass"}
+{"label":"PENALTY","pattern":"Illegal Motion"}
+{"label":"PENALTY","pattern":"Ineligible Downfield Kick"}
+{"label":"PENALTY","pattern":"Ineligible Downfield Pass"}
+{"label":"PENALTY","pattern":"Delay of Game"}
+{"label":"PENALTY","pattern":"Unsportsmanlike Conduct"}
+{"label":"PENALTY","pattern":"Defensive 12 On-field"}
+{"label":"PENALTY","pattern":"Offensive 12 On-field"}
+{"label":"PENALTY","pattern":"Tripping"}

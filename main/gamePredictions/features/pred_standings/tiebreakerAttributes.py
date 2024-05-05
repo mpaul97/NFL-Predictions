@@ -98,7 +98,8 @@ class TiebreakerAttributes:
         # self.df = self.df.loc[self.df['wy'].str.contains('2022')]
         # self.df.reset_index(drop=True, inplace=True)
         for index, row in self.df.iterrows():
-            self.printProgressBar(index, len(self.df.index), 'TiebreakerAttributes Progress')
+            if len(self.df.index) > 1000:
+                self.printProgressBar(index, len(self.df.index), 'TiebreakerAttributes Progress')
             key = row['key']
             wy = row['wy']
             week = int(wy.split(" | ")[0])

@@ -5,12 +5,18 @@ import datetime
 import random
 import regex as re
 import pickle
+from functools import reduce
+from ordered_set import OrderedSet
 
-from GradeGui import GradeGui
+try:
+    from GradeGui import GradeGui
+except ModuleNotFoundError as e:
+    print(e)
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.ensemble import RandomForestRegressor
 
 np.set_printoptions(suppress=True)
 pd.options.mode.chained_assignment = None
@@ -36,26 +42,56 @@ class Main:
             'RB': [
                 'yards_from_scrimmage', 'total_touchdowns', 'rush_yards_per_attempt',
                 'rush_yards', 'receiving_yards', 'total_touches'
+            ],
+            'WR': [
+                'receiving_yards', 'receiving_touchdowns', 'receiving_yards_per_reception',
+                'times_pass_target'
+            ],
+            'TE': [
+                'receiving_yards', 'receiving_touchdowns', 'receiving_yards_per_reception',
+                'times_pass_target'
+            ],
+            'OL': [
+                'times_sacked', 'yards_lost_from_sacks', 'sack_percentage', 
+                'rush_yards_per_attempt'
+            ],
+            'DL': [
+                'sacks', 'combined_tackles', 'tackles_for_loss',
+                'quarterback_hits'
+            ],
+            'LB': [
+                'sacks', 'combined_tackles', 'tackles_for_loss',
+                'quarterback_hits', 'interceptions'
+            ],
+            'DB': [
+                'interceptions', 'passes_defended', 'combined_tackles',
+                'solo_tackles'
             ]
         }
-        self.agg_stats = {
-            'QB': {
-                'passing_yards': 'mean', 'passing_touchdowns': 'sum', 'interceptions_thrown': 'sum',
-                'quarterback_rating': 'mean', 'rush_touchdowns': 'sum', 'completion_percentage': 'mean',
-                'times_sacked': 'sum', 'isStarter': 'sum', 'off_pct': 'mean'
-            },
-            'RB': {
-                'rush_yards': 'mean', 'yards_from_scrimmage': 'mean', 'total_touchdowns': 'sum',
-                'rush_yards_per_attempt': 'mean', 'receiving_yards': 'mean', 'total_touches': 'mean',
-                'isStarter': 'sum', 'off_pct': 'mean'
-            }
+        self.sample_pids = {
+            'QB' : [
+                'DobbJo00', 'PurdBr00', 'RiddDe00',
+                'AlleJo02', 'HerbJu00', 'OConAi00',
+                'HurtJa00'
+            ],
+            'TE': [
+                'KelcTr00', 'HockTJ00', 'KittGe00',
+                'KmetCo00', 'MusgLu00', 'HenrHu00',
+                'MoreFo00', 'HursHa00', 'BellDa00'
+            ]
         }
         self.merge_cols = ['p_id', 'key', 'abbr', 'wy']
+        self.position_out_sizes = {
+            'QB': 1, 'RB': 2, 'WR': 3, 'TE': 1, 'OL': 5,
+            'DL': 3, 'LB': 3, 'DB': 4
+        }
         # frames
         self.df: pd.DataFrame = None
         self.train: pd.DataFrame = None
         self.all_data: pd.DataFrame = None
         self.grades: pd.DataFrame = None
+        self.ranks: pd.DataFrame = None
+        self.all_grades: pd.DataFrame = None
         self.cd = pd.read_csv("%s.csv" % (self.game_dir + "gameData"))
         self.snaps = pd.read_csv("%s.csv" % (self.snap_dir + "snap_counts"))
         self.sdf = pd.read_csv("%s.csv" % (self.starters_dir + "allStarters"))
@@ -79,25 +115,48 @@ class Main:
     def get_is_starter(self, row: pd.Series):
         starters = self.sdf.loc[(self.sdf['key']==row['key'])&(self.sdf['abbr']==row['abbr']), 'starters'].values[0]
         return 1 if row['p_id'] in starters else 0
-    def get_per_game_data(self, position: str):
+    def get_career_starts(self, row: pd.Series):
+        all_starts = '|'.join(self.sdf.loc[self.sdf['datetime']<row['datetime'], 'starters'].values)
+        return all_starts.count(row['p_id'])
+    def get_per_game_data(self, position: str, updating: bool = False):
         self.set_df(position)
+        if updating:
+            start = self.df.loc[self.df['wy'].str.contains('2023')].index.values[0]
+            self.df = self.df.loc[self.df.index>=start]
+            self.df: pd.DataFrame = self.df.reset_index(drop=True)
+        else:
+            start = self.df.loc[self.df['wy'].str.contains('2012')].index.values[0]
+            self.df = self.df.loc[self.df.index>=start]
+            self.df: pd.DataFrame = self.df.reset_index(drop=True)
         df = self.df.copy()
-        start = df.loc[df['wy'].str.contains('2012')].index.values[0]
-        df: pd.DataFrame = df.loc[df.index>=start]
-        df = df.reset_index(drop=True)
         df = df[self.merge_cols+self.target_stats[position]]
         pct_col = 'off_pct' if position in self.off_positions else 'def_pct'
         snaps = self.snaps[self.merge_cols+[pct_col]]
         df = df.merge(snaps, on=self.merge_cols)
         df['isStarter'] = df.apply(lambda x: self.get_is_starter(x), axis=1)
+        if position in ['WR', 'TE']:
+            cd = self.cd[[
+                'key', 'home_abbr', 'away_abbr', 
+                'home_pass_attempts', 'away_pass_attempts'
+            ]]
+            home_cd = cd[['key', 'home_abbr', 'home_pass_attempts']]
+            home_cd.columns = ['key', 'abbr', 'pass_attempts']
+            away_cd = cd[['key', 'away_abbr', 'away_pass_attempts']]
+            away_cd.columns = ['key', 'abbr', 'pass_attempts']
+            cd = pd.concat([home_cd, away_cd])
+            df = df.merge(cd, on=['key', 'abbr'])
+            df['target_percentage'] = df.apply(lambda x: x['times_pass_target']/x['pass_attempts'], axis=1)
+            df.drop(columns=['pass_attempts'], inplace=True)
         return df
-    def build_all_train(self, position: str):
+    def build_all_train(self, position: str, updating: bool = False):
         """
-        Build/collect ALL training data for position
+        Build/collect ALL training data for position,
+        OR only 2023 data when updating
         Args:
             position (str): train position
+            updating (bool): when True get only 2023 data
         """
-        df = self.get_per_game_data(position)
+        df = self.get_per_game_data(position, updating)
         df_list = []
         wys = list(set(df['wy']))
         for wy in wys:
@@ -105,7 +164,7 @@ class Main:
             season = (year-1) if week == 1 else year
             start = df.loc[df['wy']==wy].index.values[0]
             data: pd.DataFrame = df.loc[(df.index<start)&(df['wy'].str.contains(str(season)))]
-            stats = data.groupby(['p_id']).agg(self.agg_stats[position])
+            stats = data.groupby(['p_id']).mean()
             stats['wy'] = wy
             stats.sort_values(by=[self.target_stats[position][0]], ascending=False, inplace=True)
             df_list.append(stats)
@@ -117,18 +176,26 @@ class Main:
         last_wy = df['wy'].values[-1]
         last_week, last_year = [int(w) for w in (last_wy).split(" | ")]
         data: pd.DataFrame = df.loc[df['wy'].str.contains(str(last_year))]
-        stats = data.groupby(['p_id']).agg(self.agg_stats[position])
+        stats = data.groupby(['p_id']).mean()
         stats['wy'] = str(last_week+1) + " | " + str(last_year)
         stats.reset_index(inplace=True)
         stats.sort_values(by=[self.target_stats[position][0]], ascending=False, inplace=True)
         new_df = pd.concat([new_df, stats])
         # end add stats
-        new_df.rename(columns={'isStarter': 'starts', 'off_pct': 'snap_pct'}, inplace=True)
+        snap_col = 'off_pct' if position in self.off_positions else 'def_pct'
+        new_df.rename(columns={'isStarter': 'starts', snap_col: 'snap_pct'}, inplace=True)
+        # career starts for OL
+        if position == 'OL':
+            new_df = self.add_datetime_columns(new_df)
+            self.sdf = self.add_datetime_columns(self.sdf)
+            new_df['career_starts'] = new_df.apply(lambda x: self.get_career_starts(x), axis=1)
+            new_df.drop(columns=['week', 'year', 'datetime'], inplace=True)
         new_df = new_df.round(2)
         new_df.sort_values(by=['key'], inplace=True)
-        self.save_frame(new_df, (self.data_dir + position + "_all"))
-        return
-    def build_sample(self, position: str):
+        if not updating:
+           self.save_frame(new_df, (self.data_dir + position + "_all"))
+        return new_df
+    def build_sample(self, position: str, sample_pids: list[str] = None):
         """
         Build/collect training data for position and display
         GUI to get user inputted grades
@@ -136,7 +203,8 @@ class Main:
             position (str): train position
         """
         self.set_all_data(position)
-        df = self.all_data.sample(n=50, random_state=random.randrange(1, 42))
+        self.all_data = self.all_data.loc[(self.all_data['wy'].str.contains('2023'))&(self.all_data['p_id'].isin(sample_pids))].reset_index(drop=True) if sample_pids else self.all_data
+        df = self.all_data.sample(n=50 if not sample_pids else 20, random_state=random.randrange(1, 42))
         gg = GradeGui(df, self.merge_cols)
         df['grade'] = gg.radio_values
         # filenaming
@@ -156,7 +224,8 @@ class Main:
         pickle.dump(scaler, open(self.models_dir + position + "_scaler.sav", "wb"))
         y = data['grade']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        model = LogisticRegression()
+        # model = LogisticRegression() if position not in ['WR', 'OL'] else LinearRegression()
+        model = RandomForestRegressor()
         model.fit(X_train, y_train)
         acc = model.score(X_test, y_test)
         print(f"Accuracy: {acc}")
@@ -171,41 +240,200 @@ class Main:
         preds = self.model.predict(X)
         df = self.all_data[self.merge_cols]
         df['grade'] = preds
+        self.set_df(position)
+        new_df = self.df.loc[self.df['wy']=='1 | 2012', self.merge_cols]
+        new_df['grade'] = [random.uniform(1.0, 3.0) for _ in range(len(new_df.index))]
+        df = pd.concat([new_df, df])
+        df = df.round(2)
         self.save_frame(df, (self.data_dir + position + "_grades"))
+        return
+    def build_all_grades(self):
+        for position in self.positions:
+            try:
+                self.predict_all(position)
+            except ValueError:
+                print(f"{position} features not aligned.")
+                return
         return
     def test_grades(self, position: str):
         self.set_grades(position)
-        df = self.grades.loc[self.grades['wy']=='11 | 2023']
-        df.sort_values(by=['grade'], ascending=False, inplace=True)
-        print(df['p_id'].values)
-        # means = df.groupby(['p_id']).mean()
-        # means.sort_values(by=['grade'], ascending=False, inplace=True)
-        # for index, row in means.iterrows():
-        #     print(index, row['grade'])
+        df = self.grades.loc[self.grades['wy'].str.contains('2023')]
+        means = df.groupby(['p_id']).mean()
+        means.sort_values(by=['grade'], ascending=False, inplace=True)
+        for index, row in means.iterrows():
+            print(index, row['grade'])
         return
-    def build_ranks(self):
+    def build_ranks(self, updating: bool = False):
         grades = { fn[:2]: pd.read_csv(self.data_dir + fn) for fn in os.listdir(self.data_dir) if '_grades' in fn }
-        new_df = pd.DataFrame
+        df_list = []
         for pos in grades:
+            rank_col = pos.lower() + 's'
+            new_df = pd.DataFrame(columns=['wy', 'abbr', rank_col])
             df: pd.DataFrame = grades[pos]
             wys = list(set(df['wy']))
-            wys = ['8 | 2023']
-            for wy in wys:
-                year = wy.split(" | ")[1]
+            if updating:
+                wys = [wy for wy in wys if '2023' in wy]
+            for index, wy in enumerate(wys):
+                self.print_progress_bar(index, len(wys), (pos + " - playerRanks"))
+                week, year = [int(w) for w in wy.split(" | ")]
+                season = str(year) if week != 1 else str(year - 1)
                 s0 = df.loc[df['wy']==wy].index.values[0]
-                data: pd.DataFrame = df.loc[(df.index<s0)&(df['wy'].str.contains(year))]
-                total_weeks = len(set(data['wy']))
-                s1 = self.sdf.loc[self.sdf['wy']==wy].index.values[0]
-                starters = '|'.join(self.sdf.loc[(self.sdf.index<s1)&(self.sdf['wy'].str.contains(year)), 'starters'].values)
+                data: pd.DataFrame = df.loc[(df.index<s0)&(df['wy'].str.contains(season))]
+                # total_weeks = len(set(data['wy']))
+                try:
+                    s1 = self.sdf.loc[self.sdf['wy']==wy].index.values[0]
+                    starters = '|'.join(self.sdf.loc[(self.sdf.index<s1)&(self.sdf['wy'].str.contains(season)), 'starters'].values)
+                except IndexError: # current week, no starters -> use all
+                    starters = '|'.join(self.sdf.loc[self.sdf['wy'].str.contains(season), 'starters'].values)
                 means = data.groupby(['p_id', 'abbr']).mean()
                 means.reset_index(inplace=True)
-                means['grade'] = means.apply(lambda x: x['grade'] + ((starters.count(x['p_id'])/total_weeks)*3), axis=1)
+                # means['grade'] = means.apply(lambda x: x['grade'] + ((starters.count(x['p_id'])/total_weeks)*3), axis=1)
+                means['grade'] = means.apply(lambda x: x['grade'] if (starters.count(x['p_id'])) != 0 else (x['grade'] - 3), axis=1)
                 means = means.round(2)
                 abbrs = list(set(means['abbr']))
                 for abbr in abbrs:
                     info = means.loc[means['abbr']==abbr, ['p_id', 'grade']].sort_values(by=['grade'], ascending=False)
                     pids = '|'.join(info['p_id'].values)
-                    print(pids)
+                    new_df.loc[len(new_df.index)] = [wy, abbr, pids]
+            df_list.append(new_df)
+        rank_df = reduce(lambda x, y: pd.merge(x, y, on=['wy', 'abbr']), df_list)
+        rank_df = self.add_datetime_columns(rank_df)
+        rank_df.sort_values(by=['datetime'], inplace=True)
+        rank_df.drop(columns=['week', 'year', 'datetime'], inplace=True)
+        rank_df = rank_df[['wy', 'abbr']+[(pos.lower() + 's') for pos in self.positions]]
+        if not updating:
+            temp_df = rank_df.loc[rank_df['wy']=='2 | 2012']
+            temp_df['wy'] = '1 | 2012'
+            rank_df = pd.concat([temp_df, rank_df])
+            self.save_frame(rank_df, "playerRanks")
+        return rank_df
+    def get_starters(self, starters: str, position: str):
+        return [s.replace(":" + position, "") for s in starters.split("|") if position in s]
+    def get_starters_grades(self, row: pd.Series, position: str):
+        # season = row['year'] if row['week'] != 1 else (row['year'] - 1)
+        df = self.all_grades
+        grades = df.loc[
+            (df['datetime']<row['datetime'])&
+            (df['p_id'].isin(self.get_starters(row['starters'], position))), 
+            'grade'
+        ].values
+        if position in ['RB']:
+            try:
+                grades = df.loc[
+                    (df['datetime']<row['datetime'])&
+                    (df['p_id']==self.get_starters(row['starters'], position)[0]), 
+                    'grade'
+                ].values
+            except IndexError:
+                grades = []
+        return np.mean(grades) if len(grades) != 0 else 0
+    def get_rb_committee(self, row: pd.Series):
+        rbs =  row['rbs'].split("|")[:2]
+        df = self.all_grades
+        rb1_grades = df.loc[
+            (df['datetime']<row['datetime'])&
+            (df['p_id']==rbs[0]), 
+            'grade'
+        ].mean()
+        try:
+            rb2_grades = df.loc[
+                (df['datetime']<row['datetime'])&
+                (df['p_id']==rbs[1]), 
+                'grade'
+            ].mean()
+        except IndexError:
+            rb2_grades = 0
+        rb1_grades = rb1_grades if not pd.isna(rb1_grades) else 0
+        rb2_grades = rb2_grades if not pd.isna(rb2_grades) else 0
+        return 1 if abs(rb1_grades - rb2_grades) <= 1 else 0
+    def get_out(self, row: pd.Series, index: int, l_pos: str):
+        try:
+            return 1 if (row[l_pos + 's'].split("|")[index]) not in row['starters'] else 0
+        except IndexError:
+            return 0
+        return
+    def features(self, updating: bool = False):
+        self.set_ranks()
+        self.ranks = self.add_datetime_columns(self.ranks)
+        self.set_all_grades()
+        self.all_grades = self.add_datetime_columns(self.all_grades)
+        if updating:
+            last_week = self.ranks['wy'].values[-1].split(" | ")[0]
+            curr_starters = pd.read_csv("%s.csv" % (self.game_dir + "starters_23/starters_w" + last_week))
+            self.sdf = pd.concat([self.sdf, curr_starters])
+            self.ranks = self.ranks.loc[self.ranks['wy']==self.ranks['wy'].values[-1]]
+        sdf = self.sdf[['wy', 'abbr', 'starters']]
+        self.ranks.fillna('', inplace=True)
+        df = self.ranks.merge(sdf, on=['wy', 'abbr'], how='left')
+        df.dropna(inplace=True)
+        cols = []
+        for position in self.positions:
+            print(f"Collecting features for {position}...")
+            l_pos = position.lower()
+            for i in range(self.position_out_sizes[position]):
+                out_name = l_pos + str(i + 1) + '_out'
+                df[out_name] = df.apply(lambda x: self.get_out(x, i, l_pos), axis=1)
+                cols.append(out_name)
+            df['starting_' + l_pos + 's_grade'] = df.apply(lambda x: self.get_starters_grades(x, position), axis=1)
+            cols.append('starting_' + l_pos + 's_grade')
+        df['rbs_committee'] = df.apply(lambda x: self.get_rb_committee(x), axis=1)
+        cols.append('rbs_committee')
+        df = df[['wy', 'abbr']+cols]
+        df.fillna(df.mean(), inplace=True)
+        df = df.round(3)
+        if not updating:
+            self.save_frame(df, "playerRanks_features")
+        return df
+    def update(self):
+        """
+        Update all_data, grades, and playerRanks
+        """
+        rank_df = pd.read_csv("%s.csv" % (self._dir + "playerRanks"))
+        last_rank_wy = rank_df['wy'].values[-1]
+        last_week, last_year = [int(w) for w in self.cd['wy'].values[-1].split(" | ")]
+        next_wy = str(last_week + 1) + " | " + str(last_year)
+        if last_rank_wy == next_wy:
+            print("playerRanks up-to-date.")
+        else:
+            print("Updating playerRanks...")
+            for position in self.positions:
+                print(f"Updating all and grades - {position}...")
+                self.set_all_data(position)
+                new_df = self.build_all_train(position, True)
+                df = self.all_data.loc[~self.all_data['wy'].isin(new_df['wy'])]
+                df = pd.concat([df, new_df])
+                self.save_frame(df, (self.data_dir + position + "_all"))
+                self.predict_all(position)
+            # update ranks
+            df = self.build_ranks(True)
+            rank_df = rank_df.loc[~rank_df['wy'].isin(df['wy'])]
+            rank_df = pd.concat([rank_df, df])
+            self.save_frame(rank_df, (self._dir + "playerRanks"))
+        fdf = pd.read_csv("%s.csv" % (self._dir + "playerRanks_features"))
+        last_rank_wy = fdf['wy'].values[-1]
+        last_week, last_year = [int(w) for w in self.cd['wy'].values[-1].split(" | ")]
+        next_wy = str(last_week + 1) + " | " + str(last_year)
+        overwrite = input('Overwrite (y/n): ')
+        if overwrite != 'y' and last_rank_wy == next_wy:
+            print("playerRanks_features up-to-date.")
+        elif overwrite == 'y':
+            print("Overwriting playerRanks_features...")
+            fdf = fdf.loc[fdf['wy']!=next_wy]
+            df = self.features(updating=True)
+            fdf = pd.concat([fdf, df])
+            self.save_frame(fdf, (self._dir + "playerRanks_features"))
+        else:
+            print("Updating playerRanks_features...")
+            df = self.features(updating=True)
+            fdf = pd.concat([fdf, df])
+            self.save_frame(fdf, (self._dir + "playerRanks_features"))
+        return
+    def set_all_grades(self):
+        self.all_grades = pd.concat([pd.read_csv(self.data_dir + fn) for fn in os.listdir(self.data_dir) if 'grades' in fn])
+        self.all_grades.sort_values(by=['key', 'abbr'], inplace=True)
+        return
+    def set_ranks(self):
+        self.ranks = pd.read_csv("%s.csv" % (self._dir + "playerRanks"))
         return
     def set_grades(self, position: str):
         self.grades = pd.read_csv("%s.csv" % (self.data_dir + position + "_grades"))
@@ -223,7 +451,12 @@ class Main:
         self.all_data = pd.read_csv("%s.csv" % (self.data_dir + position + "_all"))
         return
     def set_df(self, position: str):
-        self.df = pd.read_csv("%s.csv" % (self.position_dir + position + "Data")) if position not in ['DL', 'LB'] else pd.read_csv("%s.csv" % (self.position_dir + "LBDLData"))
+        if position != 'OL':
+            self.df = pd.read_csv("%s.csv" % (self.position_dir + position + "Data")) if position not in ['DL', 'LB'] else pd.read_csv("%s.csv" % (self.position_dir + "LBDLData"))
+            if position in ['DL', 'LB']:
+                self.df = self.df.loc[self.df['position']==position].reset_index(drop=True)
+        else:
+            self.df = pd.read_csv("%s.csv" % (self.position_dir + "OLStatsData/OLStatsData"))
         self.df.rename(columns={'game_key': 'key'}, inplace=True)
         return
     def save_frame(self, df: pd.DataFrame, name: str):
@@ -255,18 +488,28 @@ class Main:
 
 ##################
 
-m = Main(
-    _dir="./"
-)
+# m = Main(
+#     _dir="./"
+# )
 
-position = 'RB'
+# position = 'RB'
 
 # m.build_all_train(position)
 
-# m.build_sample(position)
-
+# m.build_sample(position, m.sample_pids[position])
 # m.save_model(position)
 # m.predict_all(position)
+# m.build_all_grades()
 # m.test_grades(position)
 
-m.build_ranks()
+# m.build_sample(position)
+# m.save_model(position)
+# m.predict_all(position)
+# m.build_all_grades()
+# m.test_grades(position)
+
+# m.build_ranks()
+
+# m.features()
+
+# m.update()

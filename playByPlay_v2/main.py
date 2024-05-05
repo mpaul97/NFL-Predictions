@@ -3,9 +3,9 @@ import numpy as np
 import os
 import datetime
 import random
-import tkinter as tk
 
-from guis import LabelSelector, PlayTypes
+from collect import Collect
+from processing import Processing
 
 pd.options.mode.chained_assignment = None
 
@@ -13,129 +13,24 @@ class Main:
     def __init__(self, _dir):
         self._dir = _dir
         self.data_dir = self._dir + "data/"
-        self.raw_tables_dir = self.data_dir + "raw/"
-        self.clean_tables_dir = self.data_dir + "clean/"
-        self.labels_dir = self.data_dir + "labels/"
-        # external paths
-        self.tn_dir = self._dir + "../teamNames/"
+        self.features_dir = self._dir + "data/features/"
+        self.game_data_dir = self._dir + "../data/"
+        self.position_data_dir = self.game_data_dir + "positionData/"
         # frames
-        self.alt_abbrs = pd.read_csv("%s.csv" % (self.tn_dir + "altAbbrs"))
         self.df: pd.DataFrame = None
+        self.gd = pd.read_csv("%s.csv" % (self.game_data_dir + "gameData"))
+        # features
+        self.feature_funcs = [
+            self.possession_epas_feature, self.qb_career_epas_feature
+        ]
         # info
-        self.label_cols = ['primary_key', 'key', 'num', 'detail']
-        self.play_types = [
-            'pass', 'run', 'sack', 'penalty', 'punt',
-            'kickoff', 'field_goal', 'extra_point', 'coin_toss',
-        ]
-        self.valid_quarters = [
-            np.nan, '1.0', '2', '4', '4.0', 
-            '1', '3', '2.0', 'OT', '3.0',
-            1, 2, 3, 4
-        ]
+        self.datetime_cols = ['week', 'year', 'datetime']
         return
-    def createPbpColumnInfo(self):
-        """
-        Find all column structures
-        """
-        fns = os.listdir(self.raw_tables_dir)
-        all_cols = []
-        for index, fn in enumerate(fns):
-            self.printProgressBar(index, len(fns), 'Collecting columns')
-            df = pd.read_csv((self.tables_dir + fn), compression="gzip")
-            [all_cols.append(col) for col in df.columns if col not in all_cols]
-        with open((self.data_dir + 'pbp_columns.txt'), 'w') as f:
-            f.write('\n'.join(all_cols))
-        f.close()
-        return
-    def createAllData(self):
-        """
-        Concat all tables and write all detail lines to .txt file
-        """
-        df_list = []
-        file = open((self.data_dir + "allDetails.txt"), "w")
-        fns = os.listdir(self.clean_tables_dir)
-        for index, fn in enumerate(fns):
-            self.printProgressBar(index, len(fns), 'Concatenating/creating all data')
-            df = pd.read_csv(self.clean_tables_dir + fn)
-            df = df.loc[df['quarter'].isin(self.valid_quarters)]
-            df.insert(0, 'primary_key', [(fn.replace('.csv','') + '-' + str(i)) for i in range(len(df.index))])
-            df.insert(1, 'key', fn.replace('.csv',''))
-            df.insert(2, 'num', [i for i in range(len(df.index))])
-            df_list.append(df)
-            df = df[['detail']]
-            df.dropna(inplace=True)
-            file.write('\n'.join(df['detail']))
-        file.close()
-        self.saveFrame(pd.concat(df_list), (self.data_dir + "allTables"))
-        return
-    def addSelectedLabels(self, df: pd.DataFrame, labelName: str):
-        """
-        Creates LabelSelector UI to get user input labels
-        and adds to dataframe
-        Args:
-            df (pd.DataFrame): ['primary_key', 'key', 'num', 'detail']
-        """
-        root = tk.Tk()
-        ls = LabelSelector(root, labelName, list(df['detail']))
-        root.mainloop()
-        df[labelName] = ls.selected_values
-        return df
-    def addPlayTypeLabels(self, df: pd.DataFrame):
-        """
-        Creates PlayTypes UI to get user input labels
-        and adds to dataframe
-        Args:
-            df (pd.DataFrame): ['primary_key', 'key', 'num', 'detail']
-        """
-        root = tk.Tk()
-        pt = PlayTypes(root, list(df['detail']))
-        root.mainloop()
-        for key in pt.selected_values:
-            df[key] = pt.selected_values[key]
-        return df
-    def createLabels(self, labelName: str, game_key: str = ''):
-        self.setDf()
-        self.df = self.df.dropna(subset=['detail'])
-        new_df = pd.DataFrame()
-        if (labelName + '.csv') in os.listdir(self.labels_dir):
-            new_df = pd.read_csv("%s.csv" % (self.labels_dir + labelName))
-            print('Adding to existing...')
-        if not new_df.empty: # remove used primary keys
-            self.df = self.df.loc[~self.df['primary_key'].isin(new_df['primary_key'])]
-        if game_key == '':# random sample of details
-            sample = random.sample(list(self.df.index), 100)
-            df = self.df.loc[self.df.index.isin(sample)]
-            print("Using random sample.")
-        else:
-            df = self.df.loc[self.df['key']==game_key]
-            print(f"Using {game_key}.")
-        df = df[self.label_cols]
-        df = self.addSelectedLabels(df, labelName)
-        self.saveFrame(pd.concat([new_df, df]), (self.labels_dir + labelName))
-        return
-    def createLabels_playTypes(self):
-        self.setDf()
-        self.df = self.df.dropna(subset=['detail'])
-        o_df = pd.DataFrame()
-        if 'play_types.csv' in os.listdir(self.labels_dir):
-            o_df = pd.read_csv("%s.csv" % (self.labels_dir + 'play_types'))
-            print('Adding to existing play_types...')
-        if not o_df.empty: # remove used primary keys
-            self.df = self.df.loc[~self.df['primary_key'].isin(o_df['primary_key'])]
-        # random sample
-        sample = random.sample(list(self.df.index), 100)
-        df = self.df.loc[self.df.index.isin(sample)]
-        df = df[self.label_cols]
-        df = self.addPlayTypeLabels(df)
-        self.saveFrame(df, (self.labels_dir + 'play_types'))
-        return
-    def setDf(self):
-        self.df = pd.read_csv("%s.csv" % (self.data_dir + "allTables"))
-        return
-    def saveFrame(self, df: pd.DataFrame, name: str):
+    # helpers
+    def save_frame(self, df: pd.DataFrame, name: str):
         df.to_csv("%s.csv" % name, index=False)
         return
-    def printProgressBar(self, iteration, total, prefix = 'Progress', suffix = 'Complete', decimals = 1, length = 50, fill = '█', printEnd = "\r"):
+    def print_progress_bar(self, iteration, total, prefix = 'Progress', suffix = 'Complete', decimals = 1, length = 50, fill = '█', printEnd = "\r"):
         """
         Call in a loop to create terminal progress bar
         @params:
@@ -156,17 +51,108 @@ class Main:
         if iteration == total: 
             print()
         return
+    def get_datetime(self, week: int, year: int):
+        return datetime.datetime.strptime(f'{year}-W{week}-1', "%Y-W%W-%w")
+    def add_datetime_columns(self, df: pd.DataFrame):
+        df['week'] = [int(wy.split(" | ")[0]) for wy in df['wy'].values]
+        df['year'] = [int(wy.split(" | ")[1]) for wy in df['wy'].values]
+        df['datetime'] = [self.get_datetime(week, year) for week, year in df[['week', 'year']].values]
+        return df
+    # END helpers
+    # getters/setters
+    def get_df(self):
+        """
+        PBP total
+        Returns:
+            pd.DataFrame: merge DataFrame
+        """
+        df = Processing("./").get_total_pbp()
+        df['location'] = df['location'].astype(str)
+        df = df.loc[~df['location'].str.contains('Overtime')]
+        df = self.gd[['key', 'wy']].merge(df, on=['key'])
+        df: pd.DataFrame = self.add_datetime_columns(df)
+        df['epa'] = df['epa'].astype(float)
+        df['epb'] = df['epb'].astype(float)
+        df['epa_added'] = df.apply(lambda row: row['epa']-row['epb'], axis=1)
+        df = df.loc[~pd.isna(df['epa_added'])]
+        return df
+    # END getters/setters
+    def update_all(self):
+        """
+        Write new tables, clean tables, update allTables
+        Update/create names, possessions, and entities
+        """
+        collect = Collect("./")
+        collect.updateTables()
+        processing = Processing("./")
+        processing.update()
+        return
+    def possession_epas_feature(self, df: pd.DataFrame):
+        """
+        Get offensive and defensive EPA added (EPA - EPB) + total EPA for each game
+        Args:
+            df (pd.DataFrame): total_pbp
+        """
+        fn = "possession_epas"
+        if f'{fn}.csv' in os.listdir(self.features_dir):
+            print(f"{fn} already created.")
+            return
+        edf = df.groupby(by=['key', 'possession']).mean()[['epa_added', 'epa']]
+        edf = edf.reset_index()
+        edf.columns = ['key', 'abbr', 'epa_added', 'epa']
+        new_df = pd.DataFrame(columns=['key', 'home_abbr', 'away_abbr', 'home_epa_added', 'away_epa_added', 'home_total_epa', 'away_total_epa'])
+        for i in range(0, len(edf.index), 2):
+            a = edf.iloc[i]
+            b = edf.iloc[i+1]
+            abbrs = [a['abbr'], b['abbr']]
+            home_abbr = (a['key'][-3:]).upper()
+            abbrs.remove(home_abbr)
+            home_dif = a['epa_added'] if home_abbr == a['abbr'] else b['epa_added']
+            away_dif = b['epa_added'] if home_abbr == a['abbr'] else a['epa_added']
+            home_epa = a['epa'] if home_abbr == a['abbr'] else b['epa']
+            away_epa = b['epa'] if home_abbr == a['abbr'] else a['epa']
+            new_df.loc[len(new_df.index)] = [a['key'], home_abbr, abbrs[0], home_dif, away_dif, home_epa, away_epa]
+        new_df = new_df.merge(self.gd[['key', 'wy']], on=['key'])
+        new_df = new_df[['key', 'wy', 'home_abbr', 'away_abbr', 'home_epa_added', 'away_epa_added', 'home_total_epa', 'away_total_epa']]
+        self.save_frame(new_df, (self.features_dir + fn))
+        return
+    def qb_career_epas_feature(self, df: pd.DataFrame):
+        """
+        Get EPA added + total EPA when passer involved in play, ONLY either PASSER, RUSHER, PENALIZER, or FUMBLER
+        Args:
+            df (pd.DataFrame): total_pbp
+        """
+        cols = ['qb_career_epa_added', 'qb_career_total_epa']
+        def get_qb_career_epas(row: pd.Series):
+            print(cols)
+            return { col: np.nan for col in cols }
+        fn = "qb_epas"
+        if f'{fn}.csv' in os.listdir(self.features_dir):
+            print(f"{fn} already created.")
+            return
+        cd = pd.read_csv("%s.csv" % (self.position_data_dir + "QBData"))
+        cd = cd[['p_id', 'game_key']]
+        cd.columns = ['p_id', 'key']
+        df = df.merge(cd, on=['key'])
+        print(df.head())
+        # cd = self.add_datetime_columns(cd)
+        # cd = cd.loc[cd['datetime']>=self.get_datetime(1, 2011)]
+        # cd.reset_index(drop=True, inplace=True)
+        # cd = cd[['p_id', 'game_key']+self.datetime_cols]
+        # cd = cd.tail(10)
+        # cd[cols] = cd.apply(lambda x: get_qb_career_epas(x), axis=1, result_type='expand')
+        return
+    def build_features(self):
+        df = self.get_df()
+        [func(df) for func in self.feature_funcs]
+        return
     
 # END / Main
 
 ###################
 
-# !!! Tables go from 1994 - 2023 week 4 !!!
+# !!! Tables go from 2011 - 2023 championship games !!!
 
 m = Main("./")
 
-# m.createAllData()
-
-m.createLabels(
-    labelName='isExtraPoint'
-)
+m.update_all()

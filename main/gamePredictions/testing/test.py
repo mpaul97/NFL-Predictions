@@ -113,8 +113,11 @@ def predict(df: pd.DataFrame, y, modelName, targetName, _dir, _type):
 
 # test models - ols
 def testModels(modelNames, targetName, _dir):
-    df = pd.read_csv("%s.csv" % (_dir + "train"))
+    df = pd.read_csv("%s.csv" % (_dir + "train_short"))
     target = pd.read_csv("%s.csv" % (_dir + "target"))
+    df = df.merge(target, on=STR_COLS)
+    target = df[STR_COLS+['home_won', 'home_points', 'away_points']]
+    df.drop(columns=['home_won', 'home_points', 'away_points'], inplace=True)
     y = target[targetName]
     for modelName in modelNames:
         predict(df, y, modelName, targetName, _dir, '')
@@ -146,9 +149,12 @@ def getAccuracy(X: pd.DataFrame, y, col):
 # get best ols drop thresholds for each target
 def findBestThresholds(_dir):
     file = open('best_thresholds.txt', 'w')
-    train = pd.read_csv("%s.csv" % (_dir + "train"))
+    train = pd.read_csv("%s.csv" % (_dir + "train_short"))
     target = pd.read_csv("%s.csv" % (_dir + "target"))
     target_cols = list(set(target.columns).difference(set(STR_COLS)))
+    df = train.merge(target, on=STR_COLS)
+    train = df.drop(columns=target_cols)
+    target = df[STR_COLS+target_cols]
     for col in target_cols:
         info = []
         for i in range(1, 10):
@@ -282,14 +288,26 @@ def predict_probs(_dir):
         print(f"Prob 0: {prob_0}, Prob 1: {prob_1} -> Actual: {y_test.iloc[i]}")
     return
 
+def compare_train_test():
+    train = pd.read_csv("%s.csv" % "../train")
+    test = pd.read_csv("%s.csv" % "../test")
+    nans = test.isna().any()
+    for index, item in nans.items():
+        if item:
+            print(index)
+    # for col in test.columns:
+    #     if col not in train.columns:
+    #         print(col)
+    return
+
 ###############################
 
 if __name__ == '__main__':
-    testModels(
-        modelNames=['log'],
-        targetName='home_points', 
-        _dir='../'
-    )
+    # testModels(
+    #     modelNames=['log'],
+    #     targetName='home_won', 
+    #     _dir='../'
+    # )
     # getIncorrectPredictions(
     #     targetName='home_won',
     #     rebuild=False,
@@ -301,3 +319,4 @@ if __name__ == '__main__':
     # testCorrCols('../')
     # getMultiCols('../')
     # predict_probs('../')
+    compare_train_test()

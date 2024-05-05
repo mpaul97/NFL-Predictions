@@ -56,12 +56,12 @@ class OverUnders:
                 print('Creating new overUnders...')
                 new_df = self.getOverUnders_theOdds(source)
                 self.saveFrame(new_df, (self._dir + fn))
-                return
+                return new_df
             else:
                 print('Using existing overUnders.')
                 return pd.read_csv("%s.csv" % (self._dir + fn))
         self.saveFrame(new_df, (self._dir + fn))
-        return
+        return new_df
     def saveFrame(self, df: pd.DataFrame, name):
         df.to_csv("%s.csv" % name, index=False)
         return

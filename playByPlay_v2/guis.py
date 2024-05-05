@@ -1,18 +1,18 @@
 import tkinter as tk
 
 class LabelSelector:
-    def __init__(self, root, title: str, string_list):
+    def __init__(self, root, title: str, lines):
         self.root = root
         self.root.title(title)
         self.root.configure(background="black")
         # Initialize an empty list to store selected values
         self.selected_values = []
         # Create a label to display the strings from the list
-        self.string_list = string_list
+        self.lines = lines
         self.current_index = 0
         self.label = tk.Label(
             root, 
-            text=self.string_list[self.current_index], 
+            text=self.lines[self.current_index], 
             font=("Arial", 20), 
             background="black", 
             foreground="red",
@@ -30,15 +30,15 @@ class LabelSelector:
         self.selected_values.append(value)
         # Move to the next string in the list
         self.current_index += 1
-        if self.current_index < len(self.string_list):
-            self.label.config(text=self.string_list[self.current_index])
+        if self.current_index < len(self.lines):
+            self.label.config(text=self.lines[self.current_index])
         else:
             self.root.destroy()
         return
 
-class PlayTypes:
-    def __init__(self, root, string_list):
-        self.root = root
+class PlayTypesGui:
+    def __init__(self, lines: list[str]):
+        self.root = tk.Tk()
         self.root.title("Label Selector")
         self.root.configure(background="black")
         # Initialize an empty list to store selected values
@@ -49,11 +49,11 @@ class PlayTypes:
         ]
         self.selected_values = { pt: [] for pt in self.play_types }
         # Create a label to display the strings from the list
-        self.string_list = string_list
+        self.lines = lines
         self.current_index = 0
         self.label = tk.Label(
-            root, 
-            text=self.string_list[self.current_index], 
+            self.root, 
+            text=self.lines[self.current_index], 
             font=("Arial", 20), 
             background="black", 
             foreground="red",
@@ -61,8 +61,8 @@ class PlayTypes:
         )
         self.label.pack(padx=40, pady=40)
         # buttons
-        self.frame = tk.Frame(root, background='black')
-        self.frame.pack()
+        self.frame = tk.Frame(self.root, background='black')
+        self.frame.pack(padx=10, pady=10)
         column_length = 4
         row, column = 1, 0
         for i, pt in enumerate(self.play_types):
@@ -71,6 +71,7 @@ class PlayTypes:
             if column == column_length:
                 column = 0
                 row += 1
+        self.root.mainloop()
         return
     def add_button(self, label: str, row: int, column: int):
         self.button = tk.Button(
@@ -90,8 +91,8 @@ class PlayTypes:
                 self.selected_values[key].append(0)
         # Move to the next string in the list
         self.current_index += 1
-        if self.current_index < len(self.string_list):
-            self.label.config(text=self.string_list[self.current_index])
+        if self.current_index < len(self.lines):
+            self.label.config(text=self.lines[self.current_index])
         else:
             self.root.destroy()
         return
@@ -99,15 +100,15 @@ class PlayTypes:
 # if __name__ == "__main__":
 #     # root = tk.Tk()
 #     # # label selector
-#     # my_string_list = ["String 1", "String 2", "String 3", "String 4"]
-#     # app = LabelSelector(root, my_string_list)
+#     # my_lines = ["String 1", "String 2", "String 3", "String 4"]
+#     # app = LabelSelector(root, my_lines)
 #     # root.mainloop()
 #     # print(app.selected_values)
 #     # ----------------------------
 #     # play types
 #     root = tk.Tk()
-#     my_string_list = ["String 1", "String 2", "String 3", "String 4"]
-#     app = PlayTypes(root, my_string_list)
+#     my_lines = ["String 1", "String 2", "String 3", "String 4"]
+#     app = PlayTypes(root, my_lines)
 #     root.mainloop()
 #     print(app.selected_values)
 

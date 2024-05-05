@@ -1,0 +1,7 @@
+Position EPAs - Average EPA when X player is involved
+QB - sacks taken on 3rd down
+Big play % - plays over 10, 15, 20 yards...
+RedZone efficiency - # of field goals, TDs, turnovers, etc.
+Play type per down - EX: GNB passes 30% of the time on 3rd and shorts
+Targets on 1st down, 3rd down, GOT TO HAVE IT (4th & 2, 20s left in game down 3) downs, etc.
+% deep completions/attempts, QB and target player

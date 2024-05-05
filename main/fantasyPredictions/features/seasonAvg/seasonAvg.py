@@ -101,4 +101,6 @@ def buildNewSeasonAvg(source: pd.DataFrame, df: pd.DataFrame, _dir):
 
 # # buildSeasonAvg(source, df, './')
 
-# buildNewSeasonAvg(source, df, './')
+# df = buildNewSeasonAvg(source, df, './')
+
+# df.to_csv("%s.csv" % "newSeasonAvg", index=False)

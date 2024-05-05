@@ -1,0 +1,7 @@
+201411270sfo-74 - Added space after 'Ricardo Lockette)'
+Jon Ryan fumbles, recovered by Jon Ryan at SEA-13. Jon Ryan punts 45 yards, returned by Perrish Cox for 9 yards (tackle by Ricardo Lockette) Jon Ryan fumbles (forced by Ricardo Lockette), recovered by O'Brien Schofield at SFO-40.
+
+Mulitple penalties fixed for incorrect types
+
+201701010nyj-152
+Nick Folk kicks off 65 yards, touchdown -> Nick Folk kicks off 65 yards, recovered by Doug Middleton at BUF-0, touchdown

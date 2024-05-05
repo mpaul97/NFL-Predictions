@@ -237,26 +237,26 @@ def buildSimpleStarters(week, year):
     new_df = pd.DataFrame(columns=['abbr']+cols)
     df = pd.read_csv("%s.csv" % "gameData")
     source = getNewSource(week, year)
-    if week == 1 and year == 2023:
-        sdf = pd.read_csv("%s.csv" % "starters_23/cleanStarters_w1")
-        for index, row in sdf.iterrows():
-            abbr = row['abbr']
-            starters = (row['starters']).split("|")
-            starters = np.array([(s.split(":")) for s in starters])
-            all_pids = []
-            for key in MAX_POSITION_SIZES:
-                pids = [s[0] for s in starters if s[1] in key]
-                pids = '|'.join(pids)
-                all_pids.append(pids)
-            new_df.loc[len(new_df.index)] = [abbr] + all_pids
-        source = source.merge(new_df, on=['abbr'])
-        source.to_csv("%s.csv" % (_dir + "simpleStarters_w1"), index=False)
+    fn = "cleanStarters_w1" if week == 1 else ("starters_w" + str(week))
+    sdf = pd.read_csv("%s.csv" % (_dir + fn))
+    for index, row in sdf.iterrows():
+        abbr = row['abbr']
+        starters = (row['starters']).split("|")
+        starters = np.array([(s.split(":")) for s in starters])
+        all_pids = []
+        for key in MAX_POSITION_SIZES:
+            pids = [s[0] for s in starters if s[1] in key]
+            pids = '|'.join(pids)
+            all_pids.append(pids)
+        new_df.loc[len(new_df.index)] = [abbr] + all_pids
+    source = source.merge(new_df, on=['abbr'])
+    source.to_csv("%s.csv" % (_dir + "simpleStarters_w" + str(week)), index=False)
     return
 
 ############################
 
 convert = 1
-week = 1
+week = 18
 year = 2023
 
 if convert == 0:

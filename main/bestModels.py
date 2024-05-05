@@ -89,6 +89,6 @@ class BestModels:
 bm = BestModels()
 
 bm.find_all(
-    week=11, # current week -> get all weeks prior
+    week=13, # current week -> get all weeks prior
     year=2023
 )

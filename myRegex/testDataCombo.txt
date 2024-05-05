@@ -10,6 +10,8 @@ Ja'Quan
 KaVontae
 'Omar
 Amon-Ra
+Lukas
+Tank
 
 Rodgers
 Owusu-Koramoah
@@ -17,3 +19,5 @@ McCloud
 O'Donnell
 von Schamann
 St. Brown
+Van Ness
+Bigsby

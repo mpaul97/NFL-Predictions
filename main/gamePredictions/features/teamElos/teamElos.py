@@ -94,41 +94,47 @@ class Elos:
         return
     def update(self, isNewYear: bool):
         """
-        Updates rawElos.csv when gameData contains new/unseen wy
+        Updates rawElos.csv when gameData contains new/unseen wys
         @params:
             isNewYear   - Required  : determines if new wy will increment week or year (bool)
         """
         abbrs = list(set(self.df['home_abbr'].values))
         last_wy = self.df['wy'].values[-1]
+        new_last_wy = str(int(last_wy.split(" | ")[0])+1) + " | " + last_wy.split(" | ")[-1]
         # gameData-wy matches raw_elos-wy => not updated
-        if last_wy == self.raw_elos['wy'].values[-1]:
-            new_df = pd.DataFrame(columns=['wy', 'abbr', 'elo'])
-            week = int(last_wy.split(" | ")[0])
-            year = int(last_wy.split(" | ")[1])
-            new_wy = "1 | " + str(year+1) if isNewYear else str(week+1) + " | 2023"
-            for index, row in self.df.loc[self.df['wy']==last_wy].iterrows():
-                home_abbr, away_abbr = row['home_abbr'], row['away_abbr']
-                abbrs.remove(home_abbr) # remove abbrs to add missing teams
-                abbrs.remove(away_abbr) # remove abbrs to add missing teams
-                home_points, away_points = row['home_points'], row['away_points']
-                winning_abbr = row['winning_abbr']
-                home_last_elo = self.raw_elos.loc[self.raw_elos['abbr']==home_abbr, 'elo'].values[-1]
-                away_last_elo = self.raw_elos.loc[self.raw_elos['abbr']==away_abbr, 'elo'].values[-1]
-                home_elo = self.getElo(home_abbr, winning_abbr, home_last_elo, away_last_elo, home_points, away_points)
-                away_elo = self.getElo(away_abbr, winning_abbr, away_last_elo, home_last_elo, away_points, home_points)
-                if isNewYear:
-                    home_elo = self.getEndElo(home_elo)
-                    away_elo = self.getEndElo(away_elo)
-                new_df.loc[len(new_df.index)] = [new_wy, home_abbr, home_elo]
-                new_df.loc[len(new_df.index)] = [new_wy, away_abbr, away_elo]
-            for abbr in abbrs:
-                last_elo = self.raw_elos.loc[self.raw_elos['abbr']==abbr, 'elo'].values[-1]
-                new_df.loc[len(new_df.index)] = [new_wy, abbr, last_elo]
-            self.raw_elos = pd.concat([self.raw_elos, new_df])
-            self.saveFrame(self.raw_elos, 'rawElos')
-            print(f"rawElos.csv updated. Added elos for wy: {new_wy}")
+        if new_last_wy != self.raw_elos['wy'].values[-1]:
+            min_wy = self.raw_elos['wy'].values[-1]
+            max_wy = self.df['wy'].values[-1]
+            missing_wys = [(str(w) + " | 2023") for w in range(int(min_wy.split(" | ")[0]), int(max_wy.split(" | ")[0])+1)]
+            for last_wy in missing_wys:
+                abbrs = list(set(self.df['home_abbr'].values))
+                new_df = pd.DataFrame(columns=['wy', 'abbr', 'elo'])
+                week = int(last_wy.split(" | ")[0])
+                year = int(last_wy.split(" | ")[1])
+                new_wy = "1 | " + str(year+1) if isNewYear else str(week+1) + " | 2023"
+                for index, row in self.df.loc[self.df['wy']==last_wy].iterrows():
+                    home_abbr, away_abbr = row['home_abbr'], row['away_abbr']
+                    abbrs.remove(home_abbr) # remove abbrs to add missing teams
+                    abbrs.remove(away_abbr) # remove abbrs to add missing teams
+                    home_points, away_points = row['home_points'], row['away_points']
+                    winning_abbr = row['winning_abbr']
+                    home_last_elo = self.raw_elos.loc[self.raw_elos['abbr']==home_abbr, 'elo'].values[-1]
+                    away_last_elo = self.raw_elos.loc[self.raw_elos['abbr']==away_abbr, 'elo'].values[-1]
+                    home_elo = self.getElo(home_abbr, winning_abbr, home_last_elo, away_last_elo, home_points, away_points)
+                    away_elo = self.getElo(away_abbr, winning_abbr, away_last_elo, home_last_elo, away_points, home_points)
+                    if isNewYear:
+                        home_elo = self.getEndElo(home_elo)
+                        away_elo = self.getEndElo(away_elo)
+                    new_df.loc[len(new_df.index)] = [new_wy, home_abbr, home_elo]
+                    new_df.loc[len(new_df.index)] = [new_wy, away_abbr, away_elo]
+                for abbr in abbrs:
+                    last_elo = self.raw_elos.loc[self.raw_elos['abbr']==abbr, 'elo'].values[-1]
+                    new_df.loc[len(new_df.index)] = [new_wy, abbr, last_elo]
+                self.raw_elos = pd.concat([self.raw_elos, new_df])
+                self.saveFrame(self.raw_elos, 'rawElos')
+            print(f"rawElos.csv updated. Added elos for wys: {missing_wys}")
         else:
-            print(f'rawElos.csv already up-to-date. Last wy: {last_wy}')
+            print(f'rawElos.csv already up-to-date. New last wy: {new_last_wy}')
         return
     def getK(self, mov, eloDif):
         n = (mov + 3) ** 0.8
@@ -222,6 +228,7 @@ def createMockData(wy: str, cd: pd.DataFrame):
 
 # e.createBoth(source, False)
 
+# e.setRawElos(None)
 # e.update(False)
 
 # # createMockData('1 | 2023', cd)

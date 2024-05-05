@@ -169,6 +169,7 @@ def getCorrHeatMap(_dir):
     plt.show()
     return
 
+# get outliers
 def outliers(_dir):
     train = pd.read_csv("%s.csv" % (_dir + "train"))
     target = pd.read_csv("%s.csv" % (_dir + "target"))
@@ -179,6 +180,40 @@ def outliers(_dir):
     print(f"Normal accuracy: {n_acc}")
     o_acc = getAccuracy(data.drop(columns=STR_COLS+['points']), data['points'])
     print(f"No outlier accuracy: {o_acc}")
+    return
+
+# test point range predictions
+def point_ranges(_dir):
+    train = pd.read_csv("%s.csv" % (_dir + "train"))
+    target = pd.read_csv("%s.csv" % (_dir + "target"))
+    target['over_25'] = target['points'].apply(lambda x: x >= 25).astype(int)
+    target['over_20'] = target['points'].apply(lambda x: x >= 20).astype(int)
+    target['over_15'] = target['points'].apply(lambda x: x >= 15).astype(int)
+    target['over_10'] = target['points'].apply(lambda x: x >= 10).astype(int)
+    target['over_5'] = target['points'].apply(lambda x: x >= 5).astype(int)
+    target['under_5'] = target['points'].apply(lambda x: x < 5).astype(int)
+    df = train.merge(target, on=STR_COLS)
+    t_cols = ['over_25', 'over_20', 'over_15','over_10', 'over_5', 'under_5']
+    X = df.drop(columns=STR_COLS+['points', 'week_rank']+t_cols)
+    for col in t_cols[:1]:
+        y = df[col]
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        model = LogisticRegression(n_jobs=-1)
+        model.fit(X_train, y_train)
+        acc = model.score(X_test, y_test)
+        print(f"{col} - accuracy: {acc}")
+    return
+
+# add point ranges to target
+def add_point_ranges(_dir):
+    target = pd.read_csv("%s.csv" % (_dir + "target"))
+    target['over_25'] = target['points'].apply(lambda x: x >= 25).astype(int)
+    target['over_20'] = target['points'].apply(lambda x: x >= 20).astype(int)
+    target['over_15'] = target['points'].apply(lambda x: x >= 15).astype(int)
+    target['over_10'] = target['points'].apply(lambda x: x >= 10).astype(int)
+    target['over_5'] = target['points'].apply(lambda x: x >= 5).astype(int)
+    target['under_5'] = target['points'].apply(lambda x: x < 5).astype(int)
+    target.to_csv("%s.csv" % (_dir + "target"), index=False)
     return
 
 ###############################
@@ -195,3 +230,7 @@ testModels(models, 'points', '../')
 # getCorrHeatMap('../')
 
 # outliers('../')
+
+# point_ranges('../')
+
+# add_point_ranges('../')
