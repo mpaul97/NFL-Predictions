@@ -40,9 +40,6 @@ try:
     from gamePredictions.features.short_positionGroupSeasonAvgSnapPcts.positionGroupSeasonAvgSnapPcts import PositionGroupSeasonAvgSnapPcts
     from gamePredictions.features.overUnders.overUnders import OverUnders
     from gamePredictions.features.coachWinPctPerMonth.CoachWinPctPerMonth import CoachWinPctPerMonth
-    from gamePredictions.features.short_playerRanks.playerRanks import PlayerRanks
-    from gamePredictions.features.short_seasonAvgPossessionEpas.seasonAvgPossessionEpas import SeasonAvgPossessionEpas
-    from gamePredictions.features.short_lastPossessionEpasN.lastPossessionEpasN import LastPossessionEpasN
 except ModuleNotFoundError as error:
     print(error)
     
@@ -92,7 +89,7 @@ class Build:
         # models stuff
         self.str_cols = ['key', 'wy', 'home_abbr', 'away_abbr']
         self.target_ols_thresholds = {
-            'away_points': 0.1, 'home_points': 0.15, 'home_won': 0.05,
+            'away_points': 0.1, 'home_points': 0.15, 'home_won': 0.2,
         }
         self.all_models = {
             'won': {
@@ -656,24 +653,6 @@ class Build:
         cwpm.build(source.copy(), False)
         print()
         # ---------------------------------------------
-        # build playerRanks if it does not exist
-        f_type = 'playerRanks'
-        pr = PlayerRanks(self.pr_df, self.combineDir(f_type, True))
-        pr.build(source.copy(), False)
-        print()
-        # ---------------------------------------------
-        # build seasonAvgPossessionEpas if it does not exist
-        f_type = 'seasonAvgPossessionEpas'
-        sape = SeasonAvgPossessionEpas(self.epas, self.combineDir(f_type, True))
-        sape.build(source.copy(), False)
-        print()
-        # ---------------------------------------------
-        # build lastPossessionEpasN if it does not exist
-        f_type = 'lastPossessionEpasN'
-        lpen = LastPossessionEpasN(5, self.epas, self.combineDir(f_type, True))
-        lpen.build(source.copy(), False)
-        print()
-        # ---------------------------------------------
         # join all features/create train
         self.joinAll(source, False)
         print()
@@ -856,24 +835,6 @@ class Build:
         f_type = 'coachWinPctPerMonth'
         cwpm = CoachWinPctPerMonth(self.cd.copy(), self.cdf, self.combineDir(f_type))
         df_list.append((cwpm.build(source.copy(), True), f_type))
-        print()
-        # ---------------------------------------------
-        # build playerRanks
-        f_type = 'playerRanks'
-        pr = PlayerRanks(self.pr_df, self.combineDir(f_type, True))
-        df_list.append((pr.build(source.copy(), True), f_type))
-        print()
-        # ---------------------------------------------
-        # build seasonAvgPossessionEpas
-        f_type = 'seasonAvgPossessionEpas'
-        sape = SeasonAvgPossessionEpas(self.epas, self.combineDir(f_type, True))
-        df_list.append((sape.build(source.copy(), True), f_type))
-        print()
-        # ---------------------------------------------
-        # build lastPossessionEpasN
-        f_type = 'lastPossessionEpasN'
-        lpen = LastPossessionEpasN(5, self.epas, self.combineDir(f_type, True))
-        df_list.append((lpen.build(source.copy(), True), f_type))
         print()
         # ---------------------------------------------
         # merge test

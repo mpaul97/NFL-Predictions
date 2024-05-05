@@ -21,7 +21,6 @@ from sportsipy.nfl.roster import Player
 from fantasyData import concatFantasyAndSkillData
 from approximateValues import ApproximateValues
 from olStatsData import OlStatsData
-from playerRanks.main import Main as RanksMain
 
 NAMES_PATH = "../playerNames/"
 STARTERS_PATH = "../starters/"
@@ -1287,15 +1286,11 @@ def getAllData(week, year):
     osd = OlStatsData("./")
     osd.update()
     
-    # update playerRanks
-    rm = RanksMain("../playerRanks/")
-    rm.update()
-    
     return
         
 ########################################
 
 getAllData(
-    week=21, # -> past week
+    week=12, # -> past week
     year=2023
 )

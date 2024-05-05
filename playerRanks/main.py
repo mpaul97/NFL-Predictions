@@ -275,16 +275,15 @@ class Main:
                 wys = [wy for wy in wys if '2023' in wy]
             for index, wy in enumerate(wys):
                 self.print_progress_bar(index, len(wys), (pos + " - playerRanks"))
-                week, year = [int(w) for w in wy.split(" | ")]
-                season = str(year) if week != 1 else str(year - 1)
+                year = wy.split(" | ")[1]
                 s0 = df.loc[df['wy']==wy].index.values[0]
-                data: pd.DataFrame = df.loc[(df.index<s0)&(df['wy'].str.contains(season))]
-                # total_weeks = len(set(data['wy']))
+                data: pd.DataFrame = df.loc[(df.index<s0)&(df['wy'].str.contains(year))]
+                total_weeks = len(set(data['wy']))
                 try:
                     s1 = self.sdf.loc[self.sdf['wy']==wy].index.values[0]
-                    starters = '|'.join(self.sdf.loc[(self.sdf.index<s1)&(self.sdf['wy'].str.contains(season)), 'starters'].values)
+                    starters = '|'.join(self.sdf.loc[(self.sdf.index<s1)&(self.sdf['wy'].str.contains(year)), 'starters'].values)
                 except IndexError: # current week, no starters -> use all
-                    starters = '|'.join(self.sdf.loc[self.sdf['wy'].str.contains(season), 'starters'].values)
+                    starters = '|'.join(self.sdf.loc[self.sdf['wy'].str.contains(year), 'starters'].values)
                 means = data.groupby(['p_id', 'abbr']).mean()
                 means.reset_index(inplace=True)
                 # means['grade'] = means.apply(lambda x: x['grade'] + ((starters.count(x['p_id'])/total_weeks)*3), axis=1)
@@ -302,88 +301,8 @@ class Main:
         rank_df.drop(columns=['week', 'year', 'datetime'], inplace=True)
         rank_df = rank_df[['wy', 'abbr']+[(pos.lower() + 's') for pos in self.positions]]
         if not updating:
-            temp_df = rank_df.loc[rank_df['wy']=='2 | 2012']
-            temp_df['wy'] = '1 | 2012'
-            rank_df = pd.concat([temp_df, rank_df])
             self.save_frame(rank_df, "playerRanks")
         return rank_df
-    def get_starters(self, starters: str, position: str):
-        return [s.replace(":" + position, "") for s in starters.split("|") if position in s]
-    def get_starters_grades(self, row: pd.Series, position: str):
-        # season = row['year'] if row['week'] != 1 else (row['year'] - 1)
-        df = self.all_grades
-        grades = df.loc[
-            (df['datetime']<row['datetime'])&
-            (df['p_id'].isin(self.get_starters(row['starters'], position))), 
-            'grade'
-        ].values
-        if position in ['RB']:
-            try:
-                grades = df.loc[
-                    (df['datetime']<row['datetime'])&
-                    (df['p_id']==self.get_starters(row['starters'], position)[0]), 
-                    'grade'
-                ].values
-            except IndexError:
-                grades = []
-        return np.mean(grades) if len(grades) != 0 else 0
-    def get_rb_committee(self, row: pd.Series):
-        rbs =  row['rbs'].split("|")[:2]
-        df = self.all_grades
-        rb1_grades = df.loc[
-            (df['datetime']<row['datetime'])&
-            (df['p_id']==rbs[0]), 
-            'grade'
-        ].mean()
-        try:
-            rb2_grades = df.loc[
-                (df['datetime']<row['datetime'])&
-                (df['p_id']==rbs[1]), 
-                'grade'
-            ].mean()
-        except IndexError:
-            rb2_grades = 0
-        rb1_grades = rb1_grades if not pd.isna(rb1_grades) else 0
-        rb2_grades = rb2_grades if not pd.isna(rb2_grades) else 0
-        return 1 if abs(rb1_grades - rb2_grades) <= 1 else 0
-    def get_out(self, row: pd.Series, index: int, l_pos: str):
-        try:
-            return 1 if (row[l_pos + 's'].split("|")[index]) not in row['starters'] else 0
-        except IndexError:
-            return 0
-        return
-    def features(self, updating: bool = False):
-        self.set_ranks()
-        self.ranks = self.add_datetime_columns(self.ranks)
-        self.set_all_grades()
-        self.all_grades = self.add_datetime_columns(self.all_grades)
-        if updating:
-            last_week = self.ranks['wy'].values[-1].split(" | ")[0]
-            curr_starters = pd.read_csv("%s.csv" % (self.game_dir + "starters_23/starters_w" + last_week))
-            self.sdf = pd.concat([self.sdf, curr_starters])
-            self.ranks = self.ranks.loc[self.ranks['wy']==self.ranks['wy'].values[-1]]
-        sdf = self.sdf[['wy', 'abbr', 'starters']]
-        self.ranks.fillna('', inplace=True)
-        df = self.ranks.merge(sdf, on=['wy', 'abbr'], how='left')
-        df.dropna(inplace=True)
-        cols = []
-        for position in self.positions:
-            print(f"Collecting features for {position}...")
-            l_pos = position.lower()
-            for i in range(self.position_out_sizes[position]):
-                out_name = l_pos + str(i + 1) + '_out'
-                df[out_name] = df.apply(lambda x: self.get_out(x, i, l_pos), axis=1)
-                cols.append(out_name)
-            df['starting_' + l_pos + 's_grade'] = df.apply(lambda x: self.get_starters_grades(x, position), axis=1)
-            cols.append('starting_' + l_pos + 's_grade')
-        df['rbs_committee'] = df.apply(lambda x: self.get_rb_committee(x), axis=1)
-        cols.append('rbs_committee')
-        df = df[['wy', 'abbr']+cols]
-        df.fillna(df.mean(), inplace=True)
-        df = df.round(3)
-        if not updating:
-            self.save_frame(df, "playerRanks_features")
-        return df
     def update(self):
         """
         Update all_data, grades, and playerRanks
@@ -394,39 +313,47 @@ class Main:
         next_wy = str(last_week + 1) + " | " + str(last_year)
         if last_rank_wy == next_wy:
             print("playerRanks up-to-date.")
-        else:
-            print("Updating playerRanks...")
-            for position in self.positions:
-                print(f"Updating all and grades - {position}...")
-                self.set_all_data(position)
-                new_df = self.build_all_train(position, True)
-                df = self.all_data.loc[~self.all_data['wy'].isin(new_df['wy'])]
-                df = pd.concat([df, new_df])
-                self.save_frame(df, (self.data_dir + position + "_all"))
-                self.predict_all(position)
-            # update ranks
-            df = self.build_ranks(True)
-            rank_df = rank_df.loc[~rank_df['wy'].isin(df['wy'])]
-            rank_df = pd.concat([rank_df, df])
-            self.save_frame(rank_df, (self._dir + "playerRanks"))
-        fdf = pd.read_csv("%s.csv" % (self._dir + "playerRanks_features"))
-        last_rank_wy = fdf['wy'].values[-1]
-        last_week, last_year = [int(w) for w in self.cd['wy'].values[-1].split(" | ")]
-        next_wy = str(last_week + 1) + " | " + str(last_year)
-        overwrite = input('Overwrite (y/n): ')
-        if overwrite != 'y' and last_rank_wy == next_wy:
-            print("playerRanks_features up-to-date.")
-        elif overwrite == 'y':
-            print("Overwriting playerRanks_features...")
-            fdf = fdf.loc[fdf['wy']!=next_wy]
-            df = self.features(updating=True)
-            fdf = pd.concat([fdf, df])
-            self.save_frame(fdf, (self._dir + "playerRanks_features"))
-        else:
-            print("Updating playerRanks_features...")
-            df = self.features(updating=True)
-            fdf = pd.concat([fdf, df])
-            self.save_frame(fdf, (self._dir + "playerRanks_features"))
+            return
+        for position in self.positions:
+            print(f"Updating all and grades - {position}...")
+            self.set_all_data(position)
+            new_df = self.build_all_train(position, True)
+            df = self.all_data.loc[~self.all_data['wy'].isin(new_df['wy'])]
+            df = pd.concat([df, new_df])
+            self.save_frame(df, (self.data_dir + position + "_all"))
+            self.predict_all(position)
+        # update ranks
+        df = self.build_ranks(True)
+        rank_df = rank_df.loc[~rank_df['wy'].isin(df['wy'])]
+        rank_df = pd.concat([rank_df, df])
+        self.save_frame(rank_df, (self._dir + "playerRanks"))
+        return
+    def get_grade(self, row: pd.Series):
+        season = row['year'] if row['week'] != 1 else (row['year'] - 1)
+        df = self.all_grades
+        grades = df.loc[
+            (df['datetime']<row['datetime'])&
+            (df['year']==season)&
+            (df['p_id']==row['qbs'].split("|")[0]), 
+            'grade'
+        ].values
+        return np.mean(grades) if len(grades) != 0 else 0
+    def features(self):
+        self.set_ranks()
+        self.ranks = self.add_datetime_columns(self.ranks)
+        self.set_all_grades()
+        self.all_grades = self.add_datetime_columns(self.all_grades)
+        last_week = self.ranks['wy'].values[-1].split(" | ")[0]
+        curr_starters = pd.read_csv("%s.csv" % (self.game_dir + "starters_23/starters_w" + last_week))
+        self.sdf = pd.concat([self.sdf, curr_starters])
+        sdf = self.sdf[['wy', 'abbr', 'starters']]
+        self.ranks.fillna('', inplace=True)
+        df = self.ranks.merge(sdf, on=['wy', 'abbr'], how='left')
+        df.dropna(inplace=True)
+        # df['qb1_out'] = df.apply(lambda x: (x['qbs'].split("|")[0]) not in x['starters'], axis=1)
+        # df['rb1_out'] = df.apply(lambda x: (x['rbs'].split("|")[0]) not in x['starters'], axis=1).astype(int)
+        df['qb1_grade'] = df.apply(lambda x: self.get_grade(x), axis=1)
+        self.save_frame(df[['wy', 'abbr', 'qbs', 'qb1_grade', 'starters']], "temp")
         return
     def set_all_grades(self):
         self.all_grades = pd.concat([pd.read_csv(self.data_dir + fn) for fn in os.listdir(self.data_dir) if 'grades' in fn])
@@ -492,7 +419,7 @@ class Main:
 #     _dir="./"
 # )
 
-# position = 'RB'
+position = 'QB'
 
 # m.build_all_train(position)
 
@@ -510,6 +437,6 @@ class Main:
 
 # m.build_ranks()
 
-# m.features()
-
 # m.update()
+
+m.features()

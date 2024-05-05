@@ -58,8 +58,7 @@ class CoachWinPctPerMonth:
             away_stats = np.mean(away_stats) if len(away_stats) != 0 else np.nan
             new_df.loc[len(new_df.index)] = list(row.values) + [home_stats, away_stats]
         new_df.drop(columns=['week', 'year', 'datetime', 'home_coach', 'away_coach', 'month'], inplace=True)
-        # new_df.fillna(new_df.mean(), inplace=True)
-        new_df.fillna(0.5, inplace=True)
+        new_df.fillna(new_df.mean(), inplace=True)
         if not isNew:
             self.save_frame(new_df, (self._dir + fn))
         return new_df

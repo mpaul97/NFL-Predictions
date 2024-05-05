@@ -92,14 +92,12 @@ class Build:
             'over_15': 0.2, 'over_10': 0.2, 'over_5': 0.2, 'under_5': 0.2
         }
         self.all_models = {
-            'points': {'linear': LinearRegression(n_jobs=-1)},
-            'week_rank': {'forest': RandomForestClassifier(n_jobs=-1)},
-            'over_25': {'log': LogisticRegression(n_jobs=-1)},
-            'over_20': {'log': LogisticRegression(n_jobs=-1)},
-            'over_15': {'log': LogisticRegression(n_jobs=-1)},
-            'over_10': {'log': LogisticRegression(n_jobs=-1)},
-            'over_5': {'log': LogisticRegression(n_jobs=-1)},
-            'under_5': {'log': LogisticRegression(n_jobs=-1)},
+            'points': {
+                'linear': LinearRegression(n_jobs=-1)
+            },
+            'week_rank': {
+                'forest': RandomForestClassifier(n_jobs=-1)
+            }
         }
         self.position_all_models = {
             'points': {

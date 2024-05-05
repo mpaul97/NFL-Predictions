@@ -77,10 +77,12 @@ class Main:
 
 if __name__ == '__main__':
     m = Main(
-        week=22,
+        week=13,
         year=2023
     )
     m.gpPredicitions('new')
-    # m.fpPredicitions('new')
-    # Firebase("./").upload()
+    # m.fpPredicitions('both')
+    # m.findMissingCols_gp()
+    # m.test()
+    # m.createUiData()
         

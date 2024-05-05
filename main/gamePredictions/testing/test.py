@@ -314,7 +314,7 @@ if __name__ == '__main__':
     #     _dir='../'
     # )
     # testModelsEncoding('home_won', '../')
-    # findBestThresholds('../')
+    findBestThresholds('../')
     # getCorrHeatMap('../')
     # testCorrCols('../')
     # getMultiCols('../')

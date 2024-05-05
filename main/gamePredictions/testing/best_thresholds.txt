@@ -1,3 +1,3 @@
-home_won -> Best threshold: 0.05 : 0.7352445193929174
-home_points -> Best threshold: 0.2 : 0.07251264755480608
-away_points -> Best threshold: 0.1 : 0.08431703204047218
+home_won -> Best threshold: 0.2 : 0.7241153342070773
+home_points -> Best threshold: 0.15 : 0.0779816513761468
+away_points -> Best threshold: 0.1 : 0.08387942332896461

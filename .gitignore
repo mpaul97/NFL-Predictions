@@ -2,6 +2,7 @@
 *.csv
 *.csv.gz
 *.xlsx
+*.json
 
 # ignore all .sav files (models)
 *.sav
