@@ -65,4 +65,13 @@
 - ### old
   - old scripts used for easy references
 - ### pbp_custom_ners
+  - custom Spacy NER (named entity recognition) models for extracting player types (entities) from Play-By-Play sentences
+  - EXAMPLE:
+    - Aaron Rodgers pass complete right to Davante Adams for 11 yards (tackle by Harrison Smith)
+    - PASSER: Aaron Rodgers, RECEIVER: Davante Adams, TACKLER: Harrison Smith
+  - train.py
+    - used to create training data for custom Spacy NER model from user input
+    - GUI used to display desired Play-By-Play lines, corresponding names found in each line, and dropdown inputs for each name to choose entity type (PASSER, RUSHER, etc.)
+  - models.ipynb -> trains and saves Spacy model
+  - custom_ents.py -> loads custom Spacy model + methods to extract entities from a sentence
   - 
