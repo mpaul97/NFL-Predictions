@@ -67,11 +67,43 @@
 - ### pbp_custom_ners
   - custom Spacy NER (named entity recognition) models for extracting player types (entities) from Play-By-Play sentences
   - EXAMPLE:
-    - Aaron Rodgers pass complete right to Davante Adams for 11 yards (tackle by Harrison Smith)
-    - PASSER: Aaron Rodgers, RECEIVER: Davante Adams, TACKLER: Harrison Smith
+    - Sentence -> Aaron Rodgers pass complete right to Davante Adams for 11 yards (tackle by Harrison Smith)
+    - Entities -> PASSER: Aaron Rodgers, RECEIVER: Davante Adams, TACKLER: Harrison Smith
   - train.py
     - used to create training data for custom Spacy NER model from user input
     - GUI used to display desired Play-By-Play lines, corresponding names found in each line, and dropdown inputs for each name to choose entity type (PASSER, RUSHER, etc.)
   - models.ipynb -> trains and saves Spacy model
+  - test_models.ipynb -> test Spacy model using Displacy to view entities for a given sentence
   - custom_ents.py -> loads custom Spacy model + methods to extract entities from a sentence
-  - 
+  - data -> contains train.json
+  - models -> contains Spacy models-last, models-best (USED), and train.spacy
+- ### pbp_names
+  - custom_names_model.ipynb
+    - uses Space "en_core_web_sm" model and adds custom train data to get player names (entity type = PERSON) from a sentence
+    - EXAMPLE:
+      - Sentence -> Thomas Morstead kicks off 68 yards, returned by Randall Cobb for 27 yards (tackle by Leigh Torrence)
+      - Entities -> (0, 15, "PERSON") {Thomas Morstead}, (48, 60, "PERSON") {Randall Cobb}, (85, 99, "PERSON") {Leigh Torrence}
+  - custom_names.py
+    - load model from directory
+    - get_name_custom -> ARGS: sentence <=> RETURN: all unique names joined by "|"
+    - get_name_indices -> ARGS: sentence, name <=> RETURN: list of all start and end indices for the given name
+  - main.py (IN PROGRESS/UNUSED) -> test model accuracy using sentences from allDetails.txt
+  - data -> contains allDetails.txt (every sentence from playByPlay_v2/data/allTables.csv)
+  - models -> contains custom configured Space names_model
+- ### playByPlay (FIRST VERSION, USED FOR REFERENCING)
+- ### playByPlay_v2 (IN PROGRESS)
+  - directory for extracting data from scraped Pro-Football_Reference Boxscore Full Play-By-Play tables
+  - data -> stores all tables and corresponding table data
+  - play_info -> directory for converting each play/detail into features (e.i. play_type, yards, is_offensive_touchdown, is_defensive_touchdown, etc.)
+    - conversion.py
+      - convert joined Pandas DataFrame row to new play_info DataFrame 
+    - penalties.py
+      - converts penalties within a sentence to a list of PenaltyObject
+      - PenaltyObject: type, penalizer (player id/pid), yards, declinded, etc.
+    - play_info.py
+      - main execution file
+      - gets base play_info from pids_detail & pid_entities tables (e.i. play_type, is_fumble, is_challenge, etc.)
+  - sentence_similarities (UNUSED/TESTING) -> compare sentences
+  - collect.py
+    - scrape/clean/update all Play-By-Play tables and concatenate to data/allTables.csv
+    - build/update data/allTables_possessions.csv
