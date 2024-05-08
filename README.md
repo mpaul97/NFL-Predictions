@@ -90,7 +90,7 @@
   - main.py (IN PROGRESS/UNUSED) -> test model accuracy using sentences from allDetails.txt
   - data -> contains allDetails.txt (every sentence from playByPlay_v2/data/allTables.csv)
   - models -> contains custom configured Space names_model
-- ### playByPlay (FIRST VERSION, USED FOR REFERENCING)
+- ### playByPlay (OLD VERSION, USED FOR REFERENCING)
 - ### playByPlay_v2 (IN PROGRESS)
   - directory for extracting data from scraped Pro-Football_Reference Boxscore Full Play-By-Play tables
   - data -> stores all tables and corresponding table data
@@ -104,6 +104,25 @@
       - main execution file
       - gets base play_info from pids_detail & pid_entities tables (e.i. play_type, is_fumble, is_challenge, etc.)
   - sentence_similarities (UNUSED/TESTING) -> compare sentences
-  - collect.py
-    - scrape/clean/update all Play-By-Play tables and concatenate to data/allTables.csv
-    - build/update data/allTables_possessions.csv
+  - collect.py -> scrape/clean/update all Play-By-Play (PBP) tables from www.pro-football-reference.com/boxscores/{game_key}.htm and concatenates to data/allTables.csv
+  - encoding.py (OLD SCRIPT/UNUSED)
+  - features.txt -> PBP features ideas
+  - guis.py (OLD SCRIPT/UNUSED)
+  - main.ipynb (OLD SCRIPT/UNUSED)
+  - main.py
+    - used to create/update all features extracted from PBP tables (e.i. QB_epa_added, WR_targets_on_3rd_down, etc.)
+  - processing.py
+    - create/update CORE tables:
+      - allTables_names => names extracted from sentence
+      - allTables_possessions =>  team_abbr with possession for current play
+        - created from using leading_name of sentence
+        - EXAMPLE:
+          - Clyde Edwards-Helaire right end for no gain (tackle by Brandon Jones and Malik Reed)
+          - leading_name: Clyde Edwards-Helaire <=> team_abbr: KAN
+      - allTables_entities => all custom entities extracted from sentence (PASSER, RUSHER, PENALIZER, KICKER, etc.)
+      - allTables_pids (pids_detail) => scraped sentences from www.pro-football-reference.com/boxscores/{game_key}.htm where player id's (pid) replace names (e.i. Aaron Rodgers <=> RodgAa00)
+      - allTables_pid_entities => cross-reference entities and pids; convert name entities to their corresponding pid
+      - allTables_game_pids_abbrs => stores "|" seperated strings of all pids in a PBP and their corresponding team_abbr
+      - allTables_pid_entities_team_abbrs => expands every pid_entity with their corresponding team_abbr for easy referencing
+  - spacy.ipynb (OLD SCRIPT/UNUSED)
+  - testing.py -> generic tests
