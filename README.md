@@ -1,5 +1,5 @@
 # Directory Descriptions
-- ### NFL_FantasyPredictions (INCOMPLETE)
+- ### NFL_FantasyPredictions (IN PROGRESS)
   - predict TOTAL season points for QB, RB, WR, TE, FLEX, K and DST's
 - ### coaches
   - scrape Pro-Football-Reference for all coaches of all NFL teams and seasons contained in gameData.csv
@@ -31,4 +31,38 @@
   - toKings.py
     - convert stats to DraftKings points
 - ### maddenRatings
+  - scrape player Madden ratings from maddenratings.weebly.com
+  - predict new Madden ratings using player career average stats as training data
+- ### main
+  - fantasyPredictions (player stats & fantasy points predictions)
+    -  features -> stores all feature build files ({featureName}.py) and train data
+    -  testing -> various test scripts
+    -  build.py
+      - build all train data
+      - train models
+      - build all test data
+      - create predictions
+    - tfPredict.py (UNUSED) -> TensorFlow predictions
+  - gamePredictions (game winner & team points predictions)
+    -  features -> stores all feature build files ({featureName}.py) and train data
+    -  testing -> various test scripts
+    -  build.py
+      - build all train data
+      - train models
+      - build all test data
+      - create predictions
+    - tfPredict.py (UNUSED) -> TensorFlow predictions
+  - bestModels.py -> compares various models accuracy
+  - database.py -> updates Firebase database with new week predictions
+  - main.py
+    - given a WEEK & YEAR, stores predictions for the specified arguments
+    - calls fantasyPredictions build.py
+    - calls gamePredictions build.py
+    - calls database.py
+- ### minuteMock (IN PROGRESS)
+- ### myRegex
+  - various Regex scripts for getting player names, team names, etc. from sentences
+- ### old
+  - old scripts used for easy references
+- ### pbp_custom_ners
   - 
