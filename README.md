@@ -1,5 +1,5 @@
 # RUN FILE + INSTRUCTIONS IN PROGRESS
--------------------------
+
 # Directory Descriptions
 - ### NFL_FantasyPredictions (IN PROGRESS)
   - predict TOTAL season points for QB, RB, WR, TE, FLEX, K and DST's
