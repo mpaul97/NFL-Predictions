@@ -31,7 +31,7 @@ class Conversion:
         self.tn_pbp: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_pbp"))
         self.all_cols = {
             'pass': ['completed', 'pass_yards', 'is_interception', 'is_spike'],
-            'run': ['rush_yards'],
+            'run': ['rush_yards', 'run_direction', 'is_sneak'],
             'sack': ['sack_yards'],
             'kickoff': ['kickoff_yards', 'return_yards', 'is_touchback'],
             'extra_point': ['is_good'],
@@ -106,6 +106,8 @@ class Conversion:
             dict: _dict
         """
         line: str = row['pids_detail']
+        print(line)
+        print(row['togo'], row['down'])
         vals: list[str] = re.findall(r"for\s[-]?[0-9]+", line)
         if len(vals) >= 1:
             _dict['rush_yards'] = int(vals[0].replace("for ",""))
@@ -291,12 +293,14 @@ class Conversion:
         """
         # 'timeout_abbr', 'timeout_number'
         line: str = row['pids_detail']
-        team_name: str = line.split(" by ")[1]
-        abbr: str = self.tn_pbp.loc[self.tn_pbp['names'].str.contains(team_name), 'abbr'].values[0]
-        _dict['timeout_abbr'] = abbr
-        num: int = int((re.findall(r"\#[0-9]", line)[0]).replace('#',''))
-        print(line)
-        print(abbr, num)
+        try:
+            team_name: str = line.split(" by ")[1]
+            abbr: str = self.tn_pbp.loc[self.tn_pbp['names'].str.contains(team_name), 'abbr'].values[0]
+            _dict['timeout_abbr'] = abbr
+            num: int = int((re.findall(r"\#[0-9]", line)[0]).replace('#',''))
+            _dict['timeout_number'] = num
+        except IndexError:
+            print(f"normal_timeout IndexError: {line}")
         return _dict
     # end normal funcs
     def normal_lambda_func(self, row: pd.Series, has_penalty: bool = False):
@@ -564,7 +568,9 @@ class Conversion:
         atdf = self.all_tables.copy()
         atdf['at_index'] = atdf.index
         df = self.df.merge(atdf[['primary_key', 'down', 'togo', 'at_index']], on=['primary_key'])
-        df = df.tail(5000)
+        # df = df.tail(5000)
+        df = df.loc[df['primary_key'].str.contains('202309250tam')]
+        df = df.reset_index(drop=True)
         combinations = list(itertools.product([True, False], repeat=len(self.pt_bool_cols)))
         df_list = []
         for comb in combinations:
@@ -585,10 +591,36 @@ class Conversion:
     
 ##################
 
-Conversion(
-    pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False),
-    './'
-).convert()
+# Conversion(
+#     pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False),
+#     './'
+# ).convert()
+
+df = pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False)
+info: pd.DataFrame = df.loc[df['play_type']=='run', ['primary_key', 'pid_PASSER', 'pid_RUSHER', 'pids_detail']]
+# info = info.head(10)
+
+keys = []
+
+def func(row: pd.Series):
+    pid = row['pid_RUSHER'].split(":")[0]
+    line: str = row['pids_detail']
+    if 'pass' in line:
+        keys.append(row['primary_key'])
+    line: str = line.replace(pid, '')
+    if 'Two Point Attempt' not in line and 'aborted snap' not in line and pd.isna(row['pid_PASSER']):
+        end = line.index('for')
+        return line[:end].lstrip().rstrip().replace(' ','_')
+    return ''
+
+info['direction'] = info.apply(lambda x: func(x), axis=1)
+
+print(set(info['direction']))
+
+# all_dirs = list(set(info['direction']))
+# all_dirs.sort(key=lambda x: len(x))
+
+# print(all_dirs)
 
 # ---------------------------------------------------------------------------------
 
