@@ -597,7 +597,7 @@ class Conversion:
 # ).convert()
 
 df = pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False)
-info: pd.DataFrame = df.loc[df['play_type']=='run', ['primary_key', 'pid_PASSER', 'pid_RUSHER', 'pids_detail']]
+info: pd.DataFrame = df.loc[df['play_type']=='run', ['primary_key', 'pid_PASSER', 'pid_RECEIVER', 'pid_RUSHER', 'pids_detail']]
 # info = info.head(10)
 
 keys = []
@@ -608,7 +608,7 @@ def func(row: pd.Series):
     if 'pass' in line:
         keys.append(row['primary_key'])
     line: str = line.replace(pid, '')
-    if 'Two Point Attempt' not in line and 'aborted snap' not in line and pd.isna(row['pid_PASSER']):
+    if 'Two Point Attempt' not in line and 'aborted snap' not in line and pd.isna(row['pid_PASSER']) and pd.isna(row['pid_RECEIVER']):
         end = line.index('for')
         return line[:end].lstrip().rstrip().replace(' ','_')
     return ''
