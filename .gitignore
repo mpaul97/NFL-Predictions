@@ -1,8 +1,9 @@
-# ignore all .csv, .csv.gz, .sav, and .xlsx files
+# ignore all .csv, .csv.gz, .sav, .xlsx, and .json files
 *.csv
 *.csv.gz
 *.xlsx
 *.sav
+*.json
 
 # ignore all files in nfl-app (React UI Display)
 nfl-app/
