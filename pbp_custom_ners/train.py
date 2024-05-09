@@ -13,7 +13,7 @@ sys.path.append("../")
 from pbp_names.custom_names import get_names_custom, get_name_indices
 
 class Train:
-    def __init__(self, _dir: str, K: int = None, lines: list[str] = None, key: str = None, target_sentence: str = None, keyword: str = None):
+    def __init__(self, _dir: str, K: int = None, lines: list[str] = None, key: str = None, target_sentence: str = None, keyword: str = None, p_keys: list[str] = None):
         self._dir = _dir
         self.data_dir = self._dir + "data/"
         self.pbp_dir = self._dir + "../playByPlay_v2/data/"
@@ -42,6 +42,9 @@ class Train:
             self.lines = (file.read()).split("\n")
             self.lines = [l for l in self.lines if keyword in l]
             self.lines = random.sample(self.lines, k=20)
+        if p_keys: # list of primary_key's
+            df = pd.read_csv("%s.csv" % (self.pbp_dir + "allTables"))
+            self.lines = list(df.loc[df['primary_key'].isin(p_keys), 'detail'].values)
         self.ent_options = [
             'PASSER', 'RECEIVER', 'RUSHER', 'TACKLER',
             'DEFENDER', 'PENALIZER', 'FUMBLER', 
@@ -179,23 +182,23 @@ class Train:
 #     K=20
 # )
 
-lines = [
-    "Dan Bailey yard field goal no good blocked by Joshua Kalu, recovered by Tye Smith. Penalty on Joshua Kalu: Defensive Offside, 5 yards (no play)",
-    ", recovered by Jalen Hurts at PHI-20 Jalen Hurts for no gain. Penalty on Deatrich Wise: Defensive Offside, 5 yards (accepted) (no play)",
-    "Dak Prescott pass incomplete intended for Rico Dowdle. Penalty on Preston Smith: Defensive Offside, 5 yards (accepted) (no play)",
-    "De'Von Achane left guard for no gain (tackle by Ed Oliver). Penalty on Shaq Lawson: Defensive Offside, 5 yards (accepted) (no play)",
-    "Gardner Minshew pass incomplete deep right intended for Michael Pittman. Penalty on Janarius Robinson: Defensive Offside, 5 yards (declined) . Penalty on Jack Jones: Defensive Pass Interference, 26 yards (accepted) (no play)",
-    "Trevor Siemian pass complete deep left to Garrett Wilson for 22 yards. Penalty on Myles Garrett: Defensive Offside, 5 yards (declined)",
-    "C.J. Beathard pass incomplete short left intended for Jamal Agnew. Penalty on Vita Vea: Defensive Offside (accepted) (no play)",
-    "Jake Browning pass complete short left to Drew Sample for 16 yards (tackle by Eric Rowe and Mykal Walker). Penalty on Alex Highsmith: Defensive Offside, 5 yards (declined)",
-    "Will Levis pass complete deep left to Nick Westbrook-Ikhine for 33 yards (tackle by Steven Nelson). Penalty on Sheldon Rankins: Defensive Offside, 5 yards (declined)",
-    "Ryan Wright punts 52 yards, returned by DeAndre Carter for 4 yards (tackle by Johnny Mundt and Brian Asamoah). Penalty on Janarius Robinson: Defensive Offside, 5 yards (declined)",
-]
+# lines = [
+#     "Dan Bailey yard field goal no good blocked by Joshua Kalu, recovered by Tye Smith. Penalty on Joshua Kalu: Defensive Offside, 5 yards (no play)",
+#     ", recovered by Jalen Hurts at PHI-20 Jalen Hurts for no gain. Penalty on Deatrich Wise: Defensive Offside, 5 yards (accepted) (no play)",
+#     "Dak Prescott pass incomplete intended for Rico Dowdle. Penalty on Preston Smith: Defensive Offside, 5 yards (accepted) (no play)",
+#     "De'Von Achane left guard for no gain (tackle by Ed Oliver). Penalty on Shaq Lawson: Defensive Offside, 5 yards (accepted) (no play)",
+#     "Gardner Minshew pass incomplete deep right intended for Michael Pittman. Penalty on Janarius Robinson: Defensive Offside, 5 yards (declined) . Penalty on Jack Jones: Defensive Pass Interference, 26 yards (accepted) (no play)",
+#     "Trevor Siemian pass complete deep left to Garrett Wilson for 22 yards. Penalty on Myles Garrett: Defensive Offside, 5 yards (declined)",
+#     "C.J. Beathard pass incomplete short left intended for Jamal Agnew. Penalty on Vita Vea: Defensive Offside (accepted) (no play)",
+#     "Jake Browning pass complete short left to Drew Sample for 16 yards (tackle by Eric Rowe and Mykal Walker). Penalty on Alex Highsmith: Defensive Offside, 5 yards (declined)",
+#     "Will Levis pass complete deep left to Nick Westbrook-Ikhine for 33 yards (tackle by Steven Nelson). Penalty on Sheldon Rankins: Defensive Offside, 5 yards (declined)",
+#     "Ryan Wright punts 52 yards, returned by DeAndre Carter for 4 yards (tackle by Johnny Mundt and Brian Asamoah). Penalty on Janarius Robinson: Defensive Offside, 5 yards (declined)",
+# ]
 
-t = Train(
-    _dir="./", 
-    lines=lines
-)
+# t = Train(
+#     _dir="./", 
+#     lines=lines
+# )
 
 # t = Train(
 #     _dir="./",
@@ -213,3 +216,13 @@ t = Train(
 #     _dir="./",
 #     keyword='Dorian Thompson-Robinson'
 # )
+
+keys = [
+    '202211130nyg-53', '202310020nyg-3', '202310080mia-21',
+    '202310290nyg-6', '202311120dal-127'
+]
+
+t = Train(
+    _dir="./",
+    p_keys=keys
+)

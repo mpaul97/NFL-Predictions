@@ -1011,6 +1011,7 @@ class Processing:
         Store team_abbr for each pids entities, per game
         Columns: primary_key -> pid:start:end
         """
+        start = time.time()
         N = 15 # max length of pids under same entity type
         pdf = self.get_pid_entities_pbp()
         pdf_copy = pdf.copy()
@@ -1030,6 +1031,9 @@ class Processing:
         pdf['abbr'] = pdf.apply(lambda row: self.pid_entities_team_abbr(row, df), axis=1)
         fn = 'sample_pid_entities_team_abbrs' if self.testing else 'allTables_pid_entities_team_abbrs'
         self.save_frame(pdf, (self.data_dir + fn))
+        end = time.time()
+        elapsed = end - start
+        print("Pid Entities Team Abbrs Time elapsed: {:.2f}".format(elapsed))
         return
     def update_pid_entities_team_abbrs(self):
         """
@@ -1090,7 +1094,7 @@ if __name__ == "__main__":
         _dir="./",
         testing=False
     )
-    p.build_entities()
-    p.build_pid_entities()
-    p.build_game_pids_abbrs()
+    # p.build_entities()
+    # p.build_pid_entities()
+    # p.build_game_pids_abbrs()
     p.build_pid_entities_team_abbrs()
