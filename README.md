@@ -1,3 +1,5 @@
+# RUN FILE + INSTRUCTIONS IN PROGRESS
+-------------------------
 # Directory Descriptions
 - ### NFL_FantasyPredictions (IN PROGRESS)
   - predict TOTAL season points for QB, RB, WR, TE, FLEX, K and DST's
@@ -104,7 +106,7 @@
       - main execution file
       - gets base play_info from pids_detail & pid_entities tables (e.i. play_type, is_fumble, is_challenge, etc.)
   - sentence_similarities (UNUSED/TESTING) -> compare sentences
-  - collect.py -> scrape/clean/update all Play-By-Play (PBP) tables from www.pro-football-reference.com/boxscores/{game_key}.htm and concatenates to data/allTables.csv
+  - collect.py -> scrape/clean/update all Play-By-Play (PBP) tables Pro-Football-Reference for {game_key} and concatenates to data/allTables.csv
   - encoding.py (OLD SCRIPT/UNUSED)
   - features.txt -> PBP features ideas
   - guis.py (OLD SCRIPT/UNUSED)
@@ -120,9 +122,50 @@
           - Clyde Edwards-Helaire right end for no gain (tackle by Brandon Jones and Malik Reed)
           - leading_name: Clyde Edwards-Helaire <=> team_abbr: KAN
       - allTables_entities => all custom entities extracted from sentence (PASSER, RUSHER, PENALIZER, KICKER, etc.)
-      - allTables_pids (pids_detail) => scraped sentences from www.pro-football-reference.com/boxscores/{game_key}.htm where player id's (pid) replace names (e.i. Aaron Rodgers <=> RodgAa00)
+      - allTables_pids (pids_detail) => scraped sentences from Pro-Football-Reference for {game_key} where player id's (pid) replace names (e.i. Aaron Rodgers <=> RodgAa00)
       - allTables_pid_entities => cross-reference entities and pids; convert name entities to their corresponding pid
       - allTables_game_pids_abbrs => stores "|" seperated strings of all pids in a PBP and their corresponding team_abbr
       - allTables_pid_entities_team_abbrs => expands every pid_entity with their corresponding team_abbr for easy referencing
   - spacy.ipynb (OLD SCRIPT/UNUSED)
   - testing.py -> generic tests
+- ### player_props (IN PROGRESS)
+- ### playerNames (OLD VERSION, USED FOR REFERENCING)
+- ### playerNames_v2
+  - scrape all player names, pids, positions, teams played for, and years played
+  - playerInfo.py -> build/update all player info tables
+- ### playerRanks
+  - attempts to grade players on a per game basis with a score of 1-5
+  - uses grades to rank players on a given team and position
+    - features: starting qb out, starting qb grade, starting rbs cumulative grade, rb1 out, etc.
+  - GradeGui.py -> tkinter GUI used get user input for manual grading
+  - main.py
+    - build/update grades
+    - build/update ranks
+    - train grading models
+- ### playsWith (IN PROGRESS)
+- ### predStatsWithWinner (IN PROGRESS)
+- ### scoringSummaries
+  - NOT USED CURRENTLY
+  - attempts to convert scoring summaries from Pro-Football-Reference for {game_key} into useful features
+- ### snapCounts
+  - processing.py (UNUSED, IN PROGRESS)
+  - expected.py (UNUSED, IN PROGRESS)
+  - main.py -> collect/update player snap counts from Pro-Football-Reference for {game_key}
+- ### starters
+  - allPositions.py -> writes all positions from allStarters.csv to allPositions.csv
+  - mergeStarters.py -> merges gameData.csv and allStarters.csv + writes unkStarters.csv (starters with unknown positions)
+  - scrapeStartingLineups.py -> scrapes all starters from Pro-Football-Reference for {game_key}
+  - startsInfo.py
+    - build/update startsInfo.csv
+      - features: career games played in, last season games played in, career starts, current season starts, etc.
+- ### teamNames
+  - teamNames.py -> writes all team abbrs to a csv, manually enter team names for corresponding abbr
+  - teamNamesFromPbp -> gets all team names from Play-By-Play timeout lines and writes to teamNames_pbp.csv, manually add + edit
+- ### testing
+  - various testing scripts
+- ### textEncoding (IN PROGRESS)
+- ### tiers (IN PROGRESS)
+- ### improvements.txt
+  - ideas for optimizations and other improvements
+- ### paths.py
+  - used to reference various path directories
