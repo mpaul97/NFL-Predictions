@@ -25,6 +25,7 @@ class PenaltyObject:
 # --------------------------------
 
 ADF: pd.DataFrame = pd.read_csv("%s.csv" % "../data/allTables")[['primary_key', 'down', 'togo']]
+ADF['at_index'] = ADF.index
 
 class Penalties:
     def __init__(self):
@@ -97,6 +98,8 @@ class Penalties:
                 _type = (re.findall(r":\s.*?[,(]|\b:\s.*$", p)[0]).replace(':','').replace(',','').replace('(','').replace('.','').lstrip().rstrip()
                 penalizer = ([s for s in p.split(' ') if ':' in s][0]).replace(':','')
                 yards = 0
+                if '1 yard' in p: # 1 yard (NOT YARDS)
+                    yards = 1
                 if 'yards' in p:
                     yards = int((re.findall(r"[0-9]{1,2}\syards", p)[0]).replace(' yards', ''))
                 declined = ('declined' in p.lower())
@@ -120,14 +123,14 @@ class Penalties:
 
 # df = pd.read_csv("%s.csv" % "../data/allTables_pids")
 # df = df.merge(ADF, on=['primary_key'])
-# df.dropna(inplace=True)
-# df = df.loc[df['pids_detail'].str.contains('Penalty')]
-# df = df.sample(n=10, random_state=random.randint(0, 42))
+# # df.dropna(inplace=True)
+# df = df.loc[df['primary_key']=='201909220buf-33']
+# print(df)
 
 # all_types = []
 
 # for index, row in df.iterrows():
-#     pens: list[PenaltyObject] = Penalties().get(index, row)
+#     pens: list[PenaltyObject] = Penalties().get(row)
 #     print(row['pids_detail'])
 #     [p.show() for p in pens]
 #     print()

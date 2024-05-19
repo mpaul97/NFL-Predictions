@@ -6,9 +6,9 @@ sys.path.append('../')
 
 from paths import DATA_PATH, POSITION_PATH, STARTERS_PATH, TEAMNAMES_PATH, COACHES_PATH, MADDEN_PATH, NAMES_PATH, SNAP_PATH, PLAYER_RANKS_PATH, PBP_FEATURES_PATH
 
-from gamePredictions.build import Build
-from fantasyPredictions.build import Build as FpBuild
-from database import Firebase
+# from gamePredictions.build import Build
+# from fantasyPredictions.build import Build as FpBuild
+# from database import Firebase
 
 class Main:
     def __init__(self, week, year):
@@ -75,14 +75,18 @@ class Main:
 
 ########################
 
-if __name__ == '__main__':
-    m = Main(
-        week=13,
-        year=2023
-    )
-    m.gpPredicitions('new')
+# if __name__ == '__main__':
+#     m = Main(
+#         week=13,
+#         year=2023
+#     )
+#     m.gpPredicitions('new')
     # m.fpPredicitions('both')
     # m.findMissingCols_gp()
     # m.test()
     # m.createUiData()
         
+from gamePredictions.build_v2 import Build
+
+b = Build()
+b.main()

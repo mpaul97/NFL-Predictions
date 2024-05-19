@@ -12,12 +12,13 @@ class Build:
         ]
         return
     def main(self):
-        for feature in self.features:
-            feature.build()
+        print(os.getcwd())
+        # for feature in self.features:
+        #     feature.build()
         return
     
 ################################
     
-b = Build()
+# b = Build()
 
-b.main()
+# b.main()

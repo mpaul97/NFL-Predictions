@@ -29,9 +29,10 @@ class Conversion:
         self.gd: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../data/gameData"))
         self.tn: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_firstName"))
         self.tn_pbp: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_pbp"))
+        self.pn_df: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../playerNames_v2/data/playerInfo"))
         self.all_cols = {
             'pass': ['completed', 'pass_yards', 'is_interception', 'is_spike'],
-            'run': ['rush_yards', 'run_direction', 'is_sneak'],
+            'run': ['rush_yards', 'is_qb_run', 'is_wr_run', 'run_direction', 'is_sneak'],
             'sack': ['sack_yards'],
             'kickoff': ['kickoff_yards', 'return_yards', 'is_touchback'],
             'extra_point': ['is_good'],
@@ -40,9 +41,10 @@ class Conversion:
             'punt': ['punt_yards', 'return_yards', 'is_fair_catch', 'is_muffed', 'is_touchback'],
             'timeout': ['timeout_abbr', 'timeout_number'],
             'kneel': [],
-            'penalty': []
+            'penalty': ['penalty_yards', 'penalty_types', 'penalizers'],
+            'challenge': ['challenge_abbr', 'is_successful_challenge']
         }
-        self.general_cols = ['is_off_touchdown', 'is_def_touchdown', 'penalty_yards']
+        self.general_cols = ['is_off_touchdown', 'is_def_touchdown']
         self.cols = self.general_cols + list(set(self.flatten(list(self.all_cols.values()))))
         self.normal_play_type_funcs = {
             'pass': self.normal_pass, 'run': self.normal_run, 'sack': self.normal_sack,
@@ -51,10 +53,10 @@ class Conversion:
             'kneel': self.normal_kneel, 'timeout': self.normal_timeout
         }
         # self.funcs = {
-        #     'normal': self.normal, 'is_penalty': self.penalty
+        #     'normal': self.normal, 'is_penalty': self.penalty, 'is_challenge': self.challenge
         # }
         self.funcs = {
-            'normal': self.normal
+            'is_challenge': self.challenge
         }
         return
     def flatten(self, l: list):
@@ -74,6 +76,22 @@ class Conversion:
             return min_ent[0]
         except Exception:
             return 'UNK'
+    def get_run_direction(self, line: str):
+        if re.search(r"middle\s", line):
+            return 'm'
+        if re.search(r"left\send", line):
+            return 'le'
+        if re.search(r"right\send", line):
+            return 're'
+        if re.search(r"left\stackle", line):
+            return 'lt'
+        if re.search(r"right\stackle", line):
+            return 'rt'
+        if re.search(r"left\sguard", line):
+            return 'lg'
+        if re.search(r"right\sguard", line):
+            return 'rg'
+        return np.nan
     # normal funcs
     def normal_pass(self, _dict: dict, row: pd.Series):
         """
@@ -106,8 +124,21 @@ class Conversion:
             dict: _dict
         """
         line: str = row['pids_detail']
-        print(line)
-        print(row['togo'], row['down'])
+        rusher: str = (row['pid_RUSHER']).split(":")[0]
+        togo, down = row['togo'], row['down']
+        try:
+            rusher_pos: str = self.pn_df.loc[self.pn_df['p_id']==rusher, 'positions'].values[0]
+            # qb rusher, is center run, yards togo less than or equal to 2, and is 3rd or 4th down
+            if 'QB' in rusher_pos:
+                _dict['is_qb_run'] = True
+                if 'middle' in line and float(togo) <= 2 and float(down) >= 3:
+                    _dict['is_sneak'] = True
+            # wr rusher
+            if 'WR' in rusher_pos:
+                _dict['is_wr_run'] = True
+        except IndexError:
+            pass
+        _dict['run_direction'] = self.get_run_direction(line)
         vals: list[str] = re.findall(r"for\s[-]?[0-9]+", line)
         if len(vals) >= 1:
             _dict['rush_yards'] = int(vals[0].replace("for ",""))
@@ -341,9 +372,6 @@ class Conversion:
         """
         _dict = { col: np.nan for col in self.cols }
         if not pens[0].declined: # one accepted penalty
-            _dict['is_touchdown'] = False
-            _dict['is_interception'] = False
-            _dict['is_spike'] = False
             _dict['penalty_yards'] = pens[0].yards * (-1 if pens[0].against_possessing_team else 1)
             return _dict
         # declined
@@ -360,25 +388,16 @@ class Conversion:
             return self.normal_lambda_func(row, has_penalty=True)
         elif pens[0].offset and pens[1].offset: # both offsetting
             if any([p.no_play for p in pens]): # no play
-                _dict['is_touchdown'] = False
-                _dict['is_interception'] = False
-                _dict['is_spike'] = False
                 return _dict
             # offsetting penalties but play stands and yards added
             _dict = self.normal_lambda_func(row, has_penalty=True)
             _dict['penalty_yards'] = sum([p.yards for p in pens]) * (-1 if pens[0].against_possessing_team else 1)
             return _dict 
         elif all([not p.declined for p in pens]): # both accepted (always same team)
-            _dict['is_touchdown'] = False
-            _dict['is_interception'] = False
-            _dict['is_spike'] = False
             _dict['penalty_yards'] = (pens[0].yards + pens[1].yards) * (-1 if pens[0].against_possessing_team else 1)
             return _dict
         # one declined, one accepted
         pens = [p for p in pens if not p.declined]
-        _dict['is_touchdown'] = False
-        _dict['is_interception'] = False
-        _dict['is_spike'] = False
         _dict['penalty_yards'] = pens[0].yards * (-1 if pens[0].against_possessing_team else 1)
         return _dict
     def penalty_c3(self, pens: list[PenaltyObject], row: pd.Series):
@@ -394,18 +413,12 @@ class Conversion:
             return self.normal_lambda_func(row, has_penalty=True)
         elif all([p.offset for p in pens]): # all offsetting
             if any([p.no_play for p in pens]): # no play
-                _dict['is_touchdown'] = False
-                _dict['is_interception'] = False
-                _dict['is_spike'] = False
                 return _dict
             # offsetting penalties but play stands and yards added
             _dict = self.normal_lambda_func(row, has_penalty=True)
             _dict['penalty_yards'] = sum([p.yards for p in pens]) * (-1 if pens[0].against_possessing_team else 1)
             return _dict 
         elif any([p.no_play for p in pens]): # no play
-            _dict['is_touchdown'] = False
-            _dict['is_interception'] = False
-            _dict['is_spike'] = False
             return _dict
         elif all([not p.declined for p in pens]): # all accepted (ASSUMING same team) + play stands
             _dict = self.normal_lambda_func(row, has_penalty=True)
@@ -414,9 +427,6 @@ class Conversion:
         elif len([p for p in pens if p.declined]) == 2 and len([p for p in pens if not p.declined]) == 1: # two declined + one accepted
             accepted_pen = [p for p in pens if not p.declined][0]
             if any([p.no_play for p in pens]):
-                _dict['is_touchdown'] = False
-                _dict['is_interception'] = False
-                _dict['is_spike'] = False
                 _dict['penalty_yards'] = accepted_pen.yards
                 return _dict
             _dict = self.normal_lambda_func(row, has_penalty=True)
@@ -426,15 +436,10 @@ class Conversion:
             pens = [p for p in pens if not p.declined]
             p1, p2 = pens[0], pens[1]
             if any([p1.no_play, p2.no_play]):
-                _dict['is_touchdown'] = False
-                _dict['is_interception'] = False
-                _dict['is_spike'] = False
                 _dict['penalty_yards'] = (p1.yards * (-1 if p1.against_possessing_team else 1)) + (p2.yards * (-1 if p2.against_possessing_team else 1))
                 return _dict
             _dict = self.normal_lambda_func(row, has_penalty=True)
             _dict['penalty_yards'] = (p1.yards * (-1 if p1.against_possessing_team else 1)) + (p2.yards * (-1 if p2.against_possessing_team else 1))
-            print(line)
-            print(_dict)
             return _dict
         else:
             print('Missing case for c3:')
@@ -451,7 +456,6 @@ class Conversion:
         line: str = row['pids_detail']
         if all([p.offset for p in pens]): # all offsetting
             if any([p.no_play for p in pens]): # no play
-                _dict['is_touchdown'] = False
                 _dict['is_interception'] = False
                 _dict['is_spike'] = False
                 return _dict
@@ -461,7 +465,6 @@ class Conversion:
             return _dict
         elif all([not p.declined for p in pens]): # all accepted
             if any([p.no_play for p in pens]): # no play
-                _dict['is_touchdown'] = False
                 _dict['is_interception'] = False
                 _dict['is_spike'] = False
                 _dict['penalty_yards'] = max([p.yards for p in pens]) * (-1 if pens[0].against_possessing_team else 1)
@@ -472,7 +475,6 @@ class Conversion:
             return _dict
         # default case (3 accepted, 1 declined, etc.)
         if any([p.no_play for p in pens]): # no play
-            _dict['is_touchdown'] = False
             _dict['is_interception'] = False
             _dict['is_spike'] = False
             _dict['penalty_yards'] = max([p.yards for p in pens]) * (-1 if pens[0].against_possessing_team else 1)
@@ -492,9 +494,6 @@ class Conversion:
         line: str = row['pids_detail']
         if all([p.offset for p in pens]): # all offsetting
             if any([p.no_play for p in pens]): # no play
-                _dict['is_touchdown'] = False
-                _dict['is_interception'] = False
-                _dict['is_spike'] = False
                 return _dict
             # offsetting penalties but play stands and yards added
             _dict = self.normal_lambda_func(row, has_penalty=True)
@@ -513,9 +512,6 @@ class Conversion:
         line: str = row['pids_detail']
         if all([p.offset for p in pens]): # all offsetting
             if any([p.no_play for p in pens]): # no play
-                _dict['is_touchdown'] = False
-                _dict['is_interception'] = False
-                _dict['is_spike'] = False
                 return _dict
             # offsetting penalties but play stands and yards added
             _dict = self.normal_lambda_func(row, has_penalty=True)
@@ -535,12 +531,14 @@ class Conversion:
             vals = _dict[key](pens, row)
         except KeyError:
             print(f"No dict key for: {key}")
+        vals['penalty_types'] = '|'.join([p._type for p in pens])
+        vals['penalizers'] = '|'.join([p.penalizer for p in pens])
         return vals
     def penalty(self, df: pd.DataFrame):
         """
         Convert lines with penalties
         !!! penalty_yards = NaN and pass_yards = NaN - no play !!!
-        Attributes: pass_yards, penalty_yards, penalty_type, is_touchdown, is_interception
+        Attributes: self.cols
         Args:
             df (pd.DataFrame): all
         """
@@ -548,13 +546,24 @@ class Conversion:
         return df
     # end penalties
     # challenge
+    def challenge_only(self, row: pd.Series):
+        vals = { col: np.nan for col in self.cols }
+        at_index: int = row['at_index']
+        last_play: pd.Series = self.df.iloc[at_index-1]
+        print(last_play)
+        return vals
+    def challenge_with_play(self, row: pd.Series):
+        vals = { col: np.nan for col in self.cols }
+        return vals
     def challenge_lambda_func(self, row: pd.Series):
-        
-        return
+        if row['play_type'] == 'challenge': # only a challenge, no play
+            return self.challenge_only(row)
+        # normal play + challenge after
+        return self.challenge_with_play(row)
     def challenge(self, df: pd.DataFrame):
         """
         Convert lines with challenge
-        Attributes: pass_yards, penalty_yards, penalty_type, is_touchdown, is_interception
+        Attributes: self.cols
         Args:
             df (pd.DataFrame): all
         """
@@ -567,9 +576,10 @@ class Conversion:
         """
         atdf = self.all_tables.copy()
         atdf['at_index'] = atdf.index
-        df = self.df.merge(atdf[['primary_key', 'down', 'togo', 'at_index']], on=['primary_key'])
+        df = self.df.merge(atdf[['primary_key', 'down', 'togo', 'location', 'at_index']], on=['primary_key'])
+        self.df = df.copy()
         # df = df.tail(5000)
-        df = df.loc[df['primary_key'].str.contains('202309250tam')]
+        df = df.loc[df['primary_key'].str.contains('201109110cle')]
         df = df.reset_index(drop=True)
         combinations = list(itertools.product([True, False], repeat=len(self.pt_bool_cols)))
         df_list = []
@@ -585,42 +595,21 @@ class Conversion:
                 # print(f"No func: {func_key}")
                 continue
         new_df = pd.concat(df_list)
-        new_df = new_df[['pids_detail', 'play_type']+self.pt_bool_cols+self.cols]
+        new_df = new_df[['primary_key', 'pids_detail', 'play_type']+self.pt_bool_cols+self.cols]
         self.save_frame(new_df, "data/temp")
         return
     
 ##################
 
-# Conversion(
-#     pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False),
-#     './'
-# ).convert()
+Conversion(
+    pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False),
+    './'
+).convert()
 
-df = pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False)
-info: pd.DataFrame = df.loc[df['play_type']=='run', ['primary_key', 'pid_PASSER', 'pid_RECEIVER', 'pid_RUSHER', 'pids_detail']]
-# info = info.head(10)
-
-keys = []
-
-def func(row: pd.Series):
-    pid = row['pid_RUSHER'].split(":")[0]
-    line: str = row['pids_detail']
-    if 'pass' in line:
-        keys.append(row['primary_key'])
-    line: str = line.replace(pid, '')
-    if 'Two Point Attempt' not in line and 'aborted snap' not in line and pd.isna(row['pid_PASSER']) and pd.isna(row['pid_RECEIVER']):
-        end = line.index('for')
-        return line[:end].lstrip().rstrip().replace(' ','_')
-    return ''
-
-info['direction'] = info.apply(lambda x: func(x), axis=1)
-
-print(set(info['direction']))
-
-# all_dirs = list(set(info['direction']))
-# all_dirs.sort(key=lambda x: len(x))
-
-# print(all_dirs)
+# df = pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False)
+# info = df.loc[df['is_challenge'], ['primary_key', 'pids_detail']].values[:10]
+    
+# '201909220buf-48'
 
 # ---------------------------------------------------------------------------------
 
