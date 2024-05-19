@@ -1,13 +1,13 @@
 import os
 
-from games.build import SomeClass
+from games.build import Build as GamesBuild
 
 class Main:
     def __init__(self):
         
         return
     def run_all(self):
-        SomeClass().foo()
+        GamesBuild().run()
         return
     
 #######################
@@ -15,4 +15,3 @@ class Main:
 if __name__ == '__main__':
     m = Main()
     m.run_all()
-    print(os.listdir(os.getenv("MAIN_GAMES_FEATURES_DATA_DIR")))

@@ -5,16 +5,15 @@ try:
 except ModuleNotFoundError:
     from games.features.test_feature import SomeFeature
 
-class SomeClass:
+class Build:
     def __init__(self):
-        self.k_dir: str = os.getcwd()
-        print(os.listdir(self.k_dir))
+        self._dir: str = os.getcwd()[:os.getcwd().index("main_v2")+len("main_v2")]+"/"
+        self.data_dir = self._dir + "games/features/data/"
         return
-    def foo(self):
+    def run(self):
         SomeFeature().some_feature_build_func()
         return
-    
-############################
-    
-SomeClass()
 
+##############################
+    
+Build().run()
