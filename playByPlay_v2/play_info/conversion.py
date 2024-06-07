@@ -29,6 +29,7 @@ class Conversion:
         self.gd: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../data/gameData"))
         self.tn: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_firstName"))
         self.tn_pbp: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_pbp"))
+        self.alt_abbrs: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/altAbbrs"))
         self.pn_df: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../playerNames_v2/data/playerInfo"))
         self.all_cols = {
             'pass': ['completed', 'pass_yards', 'is_interception', 'is_spike'],
@@ -44,7 +45,7 @@ class Conversion:
             'penalty': ['penalty_yards', 'penalty_types', 'penalizers'],
             'challenge': ['challenge_abbr', 'is_successful_challenge']
         }
-        self.general_cols = ['is_off_touchdown', 'is_def_touchdown']
+        self.general_cols = ['is_off_touchdown', 'is_def_touchdown', 'is_safety']
         self.cols = self.general_cols + list(set(self.flatten(list(self.all_cols.values()))))
         self.normal_play_type_funcs = {
             'pass': self.normal_pass, 'run': self.normal_run, 'sack': self.normal_sack,
@@ -53,10 +54,11 @@ class Conversion:
             'kneel': self.normal_kneel, 'timeout': self.normal_timeout
         }
         # self.funcs = {
-        #     'normal': self.normal, 'is_penalty': self.penalty, 'is_challenge': self.challenge
+        #     'normal': self.normal, 'is_penalty': self.penalty, 'is_challenge': self.challenge,
+        #     'is_block': self.block
         # }
         self.funcs = {
-            'is_challenge': self.challenge
+            'is_block': self.block
         }
         return
     def flatten(self, l: list):
@@ -65,6 +67,17 @@ class Conversion:
         df.to_csv("%s.csv" % name, index=False)
         return
     def get_scorer_pid(self, ents: np.ndarray, line: str):
+        """
+        Gets scorer pid by finding ent closest to 'touchdown'
+        EX: Graham Gano 45 yard field goal no good blocked by Juanyeh Thomas, touchdown
+        Juanyeh Thomas -> scorer
+        Args:
+            ents (np.ndarray): array of pid entities
+            line (str): pids_detail
+
+        Returns:
+            str: pid
+        """
         try:
             td = re.search(r"touchdown", line)
             td_start: int = td.start()
@@ -92,6 +105,34 @@ class Conversion:
         if re.search(r"right\sguard", line):
             return 'rg'
         return np.nan
+    def set_off_def_touchdown(self, _dict: dict, row: pd.Series):
+        """
+        Fills _dict offensive/defensive touchdown fields
+        Args:
+            row (pd.Series): DF row
+            _dict (dict): dict
+
+        Returns:
+            dict: _dict
+        """
+        line: str = row['pids_detail']
+        if 'touchdown' in line:
+            ents = row[self.pid_ent_cols].values
+            ents = ents[~pd.isna(ents)]
+            scorer: str = self.get_scorer_pid(ents, row['pids_detail'])
+            if scorer != 'UNK': # if scorer pid -> find if on offense or defense
+                scorer: str = scorer.split(" ")[0]
+                abbrs: np.ndarray = self.info_df.loc[
+                    (self.info_df['primary_key']==row['primary_key'])&
+                    (self.info_df['pid_entity'].str.contains(scorer)),
+                    ['abbr', 'possession']
+                ].values[0]
+                _dict['is_off_touchdown'] = (abbrs[0] == abbrs[1])
+                _dict['is_def_touchdown'] = (abbrs[0] != abbrs[1])
+        return _dict
+    def set_safety(self, _dict: dict, row: pd.Series):
+        _dict['is_safety'] = ('safety' in row['pids_detail'])
+        return _dict
     # normal funcs
     def normal_pass(self, _dict: dict, row: pd.Series):
         """
@@ -113,6 +154,7 @@ class Conversion:
         _dict['is_def_touchdown'] = (('touchdown' in line) and ('returned' in line))
         _dict['is_interception'] = ('intercepted' in line)
         _dict['is_spike'] = ('spiked' in line)
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_run(self, _dict: dict, row: pd.Series):
         """
@@ -144,6 +186,7 @@ class Conversion:
             _dict['rush_yards'] = int(vals[0].replace("for ",""))
         _dict['is_off_touchdown'] = (('touchdown' in line) and ('returned' not in line))
         _dict['is_def_touchdown'] = (('touchdown' in line) and ('returned' in line))
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_sack(self, _dict: dict, row: pd.Series):
         """
@@ -159,6 +202,7 @@ class Conversion:
         if len(vals) >= 1:
             _dict['sack_yards'] = int(vals[0].replace("for ",""))
         _dict['is_def_touchdown'] = (('touchdown' in line) and ('returned' in line))
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_kickoff(self, _dict: dict, row: pd.Series):
         """
@@ -178,19 +222,8 @@ class Conversion:
         if len(return_vals) >= 1:
             _dict['return_yards'] = int(return_vals[0].replace("for ",""))
         _dict['is_touchback'] = ('touchback' in line)
-        if 'touchdown' in line:
-            ents = row[self.pid_ent_cols].values
-            ents = ents[~pd.isna(ents)]
-            scorer: str = self.get_scorer_pid(ents, row['pids_detail'])
-            if scorer != 'UNK': # if scorer pid -> find if on offense or defense
-                scorer: str = scorer.split(" ")[0]
-                abbrs: np.ndarray = self.info_df.loc[
-                    (self.info_df['primary_key']==row['primary_key'])&
-                    (self.info_df['pid_entity'].str.contains(scorer)),
-                    ['abbr', 'possession']
-                ].values[0]
-                _dict['is_off_touchdown'] = (abbrs[0] == abbrs[1])
-                _dict['is_def_touchdown'] = (abbrs[0] != abbrs[1])
+        _dict = self.set_off_def_touchdown(_dict, row)
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_extra_point(self, _dict: dict, row: pd.Series):
         """
@@ -203,6 +236,7 @@ class Conversion:
         """
         line: str = row['pids_detail']
         _dict['is_good'] = ('extra point good' in line)
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_coin_toss(self, _dict: dict, row: pd.Series):
         """
@@ -236,19 +270,8 @@ class Conversion:
         vals: list[str] = re.findall(r"[-]?[0-9]+\syard", line)
         if len(vals) >= 1:
             _dict['field_goal_yards'] = int(vals[0].replace(" yard",""))
-        if 'touchdown' in line:
-            ents = row[self.pid_ent_cols].values
-            ents = ents[~pd.isna(ents)]
-            scorer: str = self.get_scorer_pid(ents, row['pids_detail'])
-            if scorer != 'UNK': # if scorer pid -> find if on offense or defense
-                scorer: str = scorer.split(" ")[0]
-                abbrs: np.ndarray = self.info_df.loc[
-                    (self.info_df['primary_key']==row['primary_key'])&
-                    (self.info_df['pid_entity'].str.contains(scorer)),
-                    ['abbr', 'possession']
-                ].values[0]
-                _dict['is_off_touchdown'] = (abbrs[0] == abbrs[1])
-                _dict['is_def_touchdown'] = (abbrs[0] != abbrs[1])
+        _dict = self.set_off_def_touchdown(_dict, row)
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_punt(self, _dict: dict, row: pd.Series):
         """
@@ -270,6 +293,7 @@ class Conversion:
         _dict['is_fair_catch'] = ('fair catch' in line)
         _dict['is_muffed'] = ('muffed' in line)
         _dict['is_touchback'] = ('touchback' in line)
+        # this is a little different than set_off_def_touchdown
         if 'touchdown' in line:
             ents = row[self.pid_ent_cols].values
             ents = ents[~pd.isna(ents)]
@@ -287,6 +311,7 @@ class Conversion:
                     ].values[0]
                     _dict['is_off_touchdown'] = (abbrs[0] == abbrs[1])
                     _dict['is_def_touchdown'] = (abbrs[0] != abbrs[1])
+        _dict = self.set_safety(_dict, row)
         return _dict
     def normal_penalty(self, _dict: dict, row: pd.Series):
         """
@@ -533,6 +558,7 @@ class Conversion:
             print(f"No dict key for: {key}")
         vals['penalty_types'] = '|'.join([p._type for p in pens])
         vals['penalizers'] = '|'.join([p.penalizer for p in pens])
+        vals = self.set_safety(vals, row)
         return vals
     def penalty(self, df: pd.DataFrame):
         """
@@ -546,20 +572,69 @@ class Conversion:
         return df
     # end penalties
     # challenge
-    def challenge_only(self, row: pd.Series):
-        vals = { col: np.nan for col in self.cols }
-        at_index: int = row['at_index']
-        last_play: pd.Series = self.df.iloc[at_index-1]
-        print(last_play)
-        return vals
-    def challenge_with_play(self, row: pd.Series):
-        vals = { col: np.nan for col in self.cols }
-        return vals
+    def challenge_only(self, _dict: dict, row: pd.Series):
+        """
+        Previous play is TRUE when next line is ONLY challenge.
+        Fills challenge_abbr, is_successful_challenge
+        EX: 
+            McGeRi01 punts 44 yards, touchback + CIN challenged the kick touched ruling, and the original play was overturned.
+            => 
+            McGeRi01 punts 44 yards, touchback
+        Args:
+            row (pd.Series): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        line = row['pids_detail']
+        abbr = "RA" # replay assistant
+        try:
+            r_abbr = re.findall(r"[A-Z]{3}", line)[0]
+            abbr = self.alt_abbrs.loc[self.alt_abbrs['alt_abbr'].str.contains(r_abbr), 'abbr'].values[0]
+        except IndexError:
+            pass
+        _dict['challenge_abbr'] = abbr
+        _dict['is_successful_challenge'] = ('overturned' in line)
+        _dict = self.set_safety(_dict, row)
+        return _dict
+    def challenge_with_play(self, _dict: dict, row: pd.Series):
+        line: str = row['pids_detail']
+        s1: int = 0
+        if re.search(r"Replay\sAssistant", line):
+            s1: int = line.index("Replay Assistant")
+        else:
+            s1: int = re.search(r"[A-Z]{3}\schallenged", line).start()
+        org_play: str = line[:s1]
+        s2: int = (line.index('overturned.')+len('overturned.')) if 'overturned.' in line else (line.index('upheld.')+len('upheld.'))
+        challenge: str = line[s1:s2].lstrip().rstrip()
+        row['pids_detail'] = org_play
+        if 'overturned.' in line:
+            new_play: str = line[s2:].lstrip().rstrip()
+            row['pids_detail'] = new_play
+        _dict = self.normal_lambda_func(row)
+        # info
+        abbr = "RA" # replay assistant
+        try:
+            r_abbr = re.findall(r"[A-Z]{3}", challenge)[0]
+            abbr = self.alt_abbrs.loc[self.alt_abbrs['alt_abbr'].str.contains(r_abbr), 'abbr'].values[0]
+        except IndexError:
+            pass
+        _dict['challenge_abbr'] = abbr
+        _dict['is_successful_challenge'] = ('overturned' in line)
+        return _dict
     def challenge_lambda_func(self, row: pd.Series):
+        """
+        Challenge lines to normal/challenge attributes conversion
+        Args:
+            row (pd.Series): DF row
+        Returns:
+            dict: self.cols
+        """
+        _dict = { col: np.nan for col in self.cols }
         if row['play_type'] == 'challenge': # only a challenge, no play
-            return self.challenge_only(row)
+            return self.challenge_only(_dict, row)
         # normal play + challenge after
-        return self.challenge_with_play(row)
+        return self.challenge_with_play(_dict, row)
     def challenge(self, df: pd.DataFrame):
         """
         Convert lines with challenge
@@ -570,6 +645,34 @@ class Conversion:
         df[self.cols] = df.apply(lambda x: self.challenge_lambda_func(x), axis=1, result_type='expand')
         return df
     # end challenge
+    # block
+    def block_lambda_func(self, row: pd.Series):
+        """
+        Block lines to normal/block attributes conversion
+        play_type(s): field_goal, extra_point, punt
+        Args:
+            row (pd.Series): DF row
+        Returns:
+            dict: self.cols
+        """
+        if not pd.isna(row['play_type']): # normal blocked punt, FG, EXP
+            _dict = self.normal_lambda_func(row)
+        else: # NaN form -> blocked by CrosNi00, touchdown
+            _dict = { col: np.nan for col in self.cols }
+        _dict = self.set_off_def_touchdown(_dict, row)
+        _dict = self.set_safety(_dict, row)
+        return _dict
+    def block(self, df: pd.DataFrame):
+        """
+        Convert lines with block
+        Attributes: self.cols
+        Args:
+            df (pd.DataFrame): all
+        """
+        df[self.cols] = df.apply(lambda x: self.block_lambda_func(x), axis=1, result_type='expand')
+        print(df.iloc[0][self.cols])
+        return df
+    # end block
     def convert(self):
         """
         Convert DF pids_detail to yard/quanities
@@ -579,7 +682,7 @@ class Conversion:
         df = self.df.merge(atdf[['primary_key', 'down', 'togo', 'location', 'at_index']], on=['primary_key'])
         self.df = df.copy()
         # df = df.tail(5000)
-        df = df.loc[df['primary_key'].str.contains('201109110cle')]
+        df = df.loc[df['primary_key'].str.contains('202312030oti')]
         df = df.reset_index(drop=True)
         combinations = list(itertools.product([True, False], repeat=len(self.pt_bool_cols)))
         df_list = []
@@ -607,7 +710,15 @@ Conversion(
 ).convert()
 
 # df = pd.read_csv("%s.csv" % "data/allTables_play_types_data", low_memory=False)
-# info = df.loc[df['is_challenge'], ['primary_key', 'pids_detail']].values[:10]
+# df['pids_detail'].fillna('', inplace=True)
+# info = df.loc[df['pids_detail'].str.contains('safety'), 'play_type'].values
+    
+# for pt in list(set(info)):
+#     print(pt)
+    # try:
+    #     print(df.loc[(df['pids_detail'].str.contains('safety'))&(df['play_type']==pt), 'pids_detail'].values[0])
+    # except IndexError:
+    #     print(pt, 'empty')
     
 # '201909220buf-48'
 
