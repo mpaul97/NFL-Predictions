@@ -6,8 +6,11 @@ import regex as re
 import requests
 import json
 from datetime import datetime, timedelta
+import sys
+sys.path.append("../../../../")
 
-API_KEY = '1774f96665d93ee33983b187ec18673d'
+from api_keys.the_odds import API_KEY
+
 API_HOST = 'https://api.the-odds-api.com'
 
 def buildVegasLine(source: pd.DataFrame, cd: pd.DataFrame, tn: pd.DataFrame, _dir):

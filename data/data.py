@@ -22,7 +22,7 @@ def shorten():
 
     df = pd.read_csv("%s.csv" % "gameData")
 
-    start = df.loc[df['wy'].str.contains('1994')].index.values[0]
+    start = df.loc[df['wy'].str.contains('2012')].index.values[0]
 
     df = df.loc[df.index>=start]
 
@@ -363,6 +363,8 @@ def insertMissingOverUnders():
 
 ##########################
 
+# shorten()
+
 # buildFantasyData()
 
 # drop2002SuperbowlFantasyData()
@@ -389,7 +391,7 @@ def insertMissingOverUnders():
 
 # getAdvancedStats()
 
-insertMissingOverUnders()
+# insertMissingOverUnders()
 
 # -------------------------------
 

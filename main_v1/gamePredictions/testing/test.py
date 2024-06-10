@@ -113,7 +113,7 @@ def predict(df: pd.DataFrame, y, modelName, targetName, _dir, _type):
 
 # test models - ols
 def testModels(modelNames, targetName, _dir):
-    df = pd.read_csv("%s.csv" % (_dir + "train_short"))
+    df = pd.read_csv("%s.csv" % (_dir + "train"))
     target = pd.read_csv("%s.csv" % (_dir + "target"))
     df = df.merge(target, on=STR_COLS)
     target = df[STR_COLS+['home_won', 'home_points', 'away_points']]
@@ -314,9 +314,10 @@ if __name__ == '__main__':
     #     _dir='../'
     # )
     # testModelsEncoding('home_won', '../')
-    findBestThresholds('../')
+    # findBestThresholds('../')
     # getCorrHeatMap('../')
     # testCorrCols('../')
     # getMultiCols('../')
     # predict_probs('../')
-    compare_train_test()
+    # compare_train_test()
+    testModels(['log'], 'home_won', '../')
