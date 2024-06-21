@@ -1291,6 +1291,6 @@ def getAllData(week, year):
 ########################################
 
 getAllData(
-    week=12, # -> past week
+    week=21, # -> past week
     year=2023
 )

@@ -177,7 +177,8 @@ class Main:
         last_week, last_year = [int(w) for w in (last_wy).split(" | ")]
         data: pd.DataFrame = df.loc[df['wy'].str.contains(str(last_year))]
         stats = data.groupby(['p_id']).mean()
-        stats['wy'] = str(last_week+1) + " | " + str(last_year)
+        new_wy = (str(last_week+1) + " | " + str(last_year)) if last_wy != '21 | 2023' else ("1 | " + str(last_year+1))
+        stats['wy'] = new_wy
         stats.reset_index(inplace=True)
         stats.sort_values(by=[self.target_stats[position][0]], ascending=False, inplace=True)
         new_df = pd.concat([new_df, stats])
@@ -303,7 +304,7 @@ class Main:
         if not updating:
             self.save_frame(rank_df, "playerRanks")
         return rank_df
-    def update(self):
+    def update(self, is_new_year: bool = True):
         """
         Update all_data, grades, and playerRanks
         """
@@ -311,6 +312,7 @@ class Main:
         last_rank_wy = rank_df['wy'].values[-1]
         last_week, last_year = [int(w) for w in self.cd['wy'].values[-1].split(" | ")]
         next_wy = str(last_week + 1) + " | " + str(last_year)
+        next_wy = "1 | " + str(last_year + 1) if is_new_year else next_wy
         if last_rank_wy == next_wy:
             print("playerRanks up-to-date.")
             return
@@ -415,11 +417,11 @@ class Main:
 
 ##################
 
-# m = Main(
-#     _dir="./"
-# )
+m = Main(
+    _dir="./"
+)
 
-position = 'QB'
+# position = 'QB'
 
 # m.build_all_train(position)
 
@@ -429,14 +431,16 @@ position = 'QB'
 # m.build_all_grades()
 # m.test_grades(position)
 
-# m.build_sample(position)
-# m.save_model(position)
-# m.predict_all(position)
-# m.build_all_grades()
-# m.test_grades(position)
+position = 'QB'
+
+m.build_sample(position)
+m.save_model(position)
+m.predict_all(position)
+m.build_all_grades()
+m.test_grades(position)
 
 # m.build_ranks()
 
 # m.update()
 
-m.features()
+# m.features()

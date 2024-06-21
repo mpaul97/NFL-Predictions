@@ -26,7 +26,7 @@ class Conversion:
         # frame for getting offensive or defensive touchdown
         self.info_df: pd.DataFrame = self.pe_abbrs_df.merge(self.pe_df, on=['primary_key'])
         self.info_df: pd.DataFrame = self.info_df.merge(self.pos_df, on=['primary_key'])
-        self.gd: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../data/gameData"))
+        self.gd: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../data/oldGameData_94"))
         self.tn: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_firstName"))
         self.tn_pbp: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/teamNames_pbp"))
         self.alt_abbrs: pd.DataFrame = pd.read_csv("%s.csv" % (self._dir + "../../teamNames/altAbbrs"))
@@ -47,18 +47,20 @@ class Conversion:
         }
         self.general_cols = ['is_off_touchdown', 'is_def_touchdown', 'is_safety']
         self.cols = self.general_cols + list(set(self.flatten(list(self.all_cols.values()))))
+        self.cols.sort()
         self.normal_play_type_funcs = {
             'pass': self.normal_pass, 'run': self.normal_run, 'sack': self.normal_sack,
             'kickoff': self.normal_kickoff, 'extra_point': self.normal_extra_point, 'coin_toss': self.normal_coin_toss,
             'field_goal': self.normal_field_goal, 'punt': self.normal_punt, 'penalty': self.normal_penalty,
             'kneel': self.normal_kneel, 'timeout': self.normal_timeout
         }
+        # all funcs/func_keys
         # self.funcs = {
         #     'normal': self.normal, 'is_penalty': self.penalty, 'is_challenge': self.challenge,
-        #     'is_block': self.block
+        #     'is_block': self.block, 'contains_lateral': self.lateral
         # }
         self.funcs = {
-            'is_block': self.block
+            'is_fumble': self.fumble
         }
         return
     def flatten(self, l: list):
@@ -655,10 +657,10 @@ class Conversion:
         Returns:
             dict: self.cols
         """
+        # NaN form -> blocked by CrosNi00, touchdown
+        _dict = { col: np.nan for col in self.cols } 
         if not pd.isna(row['play_type']): # normal blocked punt, FG, EXP
             _dict = self.normal_lambda_func(row)
-        else: # NaN form -> blocked by CrosNi00, touchdown
-            _dict = { col: np.nan for col in self.cols }
         _dict = self.set_off_def_touchdown(_dict, row)
         _dict = self.set_safety(_dict, row)
         return _dict
@@ -670,9 +672,51 @@ class Conversion:
             df (pd.DataFrame): all
         """
         df[self.cols] = df.apply(lambda x: self.block_lambda_func(x), axis=1, result_type='expand')
-        print(df.iloc[0][self.cols])
         return df
     # end block
+    # lateral
+    def lateral_lambda_func(self, row: pd.Series):
+        """
+        Lateral lines -> IGNORE all lines : default NaN values
+        play_type(s): any
+        Args:
+            row (pd.Series): DF row
+        Returns:
+            dict: self.cols
+        """
+        return { col: np.nan for col in self.cols } 
+    def lateral(self, df: pd.DataFrame):
+        """
+        Convert lines with lateral(s)
+        Attributes: self.cols
+        Args:
+            df (pd.DataFrame): all
+        """
+        df[self.cols] = df.apply(lambda x: self.lateral_lambda_func(x), axis=1, result_type='expand')
+        return df
+    # end lateral
+    # fumble
+    def fumble_lambda_func(self, row: pd.Series):
+        """
+        Fumble lines to attributes : default NaN values
+        play_type(s): any
+        Args:
+            row (pd.Series): DF row
+        Returns:
+            dict: self.cols
+        """
+        print(row['pids_detail'])
+        return { col: np.nan for col in self.cols } 
+    def fumble(self, df: pd.DataFrame):
+        """
+        Convert lines with fumble(s)
+        Attributes: self.cols
+        Args:
+            df (pd.DataFrame): all
+        """
+        df[self.cols] = df.apply(lambda x: self.fumble_lambda_func(x), axis=1, result_type='expand')
+        return df
+    # end fumble
     def convert(self):
         """
         Convert DF pids_detail to yard/quanities
@@ -682,21 +726,25 @@ class Conversion:
         df = self.df.merge(atdf[['primary_key', 'down', 'togo', 'location', 'at_index']], on=['primary_key'])
         self.df = df.copy()
         # df = df.tail(5000)
-        df = df.loc[df['primary_key'].str.contains('202312030oti')]
+        df = df.loc[df['primary_key'].str.contains('201109080gnb')]
         df = df.reset_index(drop=True)
         combinations = list(itertools.product([True, False], repeat=len(self.pt_bool_cols)))
         df_list = []
         for comb in combinations:
             condition = (df['is_fumble']==comb[0])&(df['is_penalty']==comb[1])&(df['is_challenge']==comb[2])&(df['is_block']==comb[3])&(df['contains_lateral']==comb[4])
             cd: pd.DataFrame = df.loc[condition]
-            func_key = ','.join([self.pt_bool_cols[i] for i in range(len(self.pt_bool_cols)) if comb[i]])
-            func_key = 'normal' if func_key == '' else func_key
-            if func_key in self.funcs.keys():
-                print(f"Calling combination func: {func_key}")
-                df_list.append(self.funcs[func_key](cd))
-            else:
-                # print(f"No func: {func_key}")
-                continue
+            if not cd.empty:
+                func_key = ','.join([self.pt_bool_cols[i] for i in range(len(self.pt_bool_cols)) if comb[i]])
+                # normal plays
+                func_key = 'normal' if func_key == '' else func_key
+                # default all lateral plays to contain_lateral func_key, ignore these plays
+                func_key = 'contains_lateral' if comb[4] else func_key
+                if func_key in self.funcs.keys():
+                    print(f"Calling combination func: {func_key}")
+                    df_list.append(self.funcs[func_key](cd))
+                else:
+                    print(f"No func: {func_key}")
+                    continue
         new_df = pd.concat(df_list)
         new_df = new_df[['primary_key', 'pids_detail', 'play_type']+self.pt_bool_cols+self.cols]
         self.save_frame(new_df, "data/temp")

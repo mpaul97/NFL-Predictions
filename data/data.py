@@ -20,13 +20,13 @@ POSITIONS = ['QB', 'RB', 'WR', 'TE', 'OL', 'DL', 'LB', 'DB', 'K', 'P', 'LS']
 
 def shorten():
 
-    df = pd.read_csv("%s.csv" % "gameData")
+    df = pd.read_csv("%s.csv" % "allPids")
 
     start = df.loc[df['wy'].str.contains('2012')].index.values[0]
 
-    df = df.loc[df.index>=start]
+    df: pd.DataFrame = df.loc[df.index>=start]
 
-    df.to_csv("%s.csv" % "newGameData", index=False)
+    df.to_csv("%s.csv" % "newAllPids", index=False)
     
     return
 
@@ -336,7 +336,7 @@ def getAdvancedStats():
     pids.sort()
     df_list = []
     for index, pid in enumerate(pids):
-        print(index, len(pids))
+        print(pid, index, len(pids))
         p = Player(pid)
         pdf = p.dataframe
         if pdf is None:
@@ -347,7 +347,7 @@ def getAdvancedStats():
     new_df = new_df[
         ['player_id', 'season', 'team_abbreviation']+[col for col in new_df.columns if col not in ['player_id', 'season', 'team_abbreviation']]
     ]
-    new_df.drop(columns=['birth_date', 'height', 'weight'], inplace=True)
+    # new_df.drop(columns=['birth_date', 'height', 'weight'], inplace=True)
     new_df.to_csv("%s.csv" % "advancedStats", index=False)
     return
 
@@ -389,7 +389,9 @@ def insertMissingOverUnders():
 
 # getSummaries()
 
-# getAdvancedStats()
+# shorten()
+
+getAdvancedStats()
 
 # insertMissingOverUnders()
 
