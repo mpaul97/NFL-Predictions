@@ -1,0 +1,1 @@
+quarterback_rating,adjusted_yards_per_attempt,total_touchdowns,completion_percentage,points_for,total_yards,won,pass_attempts_percentage,pass_yards_rank,allowed_pass_yards_rank,points_against,interceptions_thrown
